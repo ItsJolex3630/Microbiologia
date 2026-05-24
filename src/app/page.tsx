@@ -201,24 +201,92 @@ function TestSetupView() {
   const setQuestions = useAppStore((s) => s.setQuestions);
   const startTest = useAppStore((s) => s.startTest);
 
+  const [generationProgress, setGenerationProgress] = useState(0);
+  const [generationError, setGenerationError] = useState<string | null>(null);
+
   const handleStartTest = useCallback(async () => {
     setIsGeneratingQuestions(true);
+    setGenerationError(null);
+    setGenerationProgress(0);
+
     try {
-      const res = await fetch('/api/generate-questions', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ count: questionCount }),
-      });
-      const data = await res.json();
-      if (data.questions) {
-        setQuestions(data.questions);
+      const BATCH_SIZE = 5;
+      const totalBatches = Math.ceil(questionCount / BATCH_SIZE);
+      const allQuestions: Array<{
+        id: number;
+        question: string;
+        options: { a: string; b: string; c: string; d: string };
+        correctAnswer: string;
+        explanation: string;
+        trickType: string;
+        difficulty: string;
+      }> = [];
+
+      for (let i = 0; i < totalBatches; i++) {
+        const remaining = questionCount - allQuestions.length;
+        const currentBatchSize = Math.min(BATCH_SIZE, remaining);
+
+        setGenerationProgress(Math.round(((i) / totalBatches) * 100));
+
+        let retries = 2;
+        let batchSuccess = false;
+
+        while (retries >= 0 && !batchSuccess) {
+          try {
+            const res = await fetch('/api/generate-questions', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                count: questionCount,
+                batch: i,
+                batchSize: currentBatchSize,
+              }),
+            });
+
+            if (!res.ok) {
+              throw new Error(`HTTP ${res.status}`);
+            }
+
+            const data = await res.json();
+            if (data.questions && data.questions.length > 0) {
+              // Re-index questions
+              const reindexed = data.questions.map((q: { id: number; question: string; options: { a: string; b: string; c: string; d: string }; correctAnswer: string; explanation: string; trickType: string; difficulty: string }, idx: number) => ({
+                ...q,
+                id: allQuestions.length + idx + 1,
+              }));
+              allQuestions.push(...reindexed);
+              batchSuccess = true;
+            } else {
+              throw new Error('No questions returned');
+            }
+          } catch (err) {
+            retries--;
+            if (retries < 0) {
+              throw err;
+            }
+            // Wait before retry
+            await new Promise(r => setTimeout(r, 1000));
+          }
+        }
+
+        setGenerationProgress(Math.round(((i + 1) / totalBatches) * 100));
+      }
+
+      if (allQuestions.length > 0) {
+        // Shuffle all questions for randomness
+        const shuffled = [...allQuestions].sort(() => Math.random() - 0.5);
+        setQuestions(shuffled);
         startTest();
         setView('test-quiz');
+      } else {
+        setGenerationError('No se pudieron generar preguntas. Intenta de nuevo.');
       }
     } catch (error) {
       console.error('Error generating questions:', error);
+      setGenerationError('Error al generar las preguntas. Intenta de nuevo.');
     } finally {
       setIsGeneratingQuestions(false);
+      setGenerationProgress(0);
     }
   }, [questionCount, setIsGeneratingQuestions, setQuestions, startTest, setView]);
 
@@ -233,7 +301,12 @@ function TestSetupView() {
       <Button
         variant="ghost"
         className="self-start mb-6 text-muted-foreground hover:text-foreground"
-        onClick={() => setView('home')}
+        onClick={() => {
+          setIsGeneratingQuestions(false);
+          setGenerationError(null);
+          setGenerationProgress(0);
+          setView('home');
+        }}
       >
         <ArrowLeft className="w-4 h-4 mr-2" />
         Volver al inicio
@@ -301,6 +374,27 @@ function TestSetupView() {
               <span>Tiempo estimado: ~{Math.round(questionCount * 1.5)} minutos</span>
             </div>
 
+            {/* Generation progress */}
+            {isGeneratingQuestions && (
+              <div className="mb-6">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm text-muted-foreground">Generando preguntas...</span>
+                  <span className="text-sm font-medium text-emerald-600">{generationProgress}%</span>
+                </div>
+                <Progress value={generationProgress} className="h-2" />
+                <p className="text-xs text-muted-foreground mt-2">
+                  Generando en lotes para mayor calidad
+                </p>
+              </div>
+            )}
+
+            {/* Error message */}
+            {generationError && (
+              <div className="mb-6 p-3 rounded-lg bg-red-50 border border-red-200 text-sm text-red-600">
+                {generationError}
+              </div>
+            )}
+
             <Button
               className="w-full bg-emerald-600 hover:bg-emerald-700 text-white h-12 text-base"
               onClick={handleStartTest}
@@ -309,7 +403,7 @@ function TestSetupView() {
               {isGeneratingQuestions ? (
                 <>
                   <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                  Generando preguntas...
+                  Generando {generationProgress}%...
                 </>
               ) : (
                 <>

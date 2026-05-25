@@ -57,3 +57,31 @@ Stage Summary:
 - Progress bar shows generation status to user
 - JSON parsing is much more resilient to malformed LLM output
 - Both API routes have proper error handling and fallbacks
+
+---
+Task ID: 3
+Agent: Main + Subagent
+Task: Major optimizations - Theme, Study speed, Test speed, Section-specific tests
+
+Work Log:
+- Added dark/light theme toggle with next-themes and localStorage persistence
+- Added ThemeProvider to layout.tsx with Sun/Moon toggle button in header
+- Study mode now shows content INSTANTLY with fallback from document data
+- AI enhancement loads in background, with "Mejorando con IA..." banner
+- When AI data arrives, fallback is smoothly replaced with enhanced content
+- Test generation now runs batches in PARALLEL (2 concurrent) instead of sequential
+- This roughly halves the generation time for tests
+- Added section-specific test mode: each study section has a "Test" button
+- Study section view has "Hacer Test de este tema" button at bottom
+- TestSetupView shows section indicator when doing section-specific test
+- API route updated to accept sectionId parameter for focused questions
+- Home view updated: "Modo Test" renamed to "Test General" with clarifying text
+- Store updated with isStudyEnhanced, testSectionId, and their actions
+- All lint checks pass
+
+Stage Summary:
+- Study sections load instantly (fallback) with AI enhancement in background
+- Test generation is ~2x faster with parallel batches
+- Section-specific tests allow focused study on individual topics
+- Dark/light theme with persistent toggle
+- General test still available for all topics

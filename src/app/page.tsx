@@ -1,7 +1,8 @@
 'use client';
 
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTheme } from 'next-themes';
 import { useAppStore } from '@/store/app-store';
 import { DOCUMENT_SECTIONS } from '@/lib/document-content';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -36,6 +37,9 @@ import {
   HelpCircle,
   Loader2,
   Home,
+  Sun,
+  Moon,
+  FileQuestion,
 } from 'lucide-react';
 
 // ==================== ANIMATION VARIANTS ====================
@@ -62,9 +66,44 @@ const fadeInUp = {
   animate: { opacity: 1, y: 0 },
 };
 
+// ==================== THEME TOGGLE ====================
+function ThemeToggle() {
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <Button variant="ghost" size="icon" className="h-8 w-8">
+        <Sun className="h-4 w-4" />
+      </Button>
+    );
+  }
+
+  return (
+    <Button
+      variant="ghost"
+      size="icon"
+      className="h-8 w-8"
+      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+    >
+      {theme === 'dark' ? (
+        <Sun className="h-4 w-4" />
+      ) : (
+        <Moon className="h-4 w-4" />
+      )}
+    </Button>
+  );
+}
+
 // ==================== HOME VIEW ====================
 function HomeView() {
   const setView = useAppStore((s) => s.setView);
+  const setTestSectionId = useAppStore((s) => s.setTestSectionId);
 
   return (
     <motion.div
@@ -77,7 +116,7 @@ function HomeView() {
       {/* Header */}
       <motion.div variants={fadeInUp} className="text-center mb-10">
         <div className="flex items-center justify-center gap-3 mb-4">
-          <div className="p-3 rounded-2xl bg-emerald-100 text-emerald-700">
+          <div className="p-3 rounded-2xl bg-emerald-100 text-emerald-700 dark:bg-emerald-900 dark:text-emerald-300">
             <Microscope className="w-8 h-8" />
           </div>
         </div>
@@ -98,20 +137,23 @@ function HomeView() {
         <motion.div variants={fadeInUp}>
           <Card
             className="group cursor-pointer border-2 border-transparent hover:border-emerald-300 hover:shadow-lg hover:shadow-emerald-100/50 transition-all duration-300 h-full"
-            onClick={() => setView('test-setup')}
+            onClick={() => {
+              setTestSectionId(null);
+              setView('test-setup');
+            }}
           >
             <CardHeader className="pb-3">
               <div className="flex items-center gap-3 mb-2">
-                <div className="p-2.5 rounded-xl bg-emerald-100 text-emerald-600 group-hover:bg-emerald-200 transition-colors">
+                <div className="p-2.5 rounded-xl bg-emerald-100 text-emerald-600 group-hover:bg-emerald-200 transition-colors dark:bg-emerald-900 dark:text-emerald-300">
                   <Brain className="w-6 h-6" />
                 </div>
-                <Badge variant="secondary" className="bg-emerald-50 text-emerald-700 border-emerald-200">
+                <Badge variant="secondary" className="bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-900 dark:text-emerald-300 dark:border-emerald-800">
                   Desafío
                 </Badge>
               </div>
-              <CardTitle className="text-xl">Modo Test</CardTitle>
+              <CardTitle className="text-xl">Test General</CardTitle>
               <CardDescription>
-                Pon a prueba tus conocimientos con preguntas tramposas que te harán dudar
+                Test que cubre todos los temas con preguntas tramposas que te harán dudar
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -145,10 +187,10 @@ function HomeView() {
           >
             <CardHeader className="pb-3">
               <div className="flex items-center gap-3 mb-2">
-                <div className="p-2.5 rounded-xl bg-teal-100 text-teal-600 group-hover:bg-teal-200 transition-colors">
+                <div className="p-2.5 rounded-xl bg-teal-100 text-teal-600 group-hover:bg-teal-200 transition-colors dark:bg-teal-900 dark:text-teal-300">
                   <BookOpen className="w-6 h-6" />
                 </div>
-                <Badge variant="secondary" className="bg-teal-50 text-teal-700 border-teal-200">
+                <Badge variant="secondary" className="bg-teal-50 text-teal-700 border-teal-200 dark:bg-teal-900 dark:text-teal-300 dark:border-teal-800">
                   Aprende
                 </Badge>
               </div>
@@ -200,9 +242,15 @@ function TestSetupView() {
   const setIsGeneratingQuestions = useAppStore((s) => s.setIsGeneratingQuestions);
   const setQuestions = useAppStore((s) => s.setQuestions);
   const startTest = useAppStore((s) => s.startTest);
+  const testSectionId = useAppStore((s) => s.testSectionId);
+  const setTestSectionId = useAppStore((s) => s.setTestSectionId);
 
   const [generationProgress, setGenerationProgress] = useState(0);
   const [generationError, setGenerationError] = useState<string | null>(null);
+
+  const sectionInfo = testSectionId
+    ? DOCUMENT_SECTIONS.find((s) => s.id === testSectionId)
+    : null;
 
   const handleStartTest = useCallback(async () => {
     setIsGeneratingQuestions(true);
@@ -222,54 +270,68 @@ function TestSetupView() {
         difficulty: string;
       }> = [];
 
-      for (let i = 0; i < totalBatches; i++) {
-        const remaining = questionCount - allQuestions.length;
-        const currentBatchSize = Math.min(BATCH_SIZE, remaining);
+      // Run batches in parallel groups of 2
+      const PARALLEL_BATCHES = 2;
+      let batchIndex = 0;
 
-        setGenerationProgress(Math.round(((i) / totalBatches) * 100));
+      while (batchIndex < totalBatches) {
+        const groupSize = Math.min(PARALLEL_BATCHES, totalBatches - batchIndex);
+        const batchPromises: Promise<void>[] = [];
 
-        let retries = 2;
-        let batchSuccess = false;
+        setGenerationProgress(Math.round((batchIndex / totalBatches) * 100));
 
-        while (retries >= 0 && !batchSuccess) {
-          try {
-            const res = await fetch('/api/generate-questions', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                count: questionCount,
-                batch: i,
-                batchSize: currentBatchSize,
-              }),
-            });
+        for (let g = 0; g < groupSize; g++) {
+          const currentBatchIndex = batchIndex + g;
+          const promise = (async () => {
+            const remaining = questionCount - allQuestions.length;
+            const currentBatchSize = Math.min(BATCH_SIZE, Math.max(1, remaining));
 
-            if (!res.ok) {
-              throw new Error(`HTTP ${res.status}`);
+            let retries = 2;
+            let batchSuccess = false;
+
+            while (retries >= 0 && !batchSuccess) {
+              try {
+                const res = await fetch('/api/generate-questions', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    count: questionCount,
+                    batch: currentBatchIndex,
+                    batchSize: currentBatchSize,
+                    sectionId: testSectionId || undefined,
+                  }),
+                });
+
+                if (!res.ok) {
+                  throw new Error(`HTTP ${res.status}`);
+                }
+
+                const data = await res.json();
+                if (data.questions && data.questions.length > 0) {
+                  const reindexed = data.questions.map((q: { id: number; question: string; options: { a: string; b: string; c: string; d: string }; correctAnswer: string; explanation: string; trickType: string; difficulty: string }, idx: number) => ({
+                    ...q,
+                    id: allQuestions.length + idx + 1,
+                  }));
+                  allQuestions.push(...reindexed);
+                  batchSuccess = true;
+                } else {
+                  throw new Error('No questions returned');
+                }
+              } catch (err) {
+                retries--;
+                if (retries < 0) {
+                  throw err;
+                }
+                await new Promise(r => setTimeout(r, 1000));
+              }
             }
-
-            const data = await res.json();
-            if (data.questions && data.questions.length > 0) {
-              // Re-index questions
-              const reindexed = data.questions.map((q: { id: number; question: string; options: { a: string; b: string; c: string; d: string }; correctAnswer: string; explanation: string; trickType: string; difficulty: string }, idx: number) => ({
-                ...q,
-                id: allQuestions.length + idx + 1,
-              }));
-              allQuestions.push(...reindexed);
-              batchSuccess = true;
-            } else {
-              throw new Error('No questions returned');
-            }
-          } catch (err) {
-            retries--;
-            if (retries < 0) {
-              throw err;
-            }
-            // Wait before retry
-            await new Promise(r => setTimeout(r, 1000));
-          }
+          })();
+          batchPromises.push(promise);
         }
 
-        setGenerationProgress(Math.round(((i + 1) / totalBatches) * 100));
+        await Promise.all(batchPromises);
+        batchIndex += groupSize;
+        setGenerationProgress(Math.round((batchIndex / totalBatches) * 100));
       }
 
       if (allQuestions.length > 0) {
@@ -288,7 +350,7 @@ function TestSetupView() {
       setIsGeneratingQuestions(false);
       setGenerationProgress(0);
     }
-  }, [questionCount, setIsGeneratingQuestions, setQuestions, startTest, setView]);
+  }, [questionCount, setIsGeneratingQuestions, setQuestions, startTest, setView, testSectionId]);
 
   return (
     <motion.div
@@ -305,6 +367,7 @@ function TestSetupView() {
           setIsGeneratingQuestions(false);
           setGenerationError(null);
           setGenerationProgress(0);
+          setTestSectionId(null);
           setView('home');
         }}
       >
@@ -315,7 +378,7 @@ function TestSetupView() {
       <motion.div variants={fadeInUp} className="w-full max-w-lg">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="p-3 rounded-2xl bg-emerald-100 text-emerald-700">
+            <div className="p-3 rounded-2xl bg-emerald-100 text-emerald-700 dark:bg-emerald-900 dark:text-emerald-300">
               <Brain className="w-8 h-8" />
             </div>
           </div>
@@ -325,13 +388,28 @@ function TestSetupView() {
           </p>
         </div>
 
+        {/* Section indicator */}
+        {sectionInfo && (
+          <div className="mb-4 p-3 rounded-lg bg-teal-50 border border-teal-200 dark:bg-teal-950 dark:border-teal-800">
+            <div className="flex items-center gap-2">
+              <FileQuestion className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+              <span className="text-sm font-medium text-teal-700 dark:text-teal-300">
+                Test de: {sectionInfo.title}
+              </span>
+            </div>
+            <p className="text-xs text-teal-600 dark:text-teal-400 mt-1">
+              Las preguntas se centrarán en esta sección específica
+            </p>
+          </div>
+        )}
+
         <Card className="border-2">
           <CardContent className="pt-6">
             {/* Question count slider */}
             <div className="mb-8">
               <div className="flex items-center justify-between mb-3">
                 <Label className="text-base font-semibold">Número de preguntas</Label>
-                <Badge variant="secondary" className="text-lg px-3 py-1 bg-emerald-50 text-emerald-700 border-emerald-200">
+                <Badge variant="secondary" className="text-lg px-3 py-1 bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-900 dark:text-emerald-300 dark:border-emerald-800">
                   {questionCount}
                 </Badge>
               </div>
@@ -354,17 +432,17 @@ function TestSetupView() {
 
             {/* Info cards */}
             <div className="grid grid-cols-3 gap-3 mb-6">
-              <div className="text-center p-3 rounded-lg bg-amber-50 border border-amber-200">
+              <div className="text-center p-3 rounded-lg bg-amber-50 border border-amber-200 dark:bg-amber-950 dark:border-amber-800">
                 <Zap className="w-5 h-5 text-amber-500 mx-auto mb-1" />
-                <p className="text-xs font-medium text-amber-700">Tramposas</p>
+                <p className="text-xs font-medium text-amber-700 dark:text-amber-300">Tramposas</p>
               </div>
-              <div className="text-center p-3 rounded-lg bg-red-50 border border-red-200">
+              <div className="text-center p-3 rounded-lg bg-red-50 border border-red-200 dark:bg-red-950 dark:border-red-800">
                 <Target className="w-5 h-5 text-red-500 mx-auto mb-1" />
-                <p className="text-xs font-medium text-red-700">Al azar</p>
+                <p className="text-xs font-medium text-red-700 dark:text-red-300">Al azar</p>
               </div>
-              <div className="text-center p-3 rounded-lg bg-blue-50 border border-blue-200">
+              <div className="text-center p-3 rounded-lg bg-blue-50 border border-blue-200 dark:bg-blue-950 dark:border-blue-800">
                 <Eye className="w-5 h-5 text-blue-500 mx-auto mb-1" />
-                <p className="text-xs font-medium text-blue-700">Con feedback</p>
+                <p className="text-xs font-medium text-blue-700 dark:text-blue-300">Con feedback</p>
               </div>
             </div>
 
@@ -383,14 +461,14 @@ function TestSetupView() {
                 </div>
                 <Progress value={generationProgress} className="h-2" />
                 <p className="text-xs text-muted-foreground mt-2">
-                  Generando en lotes para mayor calidad
+                  Generando en lotes paralelos para mayor velocidad
                 </p>
               </div>
             )}
 
             {/* Error message */}
             {generationError && (
-              <div className="mb-6 p-3 rounded-lg bg-red-50 border border-red-200 text-sm text-red-600">
+              <div className="mb-6 p-3 rounded-lg bg-red-50 border border-red-200 text-sm text-red-600 dark:bg-red-950 dark:border-red-800 dark:text-red-400">
                 {generationError}
               </div>
             )}
@@ -466,9 +544,9 @@ function TestQuizView() {
   const allAnswered = answers.length === questions.length;
 
   const difficultyColor: Record<string, string> = {
-    'fácil': 'bg-green-100 text-green-700 border-green-200',
-    'media': 'bg-amber-100 text-amber-700 border-amber-200',
-    'difícil': 'bg-red-100 text-red-700 border-red-200',
+    'fácil': 'bg-green-100 text-green-700 border-green-200 dark:bg-green-900 dark:text-green-300 dark:border-green-800',
+    'media': 'bg-amber-100 text-amber-700 border-amber-200 dark:bg-amber-900 dark:text-amber-300 dark:border-amber-800',
+    'difícil': 'bg-red-100 text-red-700 border-red-200 dark:bg-red-900 dark:text-red-300 dark:border-red-800',
   };
 
   return (
@@ -515,7 +593,7 @@ function TestQuizView() {
           <Card className="border-2 mb-4">
             <CardHeader>
               <div className="flex items-start gap-3">
-                <span className="shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 text-sm font-bold">
+                <span className="shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 text-sm font-bold dark:bg-emerald-900 dark:text-emerald-300">
                   {currentQuestionIndex + 1}
                 </span>
                 <div className="flex-1">
@@ -523,7 +601,7 @@ function TestQuizView() {
                     {currentQuestion.question}
                   </CardTitle>
                   {currentQuestion.trickType && (
-                    <Badge variant="outline" className="mt-2 text-xs border-orange-300 text-orange-600 bg-orange-50">
+                    <Badge variant="outline" className="mt-2 text-xs border-orange-300 text-orange-600 bg-orange-50 dark:border-orange-700 dark:text-orange-400 dark:bg-orange-950">
                       <AlertTriangle className="w-3 h-3 mr-1" />
                       {currentQuestion.trickType}
                     </Badge>
@@ -541,12 +619,12 @@ function TestQuizView() {
                   let optionClass = 'border-2 transition-all duration-200 cursor-pointer rounded-xl p-4 ';
                   if (!showExplanation) {
                     optionClass += isSelected
-                      ? 'border-emerald-400 bg-emerald-50'
+                      ? 'border-emerald-400 bg-emerald-50 dark:bg-emerald-950'
                       : 'border-transparent hover:border-muted-foreground/20 hover:bg-muted/50';
                   } else if (isCorrect) {
-                    optionClass += 'border-green-500 bg-green-50';
+                    optionClass += 'border-green-500 bg-green-50 dark:bg-green-950';
                   } else if (isWrong) {
-                    optionClass += 'border-red-400 bg-red-50';
+                    optionClass += 'border-red-400 bg-red-50 dark:bg-red-950';
                   } else {
                     optionClass += 'border-transparent opacity-60';
                   }
@@ -595,18 +673,18 @@ function TestQuizView() {
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <Card className={`border-2 mb-4 ${selectedAnswer === currentQuestion.correctAnswer ? 'border-green-300 bg-green-50/50' : 'border-red-300 bg-red-50/50'}`}>
+              <Card className={`border-2 mb-4 ${selectedAnswer === currentQuestion.correctAnswer ? 'border-green-300 bg-green-50/50 dark:bg-green-950/50 dark:border-green-700' : 'border-red-300 bg-red-50/50 dark:bg-red-950/50 dark:border-red-700'}`}>
                 <CardContent className="pt-4">
                   <div className="flex items-center gap-2 mb-2">
                     {selectedAnswer === currentQuestion.correctAnswer ? (
                       <>
                         <CheckCircle2 className="w-5 h-5 text-green-600" />
-                        <span className="font-semibold text-green-700">¡Correcto!</span>
+                        <span className="font-semibold text-green-700 dark:text-green-400">¡Correcto!</span>
                       </>
                     ) : (
                       <>
                         <XCircle className="w-5 h-5 text-red-500" />
-                        <span className="font-semibold text-red-600">Incorrecto</span>
+                        <span className="font-semibold text-red-600 dark:text-red-400">Incorrecto</span>
                       </>
                     )}
                   </div>
@@ -733,17 +811,17 @@ function TestResultsView() {
                   </div>
                   <Progress value={percentage} className="h-3 mb-4" />
                   <div className="grid grid-cols-3 gap-3 text-center">
-                    <div className="p-2 rounded-lg bg-green-50">
+                    <div className="p-2 rounded-lg bg-green-50 dark:bg-green-950">
                       <p className="text-lg font-bold text-green-600">{correctCount}</p>
-                      <p className="text-xs text-green-600/70">Correctas</p>
+                      <p className="text-xs text-green-600/70 dark:text-green-400">Correctas</p>
                     </div>
-                    <div className="p-2 rounded-lg bg-red-50">
+                    <div className="p-2 rounded-lg bg-red-50 dark:bg-red-950">
                       <p className="text-lg font-bold text-red-500">{totalQuestions - correctCount}</p>
-                      <p className="text-xs text-red-500/70">Incorrectas</p>
+                      <p className="text-xs text-red-500/70 dark:text-red-400">Incorrectas</p>
                     </div>
-                    <div className="p-2 rounded-lg bg-blue-50">
+                    <div className="p-2 rounded-lg bg-blue-50 dark:bg-blue-950">
                       <p className="text-lg font-bold text-blue-600">{timeTaken}m</p>
-                      <p className="text-xs text-blue-600/70">Tiempo</p>
+                      <p className="text-xs text-blue-600/70 dark:text-blue-400">Tiempo</p>
                     </div>
                   </div>
                 </CardContent>
@@ -793,7 +871,7 @@ function TestResultsView() {
 
                   return (
                     <motion.div key={q.id} variants={fadeInUp}>
-                      <Card className={`border-2 ${isCorrect ? 'border-green-300' : 'border-red-300'}`}>
+                      <Card className={`border-2 ${isCorrect ? 'border-green-300 dark:border-green-700' : 'border-red-300 dark:border-red-700'}`}>
                         <CardContent className="pt-4">
                           <div className="flex items-start gap-3 mb-3">
                             <span className="shrink-0 flex items-center justify-center w-7 h-7 rounded-full text-xs font-bold bg-muted">
@@ -811,10 +889,10 @@ function TestResultsView() {
 
                           {!isCorrect && (
                             <div className="ml-10 space-y-1 mb-2">
-                              <p className="text-sm text-red-600">
+                              <p className="text-sm text-red-600 dark:text-red-400">
                                 <span className="font-medium">Tu respuesta:</span> {selectedOption}
                               </p>
-                              <p className="text-sm text-green-600">
+                              <p className="text-sm text-green-600 dark:text-green-400">
                                 <span className="font-medium">Correcta:</span> {correctOption}
                               </p>
                             </div>
@@ -845,31 +923,59 @@ function StudyView() {
   const setCurrentSectionId = useAppStore((s) => s.setCurrentSectionId);
   const setStudyData = useAppStore((s) => s.setStudyData);
   const setIsGeneratingStudy = useAppStore((s) => s.setIsGeneratingStudy);
+  const setIsStudyEnhanced = useAppStore((s) => s.setIsStudyEnhanced);
+  const setTestSectionId = useAppStore((s) => s.setTestSectionId);
 
-  const [loadingSection, setLoadingSection] = useState<string | null>(null);
+  const handleSelectSection = useCallback((sectionId: string) => {
+    // Navigate immediately with fallback data
+    const section = DOCUMENT_SECTIONS.find(s => s.id === sectionId);
+    if (!section) return;
 
-  const handleSelectSection = useCallback(async (sectionId: string) => {
-    setLoadingSection(sectionId);
+    setCurrentSectionId(sectionId);
+
+    // Create fallback study data from raw content
+    const fallbackData = {
+      title: section.title,
+      summary: section.content.substring(0, 200) + '...',
+      keyPoints: section.content.split('\n\n').filter(p => p.trim().length > 0).slice(0, 5),
+      detailedExplanation: section.content,
+      commonMistakes: [],
+      mnemonics: '',
+      connectionsToOtherTopics: '',
+      quizYourself: [],
+    };
+
+    setStudyData(fallbackData);
+    setIsStudyEnhanced(false);
+    setView('study-section');
+
+    // Fetch AI-enhanced data in the background
     setIsGeneratingStudy(true);
-    try {
-      const res = await fetch('/api/generate-study', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ sectionId }),
+    fetch('/api/generate-study', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sectionId }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.title) {
+          setStudyData(data);
+          setIsStudyEnhanced(true);
+        }
+      })
+      .catch(error => {
+        console.error('Error generating study content:', error);
+      })
+      .finally(() => {
+        setIsGeneratingStudy(false);
       });
-      const data = await res.json();
-      if (data.title) {
-        setStudyData(data);
-        setCurrentSectionId(sectionId);
-        setView('study-section');
-      }
-    } catch (error) {
-      console.error('Error generating study content:', error);
-    } finally {
-      setIsGeneratingStudy(false);
-      setLoadingSection(null);
-    }
-  }, [setIsGeneratingStudy, setStudyData, setCurrentSectionId, setView]);
+  }, [setCurrentSectionId, setStudyData, setIsStudyEnhanced, setIsGeneratingStudy, setView]);
+
+  const handleSectionTest = useCallback((e: React.MouseEvent, sectionId: string) => {
+    e.stopPropagation();
+    setTestSectionId(sectionId);
+    setView('test-setup');
+  }, [setTestSectionId, setView]);
 
   const sectionIcons = [
     <Microscope key="1" className="w-5 h-5" />,
@@ -883,14 +989,14 @@ function StudyView() {
   ];
 
   const sectionColors = [
-    'bg-emerald-100 text-emerald-600',
-    'bg-teal-100 text-teal-600',
-    'bg-cyan-100 text-cyan-600',
-    'bg-amber-100 text-amber-600',
-    'bg-orange-100 text-orange-600',
-    'bg-rose-100 text-rose-600',
-    'bg-purple-100 text-purple-600',
-    'bg-pink-100 text-pink-600',
+    'bg-emerald-100 text-emerald-600 dark:bg-emerald-900 dark:text-emerald-300',
+    'bg-teal-100 text-teal-600 dark:bg-teal-900 dark:text-teal-300',
+    'bg-cyan-100 text-cyan-600 dark:bg-cyan-900 dark:text-cyan-300',
+    'bg-amber-100 text-amber-600 dark:bg-amber-900 dark:text-amber-300',
+    'bg-orange-100 text-orange-600 dark:bg-orange-900 dark:text-orange-300',
+    'bg-rose-100 text-rose-600 dark:bg-rose-900 dark:text-rose-300',
+    'bg-purple-100 text-purple-600 dark:bg-purple-900 dark:text-purple-300',
+    'bg-pink-100 text-pink-600 dark:bg-pink-900 dark:text-pink-300',
   ];
 
   return (
@@ -913,7 +1019,7 @@ function StudyView() {
 
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="p-3 rounded-2xl bg-teal-100 text-teal-700">
+            <div className="p-3 rounded-2xl bg-teal-100 text-teal-700 dark:bg-teal-900 dark:text-teal-300">
               <BookOpen className="w-8 h-8" />
             </div>
           </div>
@@ -941,12 +1047,17 @@ function StudyView() {
                         {section.content.substring(0, 100)}...
                       </p>
                     </div>
-                    <div className="shrink-0">
-                      {loadingSection === section.id ? (
-                        <Loader2 className="w-5 h-5 text-teal-500 animate-spin" />
-                      ) : (
-                        <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-teal-500 transition-colors" />
-                      )}
+                    <div className="shrink-0 flex items-center gap-2">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-8 text-xs text-muted-foreground hover:text-emerald-600 dark:hover:text-emerald-400"
+                        onClick={(e) => handleSectionTest(e, section.id)}
+                      >
+                        <FileQuestion className="w-3.5 h-3.5 mr-1" />
+                        Test
+                      </Button>
+                      <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-teal-500 transition-colors" />
                     </div>
                   </div>
                 </CardContent>
@@ -965,10 +1076,14 @@ function StudySectionView() {
   const currentSectionId = useAppStore((s) => s.currentSectionId);
   const studyData = useAppStore((s) => s.studyData);
   const isGeneratingStudy = useAppStore((s) => s.isGeneratingStudy);
+  const isStudyEnhanced = useAppStore((s) => s.isStudyEnhanced);
+  const setTestSectionId = useAppStore((s) => s.setTestSectionId);
+  const resetTest = useAppStore((s) => s.resetTest);
 
   const currentSection = DOCUMENT_SECTIONS.find((s) => s.id === currentSectionId);
 
-  if (isGeneratingStudy || !studyData) {
+  // Always show content (fallback or enhanced), never a loading spinner
+  if (!studyData) {
     return (
       <motion.div
         variants={pageVariants}
@@ -978,10 +1093,9 @@ function StudySectionView() {
         className="flex flex-col items-center justify-center min-h-[calc(100vh-8rem)] px-4"
       >
         <div className="text-center">
-          <Loader2 className="w-10 h-10 text-teal-500 animate-spin mx-auto mb-4" />
-          <h3 className="text-lg font-semibold mb-1">Preparando tu estudio</h3>
+          <h3 className="text-lg font-semibold mb-1">Cargando contenido...</h3>
           <p className="text-muted-foreground text-sm">
-            Generando explicación detallada de {currentSection?.title || '...'}
+            Preparando {currentSection?.title || '...'}
           </p>
         </div>
       </motion.div>
@@ -1006,17 +1120,34 @@ function StudySectionView() {
           Todos los temas
         </Button>
 
+        {/* AI Enhancement Banner */}
+        {!isStudyEnhanced && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-4 p-3 rounded-lg bg-teal-50 border border-teal-200 dark:bg-teal-950 dark:border-teal-800"
+          >
+            <div className="flex items-center gap-2">
+              <Loader2 className="w-4 h-4 text-teal-500 animate-spin" />
+              <span className="text-sm text-teal-700 dark:text-teal-300">Mejorando con IA...</span>
+            </div>
+            <p className="text-xs text-teal-600 dark:text-teal-400 mt-1">
+              El contenido se actualizará automáticamente con explicaciones mejoradas
+            </p>
+          </motion.div>
+        )}
+
         {/* Title */}
         <motion.div variants={fadeInUp} className="mb-6">
           <h2 className="text-2xl font-bold mb-2">{studyData.title}</h2>
           <p className="text-muted-foreground leading-relaxed">{studyData.summary}</p>
         </motion.div>
 
-        <ScrollArea className="max-h-[calc(100vh-16rem)]">
+        <ScrollArea className="max-h-[calc(100vh-20rem)]">
           <div className="space-y-5 pr-4">
             {/* Key Points */}
             <motion.div variants={fadeInUp}>
-              <Card className="border-2 border-teal-200">
+              <Card className="border-2 border-teal-200 dark:border-teal-800">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-base flex items-center gap-2">
                     <Lightbulb className="w-5 h-5 text-yellow-500" />
@@ -1027,7 +1158,7 @@ function StudySectionView() {
                   <ul className="space-y-3">
                     {studyData.keyPoints.map((point, i) => (
                       <li key={i} className="flex items-start gap-3">
-                        <span className="shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-teal-100 text-teal-700 text-xs font-bold mt-0.5">
+                        <span className="shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-teal-100 text-teal-700 text-xs font-bold mt-0.5 dark:bg-teal-900 dark:text-teal-300">
                           {i + 1}
                         </span>
                         <p className="text-sm leading-relaxed">{point}</p>
@@ -1058,7 +1189,7 @@ function StudySectionView() {
             {/* Common Mistakes */}
             {studyData.commonMistakes.length > 0 && (
               <motion.div variants={fadeInUp}>
-                <Card className="border-2 border-orange-200">
+                <Card className="border-2 border-orange-200 dark:border-orange-800">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-base flex items-center gap-2">
                       <AlertTriangle className="w-5 h-5 text-orange-500" />
@@ -1082,7 +1213,7 @@ function StudySectionView() {
             {/* Mnemonics */}
             {studyData.mnemonics && (
               <motion.div variants={fadeInUp}>
-                <Card className="border-2 border-purple-200">
+                <Card className="border-2 border-purple-200 dark:border-purple-800">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-base flex items-center gap-2">
                       <Sparkles className="w-5 h-5 text-purple-500" />
@@ -1116,7 +1247,7 @@ function StudySectionView() {
             {/* Quiz Yourself */}
             {studyData.quizYourself.length > 0 && (
               <motion.div variants={fadeInUp}>
-                <Card className="border-2 border-emerald-200">
+                <Card className="border-2 border-emerald-200 dark:border-emerald-800">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-base flex items-center gap-2">
                       <HelpCircle className="w-5 h-5 text-emerald-500" />
@@ -1127,7 +1258,7 @@ function StudySectionView() {
                     <ul className="space-y-3">
                       {studyData.quizYourself.map((q, i) => (
                         <li key={i} className="flex items-start gap-3">
-                          <span className="shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold mt-0.5">
+                          <span className="shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold mt-0.5 dark:bg-emerald-900 dark:text-emerald-300">
                             {i + 1}
                           </span>
                           <p className="text-sm leading-relaxed">{q}</p>
@@ -1143,8 +1274,8 @@ function StudySectionView() {
             <motion.div variants={fadeInUp} className="pt-2 pb-4">
               <Separator className="mb-4" />
               <div className="text-center">
-                <p className="text-sm text-muted-foreground mb-3">¿Listo para el siguiente tema?</p>
-                <div className="flex gap-3 justify-center">
+                <p className="text-sm text-muted-foreground mb-3">¿Listo para poner a prueba tus conocimientos?</p>
+                <div className="flex gap-3 justify-center flex-wrap">
                   <Button
                     variant="outline"
                     onClick={() => setView('study')}
@@ -1153,14 +1284,27 @@ function StudySectionView() {
                     Ver Todos los Temas
                   </Button>
                   <Button
+                    variant="outline"
+                    className="border-emerald-300 text-emerald-700 hover:bg-emerald-50 dark:border-emerald-700 dark:text-emerald-300 dark:hover:bg-emerald-950"
+                    onClick={() => {
+                      resetTest();
+                      setTestSectionId(currentSectionId);
+                      setView('test-setup');
+                    }}
+                  >
+                    <FileQuestion className="w-4 h-4 mr-2" />
+                    Hacer Test de este tema
+                  </Button>
+                  <Button
                     className="bg-emerald-600 hover:bg-emerald-700 text-white"
                     onClick={() => {
                       resetTest();
+                      setTestSectionId(null);
                       setView('test-setup');
                     }}
                   >
                     <Brain className="w-4 h-4 mr-2" />
-                    Hacer un Test
+                    Test General
                   </Button>
                 </div>
               </div>
@@ -1170,11 +1314,6 @@ function StudySectionView() {
       </div>
     </motion.div>
   );
-}
-
-// Helper to reset test from study section
-function resetTest() {
-  useAppStore.getState().resetTest();
 }
 
 // ==================== MAIN PAGE ====================
@@ -1195,6 +1334,9 @@ export default function HomePage() {
                 : 'Modo Estudio'}
             </Badge>
           )}
+          <div className="ml-auto">
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import ZAI from 'z-ai-web-dev-sdk';
-import { FULL_DOCUMENT_TEXT } from '@/lib/document-content';
+import { FULL_DOCUMENT_TEXT, DOCUMENT_SECTIONS } from '@/lib/document-content';
 
 // Increase timeout for this API route
 export const maxDuration = 120;
@@ -55,6 +55,12 @@ const topicHints = [
   'Enfócate en Clasificación Morfológica Viral (icosahédrica, helicoidal, envoltura lipídica).',
   'Enfócate en Clasificación por Ácido Nucleico (virus ADN, virus ARN, retrovirus, VIH, transcriptasa inversa).',
 ];
+
+function getSectionHint(sectionId: string): string | null {
+  const section = DOCUMENT_SECTIONS.find(s => s.id === sectionId);
+  if (!section) return null;
+  return `Enfócate EXCLUSIVAMENTE en: ${section.title}. Contenido:\n${section.content}`;
+}
 
 function tryParseJSON(text: string): GeneratedQuestion[] {
   // Try direct parse first
@@ -130,10 +136,18 @@ async function generateBatch(
   count: number,
   batchNumber: number,
   batchSize: number,
-  existingQuestionsCount: number
+  existingQuestionsCount: number,
+  sectionId?: string | null
 ): Promise<GeneratedQuestion[]> {
   const zai = await ZAI.create();
-  const topicHint = topicHints[batchNumber % topicHints.length];
+
+  let topicHint: string;
+  if (sectionId) {
+    const sectionHint = getSectionHint(sectionId);
+    topicHint = sectionHint || topicHints[batchNumber % topicHints.length];
+  } else {
+    topicHint = topicHints[batchNumber % topicHints.length];
+  }
 
   const completion = await zai.chat.completions.create({
     messages: [
@@ -168,11 +182,11 @@ Genera ${batchSize} preguntas tramposas y desafiantes. Los IDs deben empezar des
 
 export async function POST(request: NextRequest) {
   try {
-    const { count, batch, batchSize } = await request.json();
+    const { count, batch, batchSize, sectionId } = await request.json();
 
     // Batch mode - generate a single batch
     if (batch !== undefined && batchSize !== undefined) {
-      const questions = await generateBatch(count, batch, batchSize, batch * batchSize);
+      const questions = await generateBatch(count, batch, batchSize, batch * batchSize, sectionId);
       
       if (questions.length === 0) {
         return NextResponse.json(
@@ -193,7 +207,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const questions = await generateBatch(requestedCount, 0, requestedCount, 0);
+    const questions = await generateBatch(requestedCount, 0, requestedCount, 0, sectionId);
     const shuffled = [...questions].sort(() => Math.random() - 0.5);
     return NextResponse.json({ questions: shuffled });
   } catch (error) {

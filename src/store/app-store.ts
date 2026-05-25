@@ -47,11 +47,13 @@ interface AppState {
   isGeneratingQuestions: boolean;
   testStartTime: number | null;
   testEndTime: number | null;
+  testSectionId: string | null;
   
   // Study state
   currentSectionId: string | null;
   studyData: StudySectionData | null;
   isGeneratingStudy: boolean;
+  isStudyEnhanced: boolean;
   expandedSections: Set<string>;
   
   // Actions
@@ -68,6 +70,8 @@ interface AppState {
   setCurrentSectionId: (id: string | null) => void;
   setStudyData: (data: StudySectionData | null) => void;
   setIsGeneratingStudy: (loading: boolean) => void;
+  setIsStudyEnhanced: (val: boolean) => void;
+  setTestSectionId: (id: string | null) => void;
   toggleSection: (sectionId: string) => void;
   nextQuestion: () => void;
   prevQuestion: () => void;
@@ -86,11 +90,13 @@ export const useAppStore = create<AppState>((set, get) => ({
   isGeneratingQuestions: false,
   testStartTime: null,
   testEndTime: null,
+  testSectionId: null,
   
   // Study state
   currentSectionId: null,
   studyData: null,
   isGeneratingStudy: false,
+  isStudyEnhanced: false,
   expandedSections: new Set<string>(),
   
   // Actions
@@ -140,12 +146,15 @@ export const useAppStore = create<AppState>((set, get) => ({
     answers: [],
     isGeneratingQuestions: false,
     testStartTime: null,
-    testEndTime: null
+    testEndTime: null,
+    testSectionId: null,
   }),
   
   setCurrentSectionId: (id) => set({ currentSectionId: id }),
   setStudyData: (data) => set({ studyData: data }),
   setIsGeneratingStudy: (loading) => set({ isGeneratingStudy: loading }),
+  setIsStudyEnhanced: (val) => set({ isStudyEnhanced: val }),
+  setTestSectionId: (id) => set({ testSectionId: id }),
   
   toggleSection: (sectionId) => 
     set((state) => {

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import { useAppStore } from '@/store/app-store';
 import { DOCUMENT_SECTIONS } from '@/lib/document-content';
+import preGeneratedQuestionsData from '@/lib/pre-generated-questions.json';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
@@ -252,6 +253,27 @@ function TestSetupView() {
     ? DOCUMENT_SECTIONS.find((s) => s.id === testSectionId)
     : null;
 
+  // Client-side fallback: get questions directly from pre-generated pool
+  const getClientSideQuestions = useCallback((count: number, sectionId?: string | null) => {
+    type Q = {
+      id: number;
+      question: string;
+      options: { a: string; b: string; c: string; d: string };
+      correctAnswer: string;
+      explanation: string;
+      trickType: string;
+      difficulty: string;
+    };
+    const pool = sectionId
+      ? (preGeneratedQuestionsData as Record<string, Q[]>)[sectionId] || []
+      : Object.values(preGeneratedQuestionsData).flat();
+    const shuffled = [...pool].sort(() => Math.random() - 0.5);
+    return shuffled.slice(0, Math.min(count, shuffled.length)).map((q, idx) => ({
+      ...q,
+      id: idx + 1,
+    }));
+  }, []);
+
   const handleStartTest = useCallback(async () => {
     setIsGeneratingQuestions(true);
     setGenerationError(null);
@@ -270,15 +292,16 @@ function TestSetupView() {
         difficulty: string;
       }> = [];
 
-      // Run batches in parallel groups of 2
+      // Try API first — run batches in parallel groups of 2
       const PARALLEL_BATCHES = 2;
       let batchIndex = 0;
+      let apiSucceeded = false;
 
       while (batchIndex < totalBatches) {
         const groupSize = Math.min(PARALLEL_BATCHES, totalBatches - batchIndex);
         const batchPromises: Promise<void>[] = [];
 
-        setGenerationProgress(Math.round((batchIndex / totalBatches) * 100));
+        setGenerationProgress(Math.round((batchIndex / totalBatches) * 80));
 
         for (let g = 0; g < groupSize; g++) {
           const currentBatchIndex = batchIndex + g;
@@ -286,7 +309,7 @@ function TestSetupView() {
             const remaining = questionCount - allQuestions.length;
             const currentBatchSize = Math.min(BATCH_SIZE, Math.max(1, remaining));
 
-            let retries = 2;
+            let retries = 1;
             let batchSuccess = false;
 
             while (retries >= 0 && !batchSuccess) {
@@ -314,15 +337,17 @@ function TestSetupView() {
                   }));
                   allQuestions.push(...reindexed);
                   batchSuccess = true;
+                  apiSucceeded = true;
                 } else {
                   throw new Error('No questions returned');
                 }
-              } catch (err) {
+              } catch {
                 retries--;
                 if (retries < 0) {
-                  throw err;
+                  // Individual batch failed — don't throw, let other batches continue
+                  return;
                 }
-                await new Promise(r => setTimeout(r, 1000));
+                await new Promise(r => setTimeout(r, 500));
               }
             }
           })();
@@ -331,8 +356,24 @@ function TestSetupView() {
 
         await Promise.all(batchPromises);
         batchIndex += groupSize;
-        setGenerationProgress(Math.round((batchIndex / totalBatches) * 100));
       }
+
+      setGenerationProgress(90);
+
+      // If API didn't return enough questions, fill with client-side pre-generated
+      if (allQuestions.length < questionCount) {
+        const needed = questionCount - allQuestions.length;
+        const clientQuestions = getClientSideQuestions(needed + 5, testSectionId); // get extra to avoid duplicates
+        // Filter out questions that are already in allQuestions (by question text)
+        const existingTexts = new Set(allQuestions.map(q => q.question));
+        const newQuestions = clientQuestions.filter(q => !existingTexts.has(q.question)).slice(0, needed);
+        allQuestions.push(...newQuestions.map((q, idx) => ({
+          ...q,
+          id: allQuestions.length + idx + 1,
+        })));
+      }
+
+      setGenerationProgress(100);
 
       if (allQuestions.length > 0) {
         // Shuffle all questions for randomness
@@ -345,12 +386,24 @@ function TestSetupView() {
       }
     } catch (error) {
       console.error('Error generating questions:', error);
+      // Last resort: try client-side fallback entirely
+      try {
+        const clientQuestions = getClientSideQuestions(questionCount, testSectionId);
+        if (clientQuestions.length > 0) {
+          setQuestions(clientQuestions);
+          startTest();
+          setView('test-quiz');
+          return;
+        }
+      } catch {
+        // Client fallback also failed
+      }
       setGenerationError('Error al generar las preguntas. Intenta de nuevo.');
     } finally {
       setIsGeneratingQuestions(false);
       setGenerationProgress(0);
     }
-  }, [questionCount, setIsGeneratingQuestions, setQuestions, startTest, setView, testSectionId]);
+  }, [questionCount, setIsGeneratingQuestions, setQuestions, startTest, setView, testSectionId, getClientSideQuestions]);
 
   return (
     <motion.div

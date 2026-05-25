@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import ZAI from 'z-ai-web-dev-sdk';
 import { DOCUMENT_SECTIONS, FULL_DOCUMENT_TEXT } from '@/lib/document-content';
 import preGeneratedQuestions from '@/lib/pre-generated-questions.json';
 
-export const maxDuration = 60;
+// NOTE: Removed `export const maxDuration = 60` — Vercel Hobby only supports up to 10s.
+// The LLM path has a built-in timeout shorter than that.
 
 interface GeneratedQuestion {
   id: number;
@@ -151,8 +151,8 @@ function getPreGeneratedQuestions(count: number, sectionId?: string | null): Gen
 }
 
 /**
- * Try to generate questions using the LLM (only works in sandbox/local with z-ai-sdk)
- * Has a 12-second timeout to fall back to pre-generated questions quickly
+ * Try to generate questions using the LLM with dynamic import.
+ * Returns empty array if LLM is not available (Vercel, no config, etc.)
  */
 async function tryGenerateWithLLM(
   count: number,
@@ -161,13 +161,16 @@ async function tryGenerateWithLLM(
   existingQuestionsCount: number,
   sectionId?: string | null
 ): Promise<GeneratedQuestion[]> {
-  const LLM_TIMEOUT_MS = 12000; // 12 seconds max for LLM call
+  const LLM_TIMEOUT_MS = 8000; // 8 seconds max — must fit within Vercel's 10s limit
 
   try {
+    // Dynamic import — if z-ai-web-dev-sdk is not available, this will throw
+    const ZAI = (await import('z-ai-web-dev-sdk')).default;
+
     const zai = await Promise.race([
       ZAI.create(),
       new Promise<never>((_, reject) =>
-        setTimeout(() => reject(new Error('LLM init timeout')), 5000)
+        setTimeout(() => reject(new Error('LLM init timeout')), 3000)
       ),
     ]);
 
@@ -222,22 +225,33 @@ Genera ${batchSize} preguntas tramposas y desafiantes. Los IDs deben empezar des
       id: existingQuestionsCount + idx + 1,
     }));
   } catch {
-    // LLM not available (Vercel deployment, no config file, etc.)
+    // LLM not available (Vercel deployment, no config file, timeout, etc.)
     return [];
   }
 }
 
 export async function POST(request: NextRequest) {
+  // Parse body ONCE before any try-catch so we can use it in fallbacks
+  let body: { count?: number; batch?: number; batchSize?: number; sectionId?: string | null } = {};
   try {
-    const { count, batch, batchSize, sectionId } = await request.json();
+    body = await request.json();
+  } catch {
+    return NextResponse.json(
+      { error: 'Invalid request body', questions: [] },
+      { status: 400 }
+    );
+  }
 
+  const { count, batch, batchSize, sectionId } = body;
+
+  try {
     // Batch mode - generate a single batch
     if (batch !== undefined && batchSize !== undefined) {
       const batchNum = batch as number;
       const batchSz = batchSize as number;
 
-      // Try LLM first
-      const llmQuestions = await tryGenerateWithLLM(count, batchNum, batchSz, batchNum * batchSz, sectionId);
+      // Try LLM first (will gracefully fail if not available)
+      const llmQuestions = await tryGenerateWithLLM(count || batchSz, batchNum, batchSz, batchNum * batchSz, sectionId);
 
       if (llmQuestions.length > 0) {
         return NextResponse.json({
@@ -280,10 +294,10 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Error generating questions:', error);
 
-    // Last resort: try to return pre-generated questions
+    // Use already-parsed body for fallback (NOT request.json() again!)
     try {
-      const { count, sectionId } = await request.json();
-      const preGenQuestions = getPreGeneratedQuestions(count || 5, sectionId);
+      const fallbackCount = count || 5;
+      const preGenQuestions = getPreGeneratedQuestions(fallbackCount, sectionId);
       if (preGenQuestions.length > 0) {
         return NextResponse.json({ questions: preGenQuestions, source: 'pre-generated-fallback' });
       }

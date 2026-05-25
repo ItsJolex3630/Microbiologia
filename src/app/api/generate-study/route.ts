@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import ZAI from 'z-ai-web-dev-sdk';
 import { DOCUMENT_SECTIONS, type DocumentSection } from '@/lib/document-content';
 import preGeneratedStudy from '@/lib/pre-generated-study.json';
 
-export const maxDuration = 60;
+// NOTE: Removed `export const maxDuration = 60` — Vercel Hobby only supports up to 10s.
 
 function tryParseStudyJSON(text: string) {
   try {
@@ -63,17 +62,20 @@ function getPreGeneratedStudy(sectionId: string) {
 }
 
 /**
- * Try to generate study content using the LLM
- * Has a 12-second timeout to fall back to pre-generated content quickly
+ * Try to generate study content using the LLM with dynamic import.
+ * Returns null if LLM is not available.
  */
 async function tryGenerateWithLLM(section: DocumentSection) {
-  const LLM_TIMEOUT_MS = 12000;
+  const LLM_TIMEOUT_MS = 8000; // Must fit within Vercel's 10s limit
 
   try {
+    // Dynamic import — if z-ai-web-dev-sdk is not available, this will throw
+    const ZAI = (await import('z-ai-web-dev-sdk')).default;
+
     const zai = await Promise.race([
       ZAI.create(),
       new Promise<never>((_, reject) =>
-        setTimeout(() => reject(new Error('LLM init timeout')), 5000)
+        setTimeout(() => reject(new Error('LLM init timeout')), 3000)
       ),
     ]);
 
@@ -146,9 +148,20 @@ Proporciona una explicación completa y organizada que permita dominar este tema
 }
 
 export async function POST(request: NextRequest) {
+  // Parse body ONCE before any try-catch
+  let body: { sectionId?: string } = {};
   try {
-    const { sectionId } = await request.json();
+    body = await request.json();
+  } catch {
+    return NextResponse.json(
+      { error: 'Invalid request body' },
+      { status: 400 }
+    );
+  }
 
+  const { sectionId } = body;
+
+  try {
     const section = DOCUMENT_SECTIONS.find(s => s.id === sectionId);
 
     if (!section) {
@@ -159,7 +172,7 @@ export async function POST(request: NextRequest) {
     }
 
     // 1. First, return pre-generated study content immediately (always works)
-    const preGenData = getPreGeneratedStudy(sectionId);
+    const preGenData = getPreGeneratedStudy(sectionId!);
     if (preGenData) {
       // Return pre-generated data right away - it's comprehensive enough
       // Try LLM in background to enhance, but don't wait for it
@@ -177,9 +190,8 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Error generating study content:', error);
 
-    // Try to return fallback data
+    // Use already-parsed body for fallback
     try {
-      const { sectionId } = await request.json();
       const section = DOCUMENT_SECTIONS.find(s => s.id === sectionId);
       if (section) {
         return NextResponse.json(defaultStudyData(section));

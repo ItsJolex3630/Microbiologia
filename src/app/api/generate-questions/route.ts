@@ -44,7 +44,9 @@ FORMATO DE RESPUESTA - Debes responder ÚNICAMENTE con un JSON válido, sin text
   ]
 }
 
-IMPORTANTE: Responde SOLO con JSON puro. Sin markdown, sin \`\`\`, sin texto antes o después del JSON.`;
+IMPORTANTE: Responde SOLO con JSON puro. Sin markdown, sin \`\`\`, sin texto antes o después del JSON.
+
+DISTRIBUCIÓN DE RESPUESTAS: La respuesta correcta debe estar distribuida uniformemente entre las opciones a, b, c, d (aproximadamente la misma cantidad de cada una). NO pongas la mayoría de respuestas correctas en una sola opción.`;
 
 const topicHints = [
   'Enfócate en Introducción a la Microbiología y clasificación celular (procariotas, eucariotas, virus).',
@@ -139,8 +141,12 @@ function getPreGeneratedQuestions(count: number, sectionId?: string | null): Gen
     ? (preGeneratedQuestions as Record<string, GeneratedQuestion[]>)[sectionId] || []
     : Object.values(preGeneratedQuestions).flat();
 
-  // Shuffle and take the requested count
-  const shuffled = [...pool].sort(() => Math.random() - 0.5);
+  // Fisher-Yates shuffle for true randomness (sort(() => Math.random()) is biased)
+  const shuffled = [...pool];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
   const selected = shuffled.slice(0, Math.min(count, shuffled.length));
 
   // Re-index

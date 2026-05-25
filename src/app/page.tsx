@@ -253,7 +253,7 @@ function TestSetupView() {
     ? DOCUMENT_SECTIONS.find((s) => s.id === testSectionId)
     : null;
 
-  // Client-side fallback: get questions directly from pre-generated pool
+  // Get questions directly from pre-generated pool (client-side, no API needed)
   const getClientSideQuestions = useCallback((count: number, sectionId?: string | null) => {
     type Q = {
       id: number;
@@ -267,7 +267,12 @@ function TestSetupView() {
     const pool = sectionId
       ? (preGeneratedQuestionsData as Record<string, Q[]>)[sectionId] || []
       : Object.values(preGeneratedQuestionsData).flat();
-    const shuffled = [...pool].sort(() => Math.random() - 0.5);
+    // Fisher-Yates shuffle for true randomness
+    const shuffled = [...pool];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
     return shuffled.slice(0, Math.min(count, shuffled.length)).map((q, idx) => ({
       ...q,
       id: idx + 1,
@@ -280,9 +285,11 @@ function TestSetupView() {
     setGenerationProgress(0);
 
     try {
-      const BATCH_SIZE = 5;
-      const totalBatches = Math.ceil(questionCount / BATCH_SIZE);
-      const allQuestions: Array<{
+      // Strategy: Use a single API call to get all questions at once.
+      // The API will try LLM first, then fall back to pre-generated.
+      // On Vercel, it will always use pre-generated questions.
+      // This avoids the duplicate question problem from multiple batch calls.
+      let allQuestions: Array<{
         id: number;
         question: string;
         options: { a: string; b: string; c: string; d: string };
@@ -292,79 +299,38 @@ function TestSetupView() {
         difficulty: string;
       }> = [];
 
-      // Try API first — run batches in parallel groups of 2
-      const PARALLEL_BATCHES = 2;
-      let batchIndex = 0;
-      let apiSucceeded = false;
+      setGenerationProgress(20);
 
-      while (batchIndex < totalBatches) {
-        const groupSize = Math.min(PARALLEL_BATCHES, totalBatches - batchIndex);
-        const batchPromises: Promise<void>[] = [];
+      try {
+        const res = await fetch('/api/generate-questions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            count: questionCount,
+            sectionId: testSectionId || undefined,
+          }),
+        });
 
-        setGenerationProgress(Math.round((batchIndex / totalBatches) * 80));
-
-        for (let g = 0; g < groupSize; g++) {
-          const currentBatchIndex = batchIndex + g;
-          const promise = (async () => {
-            const remaining = questionCount - allQuestions.length;
-            const currentBatchSize = Math.min(BATCH_SIZE, Math.max(1, remaining));
-
-            let retries = 1;
-            let batchSuccess = false;
-
-            while (retries >= 0 && !batchSuccess) {
-              try {
-                const res = await fetch('/api/generate-questions', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({
-                    count: questionCount,
-                    batch: currentBatchIndex,
-                    batchSize: currentBatchSize,
-                    sectionId: testSectionId || undefined,
-                  }),
-                });
-
-                if (!res.ok) {
-                  throw new Error(`HTTP ${res.status}`);
-                }
-
-                const data = await res.json();
-                if (data.questions && data.questions.length > 0) {
-                  const reindexed = data.questions.map((q: { id: number; question: string; options: { a: string; b: string; c: string; d: string }; correctAnswer: string; explanation: string; trickType: string; difficulty: string }, idx: number) => ({
-                    ...q,
-                    id: allQuestions.length + idx + 1,
-                  }));
-                  allQuestions.push(...reindexed);
-                  batchSuccess = true;
-                  apiSucceeded = true;
-                } else {
-                  throw new Error('No questions returned');
-                }
-              } catch {
-                retries--;
-                if (retries < 0) {
-                  // Individual batch failed — don't throw, let other batches continue
-                  return;
-                }
-                await new Promise(r => setTimeout(r, 500));
-              }
-            }
-          })();
-          batchPromises.push(promise);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.questions && data.questions.length > 0) {
+            allQuestions = data.questions.map((q: { id: number }, idx: number) => ({
+              ...q,
+              id: idx + 1,
+            }));
+          }
         }
-
-        await Promise.all(batchPromises);
-        batchIndex += groupSize;
+      } catch {
+        // API failed, will use client-side fallback
       }
 
-      setGenerationProgress(90);
+      setGenerationProgress(70);
 
-      // If API didn't return enough questions, fill with client-side pre-generated
+      // If API didn't return enough questions, use client-side pre-generated
       if (allQuestions.length < questionCount) {
         const needed = questionCount - allQuestions.length;
-        const clientQuestions = getClientSideQuestions(needed + 5, testSectionId); // get extra to avoid duplicates
-        // Filter out questions that are already in allQuestions (by question text)
+        const clientQuestions = getClientSideQuestions(needed + 10, testSectionId);
+        // Filter out duplicates by question text
         const existingTexts = new Set(allQuestions.map(q => q.question));
         const newQuestions = clientQuestions.filter(q => !existingTexts.has(q.question)).slice(0, needed);
         allQuestions.push(...newQuestions.map((q, idx) => ({
@@ -376,9 +342,14 @@ function TestSetupView() {
       setGenerationProgress(100);
 
       if (allQuestions.length > 0) {
-        // Shuffle all questions for randomness
-        const shuffled = [...allQuestions].sort(() => Math.random() - 0.5);
-        setQuestions(shuffled);
+        // Fisher-Yates shuffle for true randomness
+        for (let i = allQuestions.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [allQuestions[i], allQuestions[j]] = [allQuestions[j], allQuestions[i]];
+        }
+        // Re-index after shuffle
+        allQuestions = allQuestions.map((q, idx) => ({ ...q, id: idx + 1 }));
+        setQuestions(allQuestions);
         startTest();
         setView('test-quiz');
       } else {

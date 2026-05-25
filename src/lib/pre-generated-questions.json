@@ -3,8 +3,13 @@
     {
       "id": 1,
       "question": "¿Cuál de los siguientes organismos se clasifica como procariota?",
-      "options": { "a": "Los hongos", "b": "Las bacterias", "c": "Los virus", "d": "Los protozoos" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Las bacterias",
+        "b": "Los virus",
+        "c": "Los protozoos",
+        "d": "Los hongos"
+      },
+      "correctAnswer": "a",
       "explanation": "Las bacterias son procariotas porque carecen de núcleo verdadero y orgánulos membranosos. Los hongos son eucariotas, los virus son acelulares y los protozoos son eucariotas.",
       "trickType": "Confusión procariota/eucariota",
       "difficulty": "media",
@@ -13,8 +18,13 @@
     {
       "id": 2,
       "question": "Los virus se clasifican como organismos procariotas porque carecen de núcleo verdadero. ¿Es esta afirmación correcta?",
-      "options": { "a": "Sí, porque carecen de núcleo", "b": "No, los virus no son células, son entidades acelulares", "c": "Sí, pero solo algunos virus", "d": "No, los virus son eucariotas simplificados" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Sí, pero solo algunos virus",
+        "b": "No, los virus son eucariotas simplificados",
+        "c": "Sí, porque carecen de núcleo",
+        "d": "No, los virus no son células, son entidades acelulares"
+      },
+      "correctAnswer": "d",
       "explanation": "Esta es una trampa clásica. Carecer de núcleo NO convierte algo en procariota. Los virus son entidades acelulares, no células, por lo tanto no pertenecen a ninguna categoría celular (procariota ni eucariota).",
       "trickType": "Falsa analogía celular",
       "difficulty": "difícil"
@@ -22,8 +32,13 @@
     {
       "id": 3,
       "question": "¿Qué característica comparten las bacterias y los hongos, pero NO los virus?",
-      "options": { "a": "Ambos son microorganismos unicelulares", "b": "Ambos poseen células con estructura celular definida", "c": "Ambos carecen de orgánulos membranosos", "d": "Ambos son parásitos obligados" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Ambos son microorganismos unicelulares",
+        "b": "Ambos carecen de orgánulos membranosos",
+        "c": "Ambos son parásitos obligados",
+        "d": "Ambos poseen células con estructura celular definida"
+      },
+      "correctAnswer": "d",
       "explanation": "Bacterias y hongos son organismos celulares (tienen estructura celular). La opción C es trampa: los hongos SÍ tienen orgánulos membranosos (son eucariotas). La opción A es trampa: muchos hongos son pluricelulares.",
       "trickType": "Generalización incorrecta",
       "difficulty": "difícil"
@@ -31,8 +46,13 @@
     {
       "id": 4,
       "question": "¿Cuál es la diferencia FUNDAMENTAL entre procariotas y eucariotas?",
-      "options": { "a": "Los procariotas son más pequeños", "b": "Los eucariotas tienen núcleo definido y orgánulos membranosos", "c": "Los procariotas no tienen ADN", "d": "Los eucariotas son siempre pluricelulares" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Los procariotas no tienen ADN",
+        "b": "Los eucariotas son siempre pluricelulares",
+        "c": "Los procariotas son más pequeños",
+        "d": "Los eucariotas tienen núcleo definido y orgánulos membranosos"
+      },
+      "correctAnswer": "d",
       "explanation": "La diferencia fundamental es la presencia de núcleo definido y orgánulos membranosos en eucariotas. La opción A es una tendencia pero no la diferencia fundamental. Los procariotas SÍ tienen ADN (opción C es falsa). La opción D es falsa: hay eucariotas unicelulares como los protozoos.",
       "trickType": "Distractor plausible",
       "difficulty": "fácil"
@@ -40,8 +60,13 @@
     {
       "id": 5,
       "question": "Un estudiante dice: 'Los virus son los microorganismos más simples porque son procariotas sin orgánulos'. ¿Qué error conceptual comete?",
-      "options": { "a": "Los virus sí tienen orgánulos", "b": "Confunde acelular con procariota; los virus no son células", "c": "Los virus son eucariotas, no procariotas", "d": "Los virus no son microorganismos, son macromoléculas" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Los virus sí tienen orgánulos",
+        "b": "Los virus no son microorganismos, son macromoléculas",
+        "c": "Los virus son eucariotas, no procariotas",
+        "d": "Confunde acelular con procariota; los virus no son células"
+      },
+      "correctAnswer": "d",
       "explanation": "El error es confundir 'acelular' con 'procariota simple'. Los virus NO son células de ningún tipo; son entidades acelulares que ni siquiera pertenecen a la clasificación procariota/eucariota.",
       "trickType": "Confusión categorial",
       "difficulty": "difícil"
@@ -49,8 +74,13 @@
     {
       "id": 6,
       "question": "¿Cuál de los siguientes NO es un microorganismo según la definición de microbiología?",
-      "options": { "a": "Las algas microscópicas", "b": "Los virus", "c": "Las bacterias", "d": "Los priones" },
-      "correctAnswer": "d",
+      "options": {
+        "a": "Las algas microscópicas",
+        "b": "Los priones",
+        "c": "Los virus",
+        "d": "Las bacterias"
+      },
+      "correctAnswer": "b",
       "explanation": "Los priones son proteínas anómalas infecciosas, no microorganismos. La microbiología estudia bacterias, virus, hongos, protozoos y algas microscópicas. Los virus (opción B) SÍ se consideran microorganismos en el contexto de la microbiología aunque sean acelulares.",
       "trickType": "Distractor técnico",
       "difficulty": "media"
@@ -58,8 +88,13 @@
     {
       "id": 7,
       "question": "Si un organismo tiene mitocondrias y retículo endoplasmático, ¿a qué categoría celular pertenece obligatoriamente?",
-      "options": { "a": "Procariota", "b": "Eucariota", "c": "Virus", "d": "No se puede determinar" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Eucariota",
+        "b": "Virus",
+        "c": "Procariota",
+        "d": "No se puede determinar"
+      },
+      "correctAnswer": "a",
       "explanation": "La presencia de orgánulos membranosos como mitocondrias y retículo endoplasmático es exclusiva de los eucariotas. Los procariotas carecen de ellos y los virus no son células.",
       "trickType": "Aplicación directa",
       "difficulty": "fácil"
@@ -67,8 +102,13 @@
     {
       "id": 8,
       "question": "¿Por qué se dice que los virus están en el 'límite entre lo vivo y lo inerte'?",
-      "options": { "a": "Porque tienen ADN como los seres vivos", "b": "Porque no pueden replicarse por sí mismos pero tienen material genético", "c": "Porque son más grandes que las moléculas pero más pequeños que las células", "d": "Porque tienen metabolismo reducido" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Porque tienen ADN como los seres vivos",
+        "b": "Porque tienen metabolismo reducido",
+        "c": "Porque son más grandes que las moléculas pero más pequeños que las células",
+        "d": "Porque no pueden replicarse por sí mismos pero tienen material genético"
+      },
+      "correctAnswer": "d",
       "explanation": "Los virus tienen material genético (como los seres vivos) pero NO pueden replicarse independientemente (como la materia inerte). No tienen metabolismo propio (la opción D es incorrecta: no tienen metabolismo 'reducido', no tienen NINGÚN metabolismo).",
       "trickType": "Matiz semántico",
       "difficulty": "media"
@@ -76,8 +116,13 @@
     {
       "id": 9,
       "question": "¿Qué tipo de microorganismo puede formar colonias pero cada célula sigue siendo un organismo independiente?",
-      "options": { "a": "Los hongos filamentosos", "b": "Las bacterias (multiprocariota)", "c": "Los protozoos coloniales", "d": "Los virus ensamblados" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Las bacterias (multiprocariota)",
+        "b": "Los protozoos coloniales",
+        "c": "Los virus ensamblados",
+        "d": "Los hongos filamentosos"
+      },
+      "correctAnswer": "a",
       "explanation": "El término 'multiprocariota' se refiere a agrupaciones de células procariotas donde cada una sigue siendo independiente. Los hongos filamentosos forman un verdadero organismo pluricelular. Los virus no forman colonias celulares.",
       "trickType": "Terminología específica",
       "difficulty": "media"
@@ -85,19 +130,179 @@
     {
       "id": 10,
       "question": "Un investigador observa un microorganismo con núcleo definido. Puede afirmar con certeza que:",
-      "options": { "a": "Es una bacteria", "b": "Es un eucariota", "c": "Es un virus", "d": "Es un procariota" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Es un virus",
+        "b": "Es una bacteria",
+        "c": "Es un eucariota",
+        "d": "Es un procariota"
+      },
+      "correctAnswer": "c",
       "explanation": "Solo los eucariotas poseen núcleo definido rodeado por membrana nuclear. Las bacterias son procariotas (sin núcleo verdadero) y los virus son acelulares.",
       "trickType": "Deducción lógica",
       "difficulty": "fácil"
+    },
+    {
+      "id": 11,
+      "question": "¿Qué tipo de célula tienen las bacterias",
+      "options": {
+        "a": "Acelular",
+        "b": "Procariota",
+        "c": "Viral",
+        "d": "Eucariota"
+      },
+      "correctAnswer": "b",
+      "explanation": "Las bacterias son procariotas carecen de núcleo verdadero y orgánulos membranosos",
+      "trickType": "Confusión entre procariotas y eucariotas",
+      "difficulty": "facil",
+      "sectionId": "intro"
+    },
+    {
+      "id": 12,
+      "question": "¿Qué microorganismo requiere una célula huésped para replicarse",
+      "options": {
+        "a": "Virus",
+        "b": "Hongos",
+        "c": "Bacteria",
+        "d": "Protozoos"
+      },
+      "correctAnswer": "c",
+      "explanation": "Los virus son acelulares y dependen de una célula huésped para replicarse las bacterias no",
+      "trickType": "Ignorar la naturaleza acelular de los virus",
+      "difficulty": "facil",
+      "sectionId": "intro"
+    },
+    {
+      "id": 13,
+      "question": "¿Qué microorganismo tiene núcleo definido y mitocondrias",
+      "options": {
+        "a": "Hongos",
+        "b": "Bacterias",
+        "c": "Virus",
+        "d": "Algas"
+      },
+      "correctAnswer": "a",
+      "explanation": "Los hongos son eucariotas con núcleo definido y orgánulos como mitocondrias",
+      "trickType": "Confusión entre procariotas y eucariotas",
+      "difficulty": "facil",
+      "sectionId": "intro"
+    },
+    {
+      "id": 14,
+      "question": "¿Cuál de los siguientes NO es un microorganismo eucariota",
+      "options": {
+        "a": "Hongos",
+        "b": "Bacterias",
+        "c": "Protozoos",
+        "d": "Algas"
+      },
+      "correctAnswer": "b",
+      "explanation": "Las bacterias son procariotas no eucariotas los hongos protozoos y algas son eucariotas",
+      "trickType": "Clasificación incorrecta de procariotas",
+      "difficulty": "facil",
+      "sectionId": "intro"
+    },
+    {
+      "id": 15,
+      "question": "¿Qué microorganismo es clasificado como acelular",
+      "options": {
+        "a": "Bacterias",
+        "b": "Virus",
+        "c": "Hongos",
+        "d": "Protozoos"
+      },
+      "correctAnswer": "b",
+      "explanation": "Los virus son acelulares no tienen estructura celular las bacterias hongos y protozoos son celulares",
+      "trickType": "Ignorar la naturaleza acelular de los virus",
+      "difficulty": "facil",
+      "sectionId": "intro"
+    },
+    {
+      "id": 16,
+      "question": "¿Qué microorganismo carece de orgánulos membranosos",
+      "options": {
+        "a": "Hongos",
+        "b": "Protozoos",
+        "c": "Bacterias",
+        "d": "Virus"
+      },
+      "correctAnswer": "c",
+      "explanation": "Las bacterias son procariotas carecen de orgánulos membranosos los hongos y protozoos son eucariotas",
+      "trickType": "Confusión entre procariotas y eucariotas",
+      "difficulty": "facil",
+      "sectionId": "intro"
+    },
+    {
+      "id": 17,
+      "question": "¿Qué microorganismo puede realizar fotosíntesis",
+      "options": {
+        "a": "Bacterias",
+        "b": "Hongos",
+        "c": "Protozoos",
+        "d": "Virus"
+      },
+      "correctAnswer": "d",
+      "explanation": "Algunas bacterias y algas microscópicas pueden realizar fotosíntesis los virus no",
+      "trickType": "Asociar fotosíntesis con virus incorrectamente",
+      "difficulty": "facil",
+      "sectionId": "intro"
+    },
+    {
+      "id": 18,
+      "question": "¿Qué microorganismo es considerado un parásito obligado",
+      "options": {
+        "a": "Hongos",
+        "b": "Bacterias",
+        "c": "Virus",
+        "d": "Protozoos"
+      },
+      "correctAnswer": "c",
+      "explanation": "Los virus son parásitos obligados dependen completamente de la célula huésped",
+      "trickType": "Confusión entre parásitos facultativos y obligados",
+      "difficulty": "facil",
+      "sectionId": "intro"
+    },
+    {
+      "id": 19,
+      "question": "¿Qué microorganismo tiene pared celular de peptidoglicano",
+      "options": {
+        "a": "Hongos",
+        "b": "Protozoos",
+        "c": "Virus",
+        "d": "Bacterias"
+      },
+      "correctAnswer": "d",
+      "explanation": "Las bacterias tienen pared celular de peptidoglicano los hongos tienen quitina los virus no tienen pared",
+      "trickType": "Ignorar la composición de la pared bacteriana",
+      "difficulty": "facil",
+      "sectionId": "intro"
+    },
+    {
+      "id": 20,
+      "question": "¿Qué microorganismo reproduce por gemación",
+      "options": {
+        "a": "Bacterias",
+        "b": "Virus",
+        "c": "Protozoos",
+        "d": "Hongos"
+      },
+      "correctAnswer": "c",
+      "explanation": "Algunas bacterias se reproducen por gemación los virus no se reproducen por gemación",
+      "trickType": "Asociar gemación con microorganismos incorrectos",
+      "difficulty": "facil",
+      "sectionId": "intro"
     }
   ],
   "bacterias": [
     {
       "id": 1,
       "question": "¿Cuál es el componente principal de la pared celular bacteriana?",
-      "options": { "a": "Celulosa", "b": "Peptidoglucano (mureína)", "c": "Quitina", "d": "Lipopolisacárido" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Lipopolisacárido",
+        "b": "Quitina",
+        "c": "Peptidoglucano (mureína)",
+        "d": "Celulosa"
+      },
+      "correctAnswer": "c",
       "explanation": "El peptidoglucano o mureína es el componente principal de la pared celular bacteriana. La celulosa es de plantas, la quitina de hongos, y el LPS está en la membrana externa de Gram- pero NO es el componente principal de la pared.",
       "trickType": "Confusión de polímeros",
       "difficulty": "fácil"
@@ -105,7 +310,12 @@
     {
       "id": 2,
       "question": "Los plásmidos bacterianos son moléculas de ADN que:",
-      "options": { "a": "Contienen los genes esenciales para la supervivencia bacteriana", "b": "Son extracromosómicos y portan genes como los de resistencia a antibióticos", "c": "Están rodeados por una membrana nuclear", "d": "Se encuentran exclusivamente en el nucleoide" },
+      "options": {
+        "a": "Se encuentran exclusivamente en el nucleoide",
+        "b": "Son extracromosómicos y portan genes como los de resistencia a antibióticos",
+        "c": "Contienen los genes esenciales para la supervivencia bacteriana",
+        "d": "Están rodeados por una membrana nuclear"
+      },
       "correctAnswer": "b",
       "explanation": "Los plásmidos son ADN extracromosómico que porta genes accesorios como resistencia a antibióticos. La opción A es trampa: los genes esenciales están en el cromosoma, no en los plásmidos. La opción C describe el núcleo eucariota. La opción D es incorrecta: están en el citoplasma, separados del nucleoide.",
       "trickType": "Confusión cromosoma/plásmido",
@@ -114,7 +324,12 @@
     {
       "id": 3,
       "question": "¿Cuál es la función PRINCIPAL de la cápsula bacteriana?",
-      "options": { "a": "Proporcionar motilidad", "b": "Proteger contra la desecación, fagocitosis y antimicrobianos", "c": "Sintetizar proteínas", "d": "Almacenar material genético" },
+      "options": {
+        "a": "Almacenar material genético",
+        "b": "Proteger contra la desecación, fagocitosis y antimicrobianos",
+        "c": "Proporcionar motilidad",
+        "d": "Sintetizar proteínas"
+      },
       "correctAnswer": "b",
       "explanation": "La cápsula protege contra desecación, fagocitosis y agentes antimicrobianos, y facilita adhesión. La motilidad es función de los flagelos (A). La síntesis proteica es de los ribosomas (C). El ADN está en el nucleoide (D).",
       "trickType": "Confusión de funciones",
@@ -123,8 +338,13 @@
     {
       "id": 4,
       "question": "¿Qué diferencia a los pilis de los flagelos bacterianos?",
-      "options": { "a": "Los pilis son más largos y gruesos", "b": "Los pilis intervienen en adhesión y transferencia genética; los flagelos en motilidad", "c": "Los flagelos están hechos de proteínas y los pilis de lípidos", "d": "No hay diferencia, son sinónimos" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "No hay diferencia, son sinónimos",
+        "b": "Los pilis son más largos y gruesos",
+        "c": "Los pilis intervienen en adhesión y transferencia genética; los flagelos en motilidad",
+        "d": "Los flagelos están hechos de proteínas y los pilis de lípidos"
+      },
+      "correctAnswer": "c",
       "explanation": "Los pilis/fimbrias son más cortos y delgados que los flagelos, intervienen en adhesión y conjugación. Los flagelos son para motilidad. Ambos son proteicos (la opción C es falsa). No son sinónimos (la D es incorrecta).",
       "trickType": "Confusión estructural",
       "difficulty": "media"
@@ -132,8 +352,13 @@
     {
       "id": 5,
       "question": "El tamaño de las bacterias oscila generalmente entre:",
-      "options": { "a": "20 y 300 nm", "b": "0,5 y 5 µm", "c": "10 y 100 µm", "d": "1 y 10 mm" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "1 y 10 mm",
+        "b": "10 y 100 µm",
+        "c": "20 y 300 nm",
+        "d": "0,5 y 5 µm"
+      },
+      "correctAnswer": "d",
       "explanation": "Las bacterias miden entre 0,5 y 5 µm. La opción A (20-300 nm) corresponde al tamaño de los VIRUS, una confusión muy común en exámenes.",
       "trickType": "Confusión de escalas",
       "difficulty": "media"
@@ -141,8 +366,13 @@
     {
       "id": 6,
       "question": "¿Qué proteína compone principalmente los flagelos bacterianos?",
-      "options": { "a": "Actina", "b": "Miosina", "c": "Flagelina", "d": "Peptidoglucano" },
-      "correctAnswer": "c",
+      "options": {
+        "a": "Flagelina",
+        "b": "Actina",
+        "c": "Miosina",
+        "d": "Peptidoglucano"
+      },
+      "correctAnswer": "a",
       "explanation": "Los flagelos están compuestos por flagelina. La actina y miosina son proteínas de células eucariotas. El peptidoglucano es componente de la pared celular, no de los flagelos.",
       "trickType": "Confusión proteica",
       "difficulty": "fácil"
@@ -150,7 +380,12 @@
     {
       "id": 7,
       "question": "¿Dónde se encuentra el material genético esencial de la bacteria?",
-      "options": { "a": "En los plásmidos", "b": "En el nucleoide como ADN circular", "c": "En el núcleo celular", "d": "En los ribosomas" },
+      "options": {
+        "a": "En el núcleo celular",
+        "b": "En el nucleoide como ADN circular",
+        "c": "En los plásmidos",
+        "d": "En los ribosomas"
+      },
       "correctAnswer": "b",
       "explanation": "El cromosoma bacteriano (ADN circular esencial) está en el nucleoide. Los plásmidos contienen genes accesorios, no esenciales. Las bacterias NO tienen núcleo (opción C). Los ribosomas sintetizan proteínas, no almacenan ADN.",
       "trickType": "Confusión nucleoide/núcleo",
@@ -159,8 +394,13 @@
     {
       "id": 8,
       "question": "¿Cuál afirmación sobre la pared celular bacteriana es CORRECTA?",
-      "options": { "a": "Es una estructura interna a la membrana citoplasmática", "b": "Su función principal es la síntesis de energía", "c": "Está compuesta de peptidoglucano y confiere rigidez y protección osmótica", "d": "Es igual en composición a la pared de las células vegetales" },
-      "correctAnswer": "c",
+      "options": {
+        "a": "Su función principal es la síntesis de energía",
+        "b": "Es una estructura interna a la membrana citoplasmática",
+        "c": "Es igual en composición a la pared de las células vegetales",
+        "d": "Está compuesta de peptidoglucano y confiere rigidez y protección osmótica"
+      },
+      "correctAnswer": "d",
       "explanation": "La pared celular está EXTERNA a la membrana (A es falsa), confiere rigidez y protección frente a presión osmótica. No sintetiza energía (B). La pared vegetal es de celulosa, no peptidoglucano (D es falsa).",
       "trickType": "Posición y composición",
       "difficulty": "media"
@@ -168,8 +408,13 @@
     {
       "id": 9,
       "question": "El término 'multiprocariota' en bacteriología se refiere a:",
-      "options": { "a": "Bacterias con múltiples núcleos", "b": "Agrupaciones de células procariotas donde cada una sigue siendo independiente", "c": "Bacterias con múltiples cromosomas", "d": "Bacterias eucariotas primitivas" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Bacterias eucariotas primitivas",
+        "b": "Bacterias con múltiples núcleos",
+        "c": "Bacterias con múltiples cromosomas",
+        "d": "Agrupaciones de células procariotas donde cada una sigue siendo independiente"
+      },
+      "correctAnswer": "d",
       "explanation": "El término multiprocariota se refiere a colonias/agrupaciones de células procariotas donde cada célula sigue siendo independiente. Las bacterias NUNCA tienen múltiples núcleos (A) ni son eucariotas (D).",
       "trickType": "Interpretación terminológica",
       "difficulty": "difícil"
@@ -177,19 +422,179 @@
     {
       "id": 10,
       "question": "¿Qué estructura bacteriana facilita la adhesión a superficies Y la transferencia de material genético?",
-      "options": { "a": "Flagelos", "b": "Cápsula", "c": "Pilis (fimbrias)", "d": "Pared celular" },
-      "correctAnswer": "c",
+      "options": {
+        "a": "Pilis (fimbrias)",
+        "b": "Flagelos",
+        "c": "Cápsula",
+        "d": "Pared celular"
+      },
+      "correctAnswer": "a",
       "explanation": "Los pilis intervienen en adhesión y en la conjugación (transferencia genética). Los flagelos son solo para motilidad. La cápsula facilita adhesión pero NO transferencia genética. La pared celular no realiza ninguna de estas funciones.",
       "trickType": "Función dual",
       "difficulty": "media"
+    },
+    {
+      "id": 11,
+      "question": "¿Qué tipo de ADN es el principal en el nucleoide de una bacteria",
+      "options": {
+        "a": "ADN circular",
+        "b": "ADN lineal",
+        "c": "ADN bicatenario",
+        "d": "ADN extracromosómico"
+      },
+      "correctAnswer": "a",
+      "explanation": "El nucleoide contiene ADN circular que no está envuelto por una membrana",
+      "trickType": "distractor con información parcial",
+      "difficulty": "facil",
+      "sectionId": "bacterias"
+    },
+    {
+      "id": 12,
+      "question": "¿Qué componente de la pared celular bacteriana le proporciona rigidez",
+      "options": {
+        "a": "Peptidoglucano",
+        "b": "Lipopolisacárido",
+        "c": "Lipoteicoico",
+        "d": "Ácido teicoico"
+      },
+      "correctAnswer": "a",
+      "explanation": "El peptidoglucano es un polímero de carbohidratos y péptidos que forma una red rígida",
+      "trickType": "distractor con componentes de la pared",
+      "difficulty": "facil",
+      "sectionId": "bacterias"
+    },
+    {
+      "id": 13,
+      "question": "¿Qué estructura bacteriana es responsable de la motilidad",
+      "options": {
+        "a": "Pilis",
+        "b": "Esporas",
+        "c": "Cápsula",
+        "d": "Flagelos"
+      },
+      "correctAnswer": "d",
+      "explanation": "Los flagelos son filamentos de proteína (flagelina) que permiten el movimiento",
+      "trickType": "distractor con funciones de otras estructuras",
+      "difficulty": "facil",
+      "sectionId": "bacterias"
+    },
+    {
+      "id": 14,
+      "question": "¿Qué función tiene la cápsula bacteriana",
+      "options": {
+        "a": "Reproducción",
+        "b": "Protección contra desecación",
+        "c": "Respiración",
+        "d": "Síntesis de proteínas"
+      },
+      "correctAnswer": "b",
+      "explanation": "La cápsula protege a la bacteria de la desecación y la fagocitosis",
+      "trickType": "distractor con funciones celulares",
+      "difficulty": "facil",
+      "sectionId": "bacterias"
+    },
+    {
+      "id": 15,
+      "question": "¿Qué son los plásmidos en las bacterias",
+      "options": {
+        "a": "Estructuras de reproducción",
+        "b": "ADN extracromosómico con genes de resistencia",
+        "c": "Parte del nucleoide",
+        "d": "Proteínas estructurales"
+      },
+      "correctAnswer": "b",
+      "explanation": "Los plásmidos son pequeños fragmentos de ADN circular que transportan genes adicionales",
+      "trickType": "distractor con definiciones incorrectas",
+      "difficulty": "facil",
+      "sectionId": "bacterias"
+    },
+    {
+      "id": 16,
+      "question": "¿Qué estructura bacteriana participa en la conjugación",
+      "options": {
+        "a": "Flagelos",
+        "b": "Cápsula",
+        "c": "Pilis",
+        "d": "Esporas"
+      },
+      "correctAnswer": "c",
+      "explanation": "Los pilis permiten la adhesión y la transferencia de material genético entre bacterias",
+      "trickType": "distractor con funciones de estructuras",
+      "difficulty": "facil",
+      "sectionId": "bacterias"
+    },
+    {
+      "id": 17,
+      "question": "¿Qué tipo de organismo es una bacteria",
+      "options": {
+        "a": "Virus",
+        "b": "Hongo",
+        "c": "Procariota",
+        "d": "Eucariota"
+      },
+      "correctAnswer": "c",
+      "explanation": "Las bacterias son organismos procariotas sin núcleo definido",
+      "trickType": "distractor con tipos de organismos",
+      "difficulty": "facil",
+      "sectionId": "bacterias"
+    },
+    {
+      "id": 18,
+      "question": "¿Qué tamaño típico tienen las bacterias",
+      "options": {
+        "a": "1-10 µm",
+        "b": "0,1-1 µm",
+        "c": "0,5-5 µm",
+        "d": "10-50 µm"
+      },
+      "correctAnswer": "c",
+      "explanation": "Las bacterias miden entre 0,5 y 5 micrómetros de diámetro",
+      "trickType": "distractor con rangos incorrectos",
+      "difficulty": "facil",
+      "sectionId": "bacterias"
+    },
+    {
+      "id": 19,
+      "question": "¿Qué término describe agrupaciones de células procariotas independientes",
+      "options": {
+        "a": "Multiprocariota",
+        "b": "Eucariota",
+        "c": "Procariota",
+        "d": "Unicelular"
+      },
+      "correctAnswer": "d",
+      "explanation": "Multiprocariota se refiere a agrupaciones de células procariotas independientes",
+      "trickType": "distractor con términos similares",
+      "difficulty": "facil",
+      "sectionId": "bacterias"
+    },
+    {
+      "id": 20,
+      "question": "¿Qué proteína forma los flagelos bacterianos",
+      "options": {
+        "a": "Flagelina",
+        "b": "Peptidoglucano",
+        "c": "Lipoproteína",
+        "d": "Mureína"
+      },
+      "correctAnswer": "c",
+      "explanation": "La flagelina es la proteína principal de los flagelos bacterianos",
+      "trickType": "distractor con componentes de la pared celular",
+      "difficulty": "facil",
+      "sectionId": "bacterias"
     }
   ],
   "clasificacion-bacterias": [
     {
       "id": 1,
       "question": "En la tinción de Gram, las bacterias Gram negativas se tiñen de color rosa/rojo porque:",
-      "options": { "a": "Tienen más peptidoglucano que retiene la safranina", "b": "Tienen membrana externa con LPS y capa fina de peptidoglucano que no retiene el cristal violeta", "c": "No tienen pared celular", "d": "Poseen ácidos teicoicos que reaccionan con la safranina" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Tienen membrana externa con LPS y capa fina de peptidoglucano que no retiene el cristal violeta",
+        "b": "Poseen ácidos teicoicos que reaccionan con la safranina",
+        "c": "No tienen pared celular",
+        "d": "Tienen más peptidoglucano que retiene la safranina"
+      },
+      "correctAnswer": "a",
       "explanation": "Las Gram- tienen membrana externa con LPS y capa fina de peptidoglucano que NO retiene el cristal violeta tras la decoloración, tomando el color de la safranina. La opción A describe Gram+. Las Gram- SÍ tienen pared celular (C es falsa). Los ácidos teicoicos son exclusivos de Gram+ (D es falsa).",
       "trickType": "Mecanismo de tinción invertido",
       "difficulty": "difícil"
@@ -197,7 +602,12 @@
     {
       "id": 2,
       "question": "¿Qué bacteria es un ejemplo de anaerobia facultativa?",
-      "options": { "a": "Mycobacterium tuberculosis", "b": "Clostridium tetani", "c": "Escherichia coli", "d": "Vibrio cholerae" },
+      "options": {
+        "a": "Mycobacterium tuberculosis",
+        "b": "Clostridium tetani",
+        "c": "Escherichia coli",
+        "d": "Vibrio cholerae"
+      },
       "correctAnswer": "c",
       "explanation": "E. coli es anaerobia facultativa (crece con y sin O₂). M. tuberculosis es aerobia estricta. C. tetani es anaerobia estricta. V. cholerae es un vibrio (clasificación por forma), no se clasifica principalmente por respiración en el documento.",
       "trickType": "Confusión de ejemplos",
@@ -206,8 +616,13 @@
     {
       "id": 3,
       "question": "¿Cuál es una característica EXCLUSIVA de las bacterias Gram positivas?",
-      "options": { "a": "Membrana externa con LPS", "b": "Ácidos teicoicos", "c": "Capa fina de peptidoglucano", "d": "Color rosa con safranina" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Membrana externa con LPS",
+        "b": "Capa fina de peptidoglucano",
+        "c": "Color rosa con safranina",
+        "d": "Ácidos teicoicos"
+      },
+      "correctAnswer": "d",
       "explanation": "Los ácidos teicoicos son exclusivos de Gram+. La membrana externa con LPS (A), la capa fina de peptidoglucano (C) y el color rosa (D) son características de Gram-.",
       "trickType": "Exclusividad Gram",
       "difficulty": "media"
@@ -215,8 +630,13 @@
     {
       "id": 4,
       "question": "Las bacterias quimioautótrofas obtienen energía de:",
-      "options": { "a": "La luz solar", "b": "Compuestos orgánicos preformados", "c": "Reacciones químicas inorgánicas como oxidación de amoníaco o azufre", "d": "La fermentación de azúcares" },
-      "correctAnswer": "c",
+      "options": {
+        "a": "La luz solar",
+        "b": "Reacciones químicas inorgánicas como oxidación de amoníaco o azufre",
+        "c": "Compuestos orgánicos preformados",
+        "d": "La fermentación de azúcares"
+      },
+      "correctAnswer": "b",
       "explanation": "Las quimioautótrofas oxidan compuestos inorgánicos (amoníaco, azufre, hierro). La luz solar es de fotoautótrofas (A). Los compuestos orgánicos son de heterótrofas (B). La fermentación es de heterótrofas/anaerobias (D).",
       "trickType": "Confusión nutricional",
       "difficulty": "media"
@@ -224,8 +644,13 @@
     {
       "id": 5,
       "question": "¿Cuál bacteria tiene forma de bastón alargado?",
-      "options": { "a": "Staphylococcus aureus", "b": "Treponema pallidum", "c": "Escherichia coli", "d": "Vibrio cholerae" },
-      "correctAnswer": "c",
+      "options": {
+        "a": "Escherichia coli",
+        "b": "Treponema pallidum",
+        "c": "Vibrio cholerae",
+        "d": "Staphylococcus aureus"
+      },
+      "correctAnswer": "a",
       "explanation": "E. coli es un bacilo (bastón alargado). S. aureus es un coco (esférico). T. pallidum es un espirilo. V. cholerae es un vibrio (coma).",
       "trickType": "Asociación morfológica",
       "difficulty": "fácil"
@@ -233,7 +658,12 @@
     {
       "id": 6,
       "question": "¿Qué tipo de bacteria necesita oxígeno para sobrevivir pero el oxígeno NO es tóxico para ella?",
-      "options": { "a": "Anaerobia estricta", "b": "Anaerobia facultativa", "c": "Aerobia estricta", "d": "Tanto B como C son correctas" },
+      "options": {
+        "a": "Aerobia estricta",
+        "b": "Anaerobia estricta",
+        "c": "Anaerobia facultativa",
+        "d": "Tanto B como C son correctas"
+      },
       "correctAnswer": "d",
       "explanation": "Tanto las aerobias estrictas como las anaerobias facultativas pueden sobrevivir en presencia de oxígeno (no es tóxico para ellas). Solo las anaerobias estrictas encuentran el oxígeno tóxico.",
       "trickType": "Respuesta múltiple inesperada",
@@ -242,8 +672,13 @@
     {
       "id": 7,
       "question": "¿Quién desarrolló la tinción de Gram y en qué año?",
-      "options": { "a": "Louis Pasteur, 1880", "b": "Hans Christian Gram, 1884", "c": "Robert Koch, 1882", "d": "Alexander Fleming, 1928" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Robert Koch, 1882",
+        "b": "Alexander Fleming, 1928",
+        "c": "Hans Christian Gram, 1884",
+        "d": "Louis Pasteur, 1880"
+      },
+      "correctAnswer": "c",
       "explanation": "Hans Christian Gram desarrolló la tinción de Gram en 1884. Es una confusión común atribuirla a Pasteur o Koch (quienes eran contemporáneos). Fleming descubrió la penicilina mucho después.",
       "trickType": "Confusión histórica",
       "difficulty": "fácil"
@@ -251,8 +686,13 @@
     {
       "id": 8,
       "question": "Las cianobacterias se clasifican como:",
-      "options": { "a": "Heterótrofas", "b": "Quimioautótrofas", "c": "Fotoautótrofas", "d": "Quimiosintéticas" },
-      "correctAnswer": "c",
+      "options": {
+        "a": "Quimiosintéticas",
+        "b": "Fotoautótrofas",
+        "c": "Heterótrofas",
+        "d": "Quimioautótrofas"
+      },
+      "correctAnswer": "b",
       "explanation": "Las cianobacterias son fotoautótrofas (usan luz como fuente de energía y CO₂ como fuente de carbono). Las quimioautótrofas usan reacciones químicas inorgánicas, no luz.",
       "trickType": "Confusión autótrofa",
       "difficulty": "media"
@@ -260,8 +700,13 @@
     {
       "id": 9,
       "question": "¿Qué diferencia a un vibrio de un bacilo?",
-      "options": { "a": "El vibrio es esférico y el bacilo alargado", "b": "El vibrio es un bacilo curvado en forma de coma", "c": "El vibrio es espiral y el bacilo recto", "d": "No hay diferencia, son sinónimos" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "El vibrio es espiral y el bacilo recto",
+        "b": "El vibrio es esférico y el bacilo alargado",
+        "c": "El vibrio es un bacilo curvado en forma de coma",
+        "d": "No hay diferencia, son sinónimos"
+      },
+      "correctAnswer": "c",
       "explanation": "Los vibrios son bacilos curvados en forma de coma (ej: V. cholerae). La opción A confunde vibrio con coco. La opción C describe espirilos, no vibrios.",
       "trickType": "Diferenciación morfológica",
       "difficulty": "media"
@@ -269,18 +714,178 @@
     {
       "id": 10,
       "question": "Una bacteria que puede vivir tanto con como sin oxígeno y que además usa compuestos orgánicos como fuente de carbono se clasifica como:",
-      "options": { "a": "Aerobia estricta heterótrofa", "b": "Anaerobia estricta autótrofa", "c": "Anaerobia facultativa heterótrofa", "d": "Aerobia estricta fotoautótrofa" },
-      "correctAnswer": "c",
+      "options": {
+        "a": "Anaerobia estricta autótrofa",
+        "b": "Anaerobia facultativa heterótrofa",
+        "c": "Aerobia estricta heterótrofa",
+        "d": "Aerobia estricta fotoautótrofa"
+      },
+      "correctAnswer": "b",
       "explanation": "Vive con y sin O₂ = anaerobia facultativa. Usa compuestos orgánicos = heterótrofa. La combinación correcta es anaerobia facultativa heterótrofa, como E. coli.",
       "trickType": "Clasificación combinada",
       "difficulty": "media"
+    },
+    {
+      "id": 11,
+      "question": "¿Qué bacteria es un ejemplo de cocoGram positivo",
+      "options": {
+        "a": "Staphylococcus aureus",
+        "b": "Escherichia coli",
+        "c": "Treponema pallidum",
+        "d": "Vibrio cholerae"
+      },
+      "correctAnswer": "a",
+      "explanation": "Staphylococcus aureus es un coco que tinta Gram positivo debido a su gruesa capa de peptidoglucano y ácidos teicoicos",
+      "trickType": "diferencia de forma y tincion",
+      "difficulty": "facil",
+      "sectionId": "clasificacion-bacterias"
+    },
+    {
+      "id": 12,
+      "question": "¿Qué bacteria es aerobia estricta",
+      "options": {
+        "a": "Mycobacterium tuberculosis",
+        "b": "Clostridium tetani",
+        "c": "Escherichia coli",
+        "d": "Staphylococcus aureus"
+      },
+      "correctAnswer": "a",
+      "explanation": "Mycobacterium tuberculosis requiere oxígeno para su crecimiento y es aerobia estricta",
+      "trickType": "tipo de respiracion",
+      "difficulty": "facil",
+      "sectionId": "clasificacion-bacterias"
+    },
+    {
+      "id": 13,
+      "question": "¿Qué bacteria es quimioautótrofa",
+      "options": {
+        "a": "Escherichia coli",
+        "b": "Staphylococcus aureus",
+        "c": "Mycobacterium tuberculosis",
+        "d": "Cyanobacteria"
+      },
+      "correctAnswer": "d",
+      "explanation": "Cianobacterias son fotoautótrofas pero algunas bacterias quimioautótrofas como las nitrificantes son quimioautótrofas",
+      "trickType": "tipo de nutricion",
+      "difficulty": "facil",
+      "sectionId": "clasificacion-bacterias"
+    },
+    {
+      "id": 14,
+      "question": "¿Qué bacteria tiene una membrana externa con LPS",
+      "options": {
+        "a": "Staphylococcus aureus",
+        "b": "Escherichia coli",
+        "c": "Clostridium tetani",
+        "d": "Mycobacterium tuberculosis"
+      },
+      "correctAnswer": "b",
+      "explanation": "Escherichia coli es Gram negativo y tiene una membrana externa con lipopolisacárido LPS",
+      "trickType": "estructura de Gram negativo",
+      "difficulty": "facil",
+      "sectionId": "clasificacion-bacterias"
+    },
+    {
+      "id": 15,
+      "question": "¿Qué bacteria es anaerobia estricta",
+      "options": {
+        "a": "Escherichia coli",
+        "b": "Clostridium tetani",
+        "c": "Staphylococcus aureus",
+        "d": "Mycobacterium tuberculosis"
+      },
+      "correctAnswer": "b",
+      "explanation": "Clostridium tetani es anaerobia estricta y no puede crecer en presencia de oxígeno",
+      "trickType": "tipo de respiracion",
+      "difficulty": "facil",
+      "sectionId": "clasificacion-bacterias"
+    },
+    {
+      "id": 16,
+      "question": "¿Qué bacteria es un bacilo Gram negativo",
+      "options": {
+        "a": "Staphylococcus aureus",
+        "b": "Clostridium tetani",
+        "c": "Escherichia coli",
+        "d": "Cyanobacteria"
+      },
+      "correctAnswer": "c",
+      "explanation": "Escherichia coli es un bacilo que tinta Gram negativo",
+      "trickType": "forma y tincion",
+      "difficulty": "facil",
+      "sectionId": "clasificacion-bacterias"
+    },
+    {
+      "id": 17,
+      "question": "¿Qué bacteria es fotoautótrofa",
+      "options": {
+        "a": "Staphylococcus aureus",
+        "b": "Escherichia coli",
+        "c": "Cyanobacteria",
+        "d": "Clostridium tetani"
+      },
+      "correctAnswer": "c",
+      "explanation": "Cianobacterias son fotoautótrofas y realizan fotosíntesis",
+      "trickType": "tipo de nutricion",
+      "difficulty": "facil",
+      "sectionId": "clasificacion-bacterias"
+    },
+    {
+      "id": 18,
+      "question": "¿Qué bacteria es un espirilo",
+      "options": {
+        "a": "Clostridium tetani",
+        "b": "Escherichia coli",
+        "c": "Treponema pallidum",
+        "d": "Staphylococcus aureus"
+      },
+      "correctAnswer": "c",
+      "explanation": "Treponema pallidum es un espirilo con forma de espiral",
+      "trickType": "forma bacteriana",
+      "difficulty": "facil",
+      "sectionId": "clasificacion-bacterias"
+    },
+    {
+      "id": 19,
+      "question": "¿Qué bacteria es un vibrio",
+      "options": {
+        "a": "Staphylococcus aureus",
+        "b": "Escherichia coli",
+        "c": "Clostridium tetani",
+        "d": "Vibrio cholerae"
+      },
+      "correctAnswer": "d",
+      "explanation": "Vibrio cholerae tiene forma de coma o vibrio",
+      "trickType": "forma bacteriana",
+      "difficulty": "facil",
+      "sectionId": "clasificacion-bacterias"
+    },
+    {
+      "id": 20,
+      "question": "¿Qué bacteria es anaerobia facultativa",
+      "options": {
+        "a": "Staphylococcus aureus",
+        "b": "Escherichia coli",
+        "c": "Clostridium tetani",
+        "d": "Mycobacterium tuberculosis"
+      },
+      "correctAnswer": "d",
+      "explanation": "Escherichia coli es anaerobia facultativa pero la pregunta es Mycobacterium tuberculosis que es aerobia estricta",
+      "trickType": "tipo de respiracion",
+      "difficulty": "facil",
+      "sectionId": "clasificacion-bacterias"
     }
   ],
   "estructura-celular": [
     {
       "id": 1,
       "question": "¿Qué tipo de ribosomas poseen las bacterias?",
-      "options": { "a": "80S (subunidades 60S y 40S)", "b": "70S (subunidades 50S y 30S)", "c": "60S (subunidades 40S y 20S)", "d": "90S (subunidades 60S y 30S)" },
+      "options": {
+        "a": "60S (subunidades 40S y 20S)",
+        "b": "70S (subunidades 50S y 30S)",
+        "c": "80S (subunidades 60S y 40S)",
+        "d": "90S (subunidades 60S y 30S)"
+      },
       "correctAnswer": "b",
       "explanation": "Los ribosomas bacterianos son 70S (50S + 30S). Los 80S (60S + 40S) son de eucariotas. Las opciones C y D no existen.",
       "trickType": "Confusión de valores Svedberg",
@@ -289,8 +894,13 @@
     {
       "id": 2,
       "question": "Los aminoglucósidos son antibióticos que actúan sobre la subunidad ribosomal:",
-      "options": { "a": "50S de los ribosomas eucariotas", "b": "30S de los ribosomas bacterianos", "c": "60S de los ribosomas eucariotas", "d": "50S de los ribosomas bacterianos" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "50S de los ribosomas eucariotas",
+        "b": "50S de los ribosomas bacterianos",
+        "c": "60S de los ribosomas eucariotas",
+        "d": "30S de los ribosomas bacterianos"
+      },
+      "correctAnswer": "d",
       "explanation": "Los aminoglucósidos se unen a la subunidad 30S bacteriana. Los macrólidos se unen a la 50S bacteriana (D es macrólidos, no aminoglucósidos). Las opciones A y C se refieren a ribosomas eucariotas.",
       "trickType": "Confusión subunidad/antibiótico",
       "difficulty": "media"
@@ -298,8 +908,13 @@
     {
       "id": 3,
       "question": "¿Qué molécula estabiliza la membrana citoplasmática bacteriana en lugar del colesterol?",
-      "options": { "a": "Peptidoglucano", "b": "Hopanoides", "c": "Lipopolisacárido", "d": "Ácidos teicoicos" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Ácidos teicoicos",
+        "b": "Lipopolisacárido",
+        "c": "Peptidoglucano",
+        "d": "Hopanoides"
+      },
+      "correctAnswer": "d",
       "explanation": "Los hopanoides cumplen una función estabilizadora análoga al colesterol en la membrana bacteriana. El peptidoglucano es de la pared, el LPS de la membrana externa de Gram-, y los ácidos teicoicos de Gram+.",
       "trickType": "Analogía funcional",
       "difficulty": "difícil"
@@ -307,8 +922,13 @@
     {
       "id": 4,
       "question": "El citoplasma bacteriano está compuesto aproximadamente por:",
-      "options": { "a": "50% agua", "b": "80% agua", "c": "95% agua", "d": "30% agua" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "95% agua",
+        "b": "50% agua",
+        "c": "30% agua",
+        "d": "80% agua"
+      },
+      "correctAnswer": "d",
       "explanation": "El citoplasma bacteriano contiene aproximadamente 80% de agua. Esta cifra específica del documento es frecuentemente confundida en exámenes.",
       "trickType": "Dato específico",
       "difficulty": "fácil"
@@ -316,7 +936,12 @@
     {
       "id": 5,
       "question": "¿Cuál es la composición del cromosoma bacteriano?",
-      "options": { "a": "ADN lineal de doble cadena", "b": "ADN circular de doble cadena", "c": "ARN circular de doble cadena", "d": "ADN circular de cadena simple" },
+      "options": {
+        "a": "ARN circular de doble cadena",
+        "b": "ADN circular de doble cadena",
+        "c": "ADN circular de cadena simple",
+        "d": "ADN lineal de doble cadena"
+      },
       "correctAnswer": "b",
       "explanation": "El cromosoma bacteriano es una molécula de ADN circular de doble cadena ubicada en el nucleoide. No es lineal como en eucariotas (A), no es ARN (C), y no es de cadena simple (D).",
       "trickType": "Confusión estructura genética",
@@ -325,8 +950,13 @@
     {
       "id": 6,
       "question": "Los macrólidos son antibióticos que se unen a la subunidad ribosomal:",
-      "options": { "a": "30S bacteriana", "b": "50S bacteriana", "c": "40S eucariota", "d": "60S eucariota" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "50S bacteriana",
+        "b": "30S bacteriana",
+        "c": "60S eucariota",
+        "d": "40S eucariota"
+      },
+      "correctAnswer": "a",
       "explanation": "Los macrólidos se unen a la subunidad 50S bacteriana. Los aminoglucósidos se unen a la 30S (A). Las opciones C y D son subunidades eucariotas.",
       "trickType": "Antibiótico-subunidad inversa",
       "difficulty": "media"
@@ -334,8 +964,13 @@
     {
       "id": 7,
       "question": "¿Cuántas partes componen los flagelos bacterianos?",
-      "options": { "a": "Dos: filamento y gancho", "b": "Tres: filamento, gancho y cuerpo basal", "c": "Cuatro: filamento, gancho, cuerpo basal y cápsula", "d": "Una: solo filamento" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Cuatro: filamento, gancho, cuerpo basal y cápsula",
+        "b": "Dos: filamento y gancho",
+        "c": "Tres: filamento, gancho y cuerpo basal",
+        "d": "Una: solo filamento"
+      },
+      "correctAnswer": "c",
       "explanation": "Los flagelos tienen tres partes: filamento (flagelina), gancho y cuerpo basal con motor rotatorio. La cápsula no es parte del flagelo (C).",
       "trickType": "Conteo de componentes",
       "difficulty": "fácil"
@@ -343,8 +978,13 @@
     {
       "id": 8,
       "question": "¿Cuál estructura bacteriana está relacionada con la virulencia de patógenos como Streptococcus pneumoniae?",
-      "options": { "a": "Los ribosomas", "b": "La cápsula", "c": "El nucleoide", "d": "Los pilis" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "La cápsula",
+        "b": "Los pilis",
+        "c": "Los ribosomas",
+        "d": "El nucleoide"
+      },
+      "correctAnswer": "a",
       "explanation": "La cápsula confiere resistencia a la fagocitosis y contribuye a la virulencia de patógenos como S. pneumoniae y K. pneumoniae. Los ribosomas, nucleoide y pilis no están directamente relacionados con la virulencia como la cápsula.",
       "trickType": "Asociación patogenicidad",
       "difficulty": "media"
@@ -352,8 +992,13 @@
     {
       "id": 9,
       "question": "¿Cuál es una diferencia entre la membrana citoplasmática bacteriana y la eucariota?",
-      "options": { "a": "La bacteriana tiene colesterol y la eucariota no", "b": "La bacteriana carece de colesterol pero contiene hopanoides", "c": "La bacteriana no tiene proteínas integradas", "d": "La bacteriana es de una sola capa lipídica" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "La bacteriana no tiene proteínas integradas",
+        "b": "La bacteriana es de una sola capa lipídica",
+        "c": "La bacteriana tiene colesterol y la eucariota no",
+        "d": "La bacteriana carece de colesterol pero contiene hopanoides"
+      },
+      "correctAnswer": "d",
       "explanation": "La membrana bacteriana carece de colesterol pero tiene hopanoides como estabilizadores. La eucariota SÍ tiene colesterol (A es al revés). Ambas tienen proteínas integradas (C es falsa). Ambas son bicapas (D es falsa).",
       "trickType": "Inversión de propiedades",
       "difficulty": "difícil"
@@ -361,19 +1006,179 @@
     {
       "id": 10,
       "question": "El desplazamiento bacteriano mediante quimiotaxis es posible gracias a:",
-      "options": { "a": "Los pilis", "b": "Los flagelos con su motor rotatorio", "c": "La cápsula", "d": "Las fimbrias" },
+      "options": {
+        "a": "La cápsula",
+        "b": "Los flagelos con su motor rotatorio",
+        "c": "Las fimbrias",
+        "d": "Los pilis"
+      },
       "correctAnswer": "b",
       "explanation": "La quimiotaxis (movimiento hacia o lejos de sustancias químicas) es posible gracias a los flagelos con su motor rotatorio. Los pilis y fimbrias son para adhesión y conjugación, no motilidad.",
       "trickType": "Confusión motilidad/adhesión",
       "difficulty": "fácil"
+    },
+    {
+      "id": 11,
+      "question": "¿Qué componente bacteriano es responsable de la rigidez y protección osmótica",
+      "options": {
+        "a": "Cápsula",
+        "b": "Flagelo",
+        "c": "Pared celular",
+        "d": "Membrana citoplasmática"
+      },
+      "correctAnswer": "c",
+      "explanation": "La pared celular proporciona rigidez y protege contra cambios osmóticos",
+      "trickType": "Diferenciación de estructuras",
+      "difficulty": "facil",
+      "sectionId": "estructura-celular"
+    },
+    {
+      "id": 12,
+      "question": "¿Qué tipo de ribosomas tienen las bacterias",
+      "options": {
+        "a": "70S",
+        "b": "80S",
+        "c": "60S",
+        "d": "40S"
+      },
+      "correctAnswer": "a",
+      "explanation": "Las bacterias tienen ribosomas 70S mientras que los eucariotas tienen 80S",
+      "trickType": "Comparación con eucariotas",
+      "difficulty": "facil",
+      "sectionId": "estructura-celular"
+    },
+    {
+      "id": 13,
+      "question": "¿Qué estructura bacteriana es importante para la virulencia en especies como S. pneumoniae",
+      "options": {
+        "a": "Cápsula",
+        "b": "Pared celular",
+        "c": "Flagelo",
+        "d": "Membrana citoplasmática"
+      },
+      "correctAnswer": "a",
+      "explanation": "La cápsula es un factor de virulencia en muchas bacterias patógenas",
+      "trickType": "Función específica",
+      "difficulty": "facil",
+      "sectionId": "estructura-celular"
+    },
+    {
+      "id": 14,
+      "question": "¿Qué antibiótico actúa sobre la subunidad 50S del ribosoma bacteriano",
+      "options": {
+        "a": "Aminoglucósidos",
+        "b": "Macrólidos",
+        "c": "Tetraciclinas",
+        "d": "Penicilinas"
+      },
+      "correctAnswer": "b",
+      "explanation": "Los macrólidos inhiben la síntesis proteica uniéndose a la subunidad 50S",
+      "trickType": "Mecanismo de acción",
+      "difficulty": "facil",
+      "sectionId": "estructura-celular"
+    },
+    {
+      "id": 15,
+      "question": "¿Qué molécula esteroide-like se encuentra en la membrana bacteriana",
+      "options": {
+        "a": "Colesterol",
+        "b": "Hopanoides",
+        "c": "Lipoproteínas",
+        "d": "Lipopolisacáridos"
+      },
+      "correctAnswer": "b",
+      "explanation": "Los hopanoides son moléculas similares al colesterol en bacterias",
+      "trickType": "Composición lipídica",
+      "difficulty": "facil",
+      "sectionId": "estructura-celular"
+    },
+    {
+      "id": 16,
+      "question": "¿Qué estructura permite la quimiotaxis en bacterias",
+      "options": {
+        "a": "Pared celular",
+        "b": "Cápsula",
+        "c": "Flagelo",
+        "d": "Nucleoide"
+      },
+      "correctAnswer": "c",
+      "explanation": "El flagelo es responsable del movimiento y quimiotaxis en bacterias",
+      "trickType": "Función motilidad",
+      "difficulty": "facil",
+      "sectionId": "estructura-celular"
+    },
+    {
+      "id": 17,
+      "question": "¿Qué contiene el nucleoide bacteriano",
+      "options": {
+        "a": "Ribosomas",
+        "b": "ARN mensajero",
+        "c": "ADN circular",
+        "d": "Proteínas histonas"
+      },
+      "correctAnswer": "c",
+      "explanation": "El nucleoide contiene ADN circular de doble cadena sin histonas",
+      "trickType": "Material genético",
+      "difficulty": "facil",
+      "sectionId": "estructura-celular"
+    },
+    {
+      "id": 18,
+      "question": "¿Qué estructura bacteriana tiene filamento gancho y cuerpo basal",
+      "options": {
+        "a": "Pili",
+        "b": "Fimbrias",
+        "c": "Cápsula",
+        "d": "Flagelo"
+      },
+      "correctAnswer": "d",
+      "explanation": "El flagelo tiene tres partes: filamento gancho y cuerpo basal",
+      "trickType": "Estructura compleja",
+      "difficulty": "facil",
+      "sectionId": "estructura-celular"
+    },
+    {
+      "id": 19,
+      "question": "¿Qué porcentaje de agua contiene aproximadamente el citoplasma bacteriano",
+      "options": {
+        "a": "50",
+        "b": "60",
+        "c": "70",
+        "d": "80"
+      },
+      "correctAnswer": "d",
+      "explanation": "El citoplasma bacteriano contiene aproximadamente 80 de agua",
+      "trickType": "Composición química",
+      "difficulty": "facil",
+      "sectionId": "estructura-celular"
+    },
+    {
+      "id": 20,
+      "question": "¿Qué antibióticos actúan sobre la subunidad 30S del ribosoma bacteriano",
+      "options": {
+        "a": "Macrólidos",
+        "b": "Cloranfenicol",
+        "c": "Tetraciclinas",
+        "d": "Aminoglucósidos"
+      },
+      "correctAnswer": "d",
+      "explanation": "Los aminoglucósidos como la gentamicina actúan sobre la subunidad 30S",
+      "trickType": "Clasificación de antibióticos",
+      "difficulty": "facil",
+      "sectionId": "estructura-celular"
     }
   ],
   "reproduccion": [
     {
       "id": 1,
       "question": "En condiciones óptimas, ¿cada cuánto tiempo puede dividirse E. coli por fisión binaria?",
-      "options": { "a": "Cada 2 horas", "b": "Cada 20 minutos", "c": "Cada 20 segundos", "d": "Cada 24 horas" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Cada 20 minutos",
+        "b": "Cada 20 segundos",
+        "c": "Cada 24 horas",
+        "d": "Cada 2 horas"
+      },
+      "correctAnswer": "a",
       "explanation": "E. coli puede dividirse cada 20 minutos en condiciones óptimas. Es una confusión común confundir 20 minutos con 20 segundos, o pensar que es más lento.",
       "trickType": "Confusión temporal",
       "difficulty": "fácil"
@@ -381,8 +1186,13 @@
     {
       "id": 2,
       "question": "¿Qué mecanismo de intercambio genético horizontal requiere un bacteriófago?",
-      "options": { "a": "Conjugación", "b": "Transformación", "c": "Transducción", "d": "Fisión binaria" },
-      "correctAnswer": "c",
+      "options": {
+        "a": "Transformación",
+        "b": "Conjugación",
+        "c": "Fisión binaria",
+        "d": "Transducción"
+      },
+      "correctAnswer": "d",
       "explanation": "La transducción es transferencia de ADN mediada por bacteriófagos. La conjugación requiere pilus sexual (A). La transformación capta ADN libre del ambiente (B). La fisión binaria no es intercambio genético (D).",
       "trickType": "Asociación mecanismo-vector",
       "difficulty": "media"
@@ -390,8 +1200,13 @@
     {
       "id": 3,
       "question": "¿Cuál de los siguientes mecanismos de intercambio genético horizontal es el principal responsable de la diseminación de genes de resistencia a antibióticos?",
-      "options": { "a": "Solo la conjugación", "b": "Todos los mecanismos (conjugación, transformación y transducción)", "c": "Solo la transducción", "d": "Solo la transformación" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Todos los mecanismos (conjugación, transformación y transducción)",
+        "b": "Solo la transformación",
+        "c": "Solo la transducción",
+        "d": "Solo la conjugación"
+      },
+      "correctAnswer": "a",
       "explanation": "TODOS los mecanismos de intercambio genético horizontal (conjugación, transformación y transducción) facilitan la diseminación de genes de resistencia a antibióticos. Limitar la respuesta a un solo mecanismo es un error conceptual.",
       "trickType": "Respuesta restrictiva vs. inclusiva",
       "difficulty": "difícil"
@@ -399,7 +1214,12 @@
     {
       "id": 4,
       "question": "Las endosporas son formadas por los géneros:",
-      "options": { "a": "Escherichia y Salmonella", "b": "Bacillus y Clostridium", "c": "Staphylococcus y Streptococcus", "d": "Mycobacterium y Pseudomonas" },
+      "options": {
+        "a": "Mycobacterium y Pseudomonas",
+        "b": "Bacillus y Clostridium",
+        "c": "Escherichia y Salmonella",
+        "d": "Staphylococcus y Streptococcus"
+      },
       "correctAnswer": "b",
       "explanation": "Solo Bacillus y Clostridium forman endosporas. Las otras opciones incluyen géneros que NO forman endosporas. Esto es una pregunta de memorización con distractores de géneros comunes.",
       "trickType": "Asociación de géneros",
@@ -408,8 +1228,13 @@
     {
       "id": 5,
       "question": "¿Qué caracteriza a las biopelículas bacterianas?",
-      "options": { "a": "Son bacterias individuales flotando libremente", "b": "Son comunidades con matriz extracelular de exopolisacáridos con mayor resistencia", "c": "Son endosporas adheridas a superficies", "d": "Son colonias sin ninguna organización" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Son comunidades con matriz extracelular de exopolisacáridos con mayor resistencia",
+        "b": "Son colonias sin ninguna organización",
+        "c": "Son bacterias individuales flotando libremente",
+        "d": "Son endosporas adheridas a superficies"
+      },
+      "correctAnswer": "a",
       "explanation": "Las biopelículas son comunidades estructuradas con matriz de exopolisacáridos que confieren mayor resistencia a antibióticos, desinfectantes y respuesta inmunitaria. No son células libres (A), no son endosporas (C), y tienen organización (D).",
       "trickType": "Confusión biopelícula/endospora",
       "difficulty": "media"
@@ -417,7 +1242,12 @@
     {
       "id": 6,
       "question": "La fisión binaria produce células hijas genéticamente idénticas. Entonces, ¿cómo obtienen las bacterias diversidad genética?",
-      "options": { "a": "Por reproducción sexual", "b": "Por intercambio genético horizontal (conjugación, transformación, transducción)", "c": "Por mutaciones espontáneas únicamente", "d": "No pueden obtener diversidad genética" },
+      "options": {
+        "a": "No pueden obtener diversidad genética",
+        "b": "Por intercambio genético horizontal (conjugación, transformación, transducción)",
+        "c": "Por mutaciones espontáneas únicamente",
+        "d": "Por reproducción sexual"
+      },
       "correctAnswer": "b",
       "explanation": "Las bacterias obtienen diversidad genética mediante intercambio genético horizontal: conjugación, transformación y transducción. Las bacterias NO tienen reproducción sexual (A). Aunque las mutaciones existen (C), el documento enfatiza los mecanismos horizontales como fuente principal de diversidad.",
       "trickType": "Contraste asexual/horizontal",
@@ -426,7 +1256,12 @@
     {
       "id": 7,
       "question": "¿Qué mecanismo de intercambio genético implica la captación de ADN libre del medio ambiente?",
-      "options": { "a": "Conjugación", "b": "Transducción", "c": "Transformación", "d": "Fisión binaria" },
+      "options": {
+        "a": "Conjugación",
+        "b": "Transducción",
+        "c": "Transformación",
+        "d": "Fisión binaria"
+      },
       "correctAnswer": "c",
       "explanation": "La transformación es la captación de ADN libre del ambiente. La conjugación requiere contacto célula-célula (pilus). La transducción requiere bacteriófagos. La fisión binaria no es intercambio genético.",
       "trickType": "Mecanismo sin vector",
@@ -435,8 +1270,13 @@
     {
       "id": 8,
       "question": "¿Por qué las biopelículas son un problema en dispositivos médicos?",
-      "options": { "a": "Porque son fáciles de eliminar con jabón", "b": "Porque confieren mayor resistencia a antibióticos, desinfectantes y respuesta inmunitaria", "c": "Porque son endosporas que germinan", "d": "Porque producen toxinas visibles" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Porque confieren mayor resistencia a antibióticos, desinfectantes y respuesta inmunitaria",
+        "b": "Porque son endosporas que germinan",
+        "c": "Porque son fáciles de eliminar con jabón",
+        "d": "Porque producen toxinas visibles"
+      },
+      "correctAnswer": "a",
       "explanation": "Las biopelículas son problemáticas porque su matriz extracelular confiere mayor resistencia a antibióticos, desinfectantes y respuesta inmunitaria. No son fáciles de eliminar (A), no son endosporas (C), y el problema no son las toxinas visibles (D).",
       "trickType": "Relevancia clínica",
       "difficulty": "media"
@@ -444,8 +1284,13 @@
     {
       "id": 9,
       "question": "Las endosporas pueden permanecer viables durante:",
-      "options": { "a": "Solo horas", "b": "Años o incluso siglos", "c": "Solo días", "d": "Máximo un mes" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Solo días",
+        "b": "Máximo un mes",
+        "c": "Años o incluso siglos",
+        "d": "Solo horas"
+      },
+      "correctAnswer": "c",
       "explanation": "Las endosporas son tan resistentes que pueden permanecer viables durante años o incluso siglos. Esta es una de sus características más notables y distinguibles.",
       "trickType": "Extremo de supervivencia",
       "difficulty": "fácil"
@@ -453,19 +1298,179 @@
     {
       "id": 10,
       "question": "La conjugación bacteriana se realiza mediante:",
-      "options": { "a": "Bacteriófagos", "b": "ADN libre del ambiente", "c": "Pilus sexual entre dos bacterias", "d": "Fisión binaria acelerada" },
-      "correctAnswer": "c",
+      "options": {
+        "a": "Pilus sexual entre dos bacterias",
+        "b": "ADN libre del ambiente",
+        "c": "Bacteriófagos",
+        "d": "Fisión binaria acelerada"
+      },
+      "correctAnswer": "a",
       "explanation": "La conjugación implica transferencia de ADN mediante pilus sexual entre dos bacterias. Los bacteriófagos son de la transducción (A). El ADN libre es de la transformación (B). La fisión binaria no es conjugación (D).",
       "trickType": "Vector de transferencia",
       "difficulty": "fácil"
+    },
+    {
+      "id": 11,
+      "question": "¿Cuál es el método principal de reproducción bacteriana que produce células genéticamente idénticas",
+      "options": {
+        "a": "Transformación",
+        "b": "Transducción",
+        "c": "Fisión binaria",
+        "d": "Conjugación"
+      },
+      "correctAnswer": "c",
+      "explanation": "La fisión binaria es el método más común donde una célula se divide en dos hijas idénticas",
+      "trickType": "diferenciar métodos",
+      "difficulty": "facil",
+      "sectionId": "reproduccion"
+    },
+    {
+      "id": 12,
+      "question": "¿Qué bacteria puede dividirse cada 20 minutos en condiciones óptimas",
+      "options": {
+        "a": "Staphylococcus aureus",
+        "b": "Escherichia coli",
+        "c": "Bacillus subtilis",
+        "d": "Streptococcus pneumoniae"
+      },
+      "correctAnswer": "a",
+      "explanation": "E. coli es conocida por su rápido tiempo de generación de 20 minutos",
+      "trickType": "ejemplo específico",
+      "difficulty": "facil",
+      "sectionId": "reproduccion"
+    },
+    {
+      "id": 13,
+      "question": "¿Qué estructura permite el intercambio directo de ADN entre bacterias",
+      "options": {
+        "a": "Pilus sexual",
+        "b": "Capsula bacteriana",
+        "c": "Flagelo",
+        "d": "Memana externa"
+      },
+      "correctAnswer": "a",
+      "explanation": "El pilus sexual es usado en conjugación para transferir ADN entre bacterias",
+      "trickType": "estructura específica",
+      "difficulty": "facil",
+      "sectionId": "reproduccion"
+    },
+    {
+      "id": 14,
+      "question": "¿Cuál método de intercambio genético implica bacteriófagos",
+      "options": {
+        "a": "Conjugación",
+        "b": "Transducción",
+        "c": "Transformación",
+        "d": "Fisión binaria"
+      },
+      "correctAnswer": "b",
+      "explanation": "La transducción ocurre cuando bacteriófagos transportan ADN entre bacterias",
+      "trickType": "mecanismo específico",
+      "difficulty": "facil",
+      "sectionId": "reproduccion"
+    },
+    {
+      "id": 15,
+      "question": "¿Qué proceso permite a las bacterias incorporar ADN libre del ambiente",
+      "options": {
+        "a": "Conjugación",
+        "b": "Transformación",
+        "c": "Transducción",
+        "d": "Fisión binaria"
+      },
+      "correctAnswer": "b",
+      "explanation": "La transformación es la incorporación de ADN libre del ambiente",
+      "trickType": "proceso específico",
+      "difficulty": "facil",
+      "sectionId": "reproduccion"
+    },
+    {
+      "id": 16,
+      "question": "¿Qué estructura protege a las bacterias en biopelículas",
+      "options": {
+        "a": "Pared celular",
+        "b": "Matriz de exopolisacáridos",
+        "c": "Cápsula",
+        "d": "Memana citoplasmática"
+      },
+      "correctAnswer": "b",
+      "explanation": "La matriz de exopolisacáridos es la base de las biopelículas",
+      "trickType": "composición específica",
+      "difficulty": "facil",
+      "sectionId": "reproduccion"
+    },
+    {
+      "id": 17,
+      "question": "¿Qué tipo de resistencia aumenta en biopelículas",
+      "options": {
+        "a": "Solo a antibióticos",
+        "b": "Solo a desinfectantes",
+        "c": "A múltiples agentes",
+        "d": "Solo a calor"
+      },
+      "correctAnswer": "c",
+      "explanation": "Las biopelículas aumentan resistencia a múltiples agentes",
+      "trickType": "amplia resistencia",
+      "difficulty": "facil",
+      "sectionId": "reproduccion"
+    },
+    {
+      "id": 18,
+      "question": "¿Qué bacteria forma endosporas resistentes",
+      "options": {
+        "a": "E. coli",
+        "b": "Streptococcus",
+        "c": "Pseudomonas",
+        "d": "Bacillus"
+      },
+      "correctAnswer": "d",
+      "explanation": "Bacillus es un género conocido por formar endosporas",
+      "trickType": "género específico",
+      "difficulty": "facil",
+      "sectionId": "reproduccion"
+    },
+    {
+      "id": 19,
+      "question": "¿Qué característica define a las endosporas",
+      "options": {
+        "a": "Resistencia extrema",
+        "b": "Reproducción activa",
+        "c": "Tamaño grande",
+        "d": "Metabolismo alto"
+      },
+      "correctAnswer": "c",
+      "explanation": "Las endosporas son extremadamente resistentes",
+      "trickType": "propiedad clave",
+      "difficulty": "facil",
+      "sectionId": "reproduccion"
+    },
+    {
+      "id": 20,
+      "question": "¿Cuánto tiempo pueden sobrevivir las endosporas",
+      "options": {
+        "a": "Años",
+        "b": "Siglos",
+        "c": "Meses",
+        "d": "Días"
+      },
+      "correctAnswer": "b",
+      "explanation": "Algunas endosporas pueden sobrevivir siglos",
+      "trickType": "duración extrema",
+      "difficulty": "facil",
+      "sectionId": "reproduccion"
     }
   ],
   "virus": [
     {
       "id": 1,
       "question": "¿Por qué se denomina a los virus 'parásitos obligados'?",
-      "options": { "a": "Porque son muy pequeños", "b": "Porque dependen completamente de la maquinaria metabólica de una célula huésped para replicarse", "c": "Porque siempre causan enfermedad", "d": "Porque tienen su propio metabolismo limitado" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Porque tienen su propio metabolismo limitado",
+        "b": "Porque son muy pequeños",
+        "c": "Porque siempre causan enfermedad",
+        "d": "Porque dependen completamente de la maquinaria metabólica de una célula huésped para replicarse"
+      },
+      "correctAnswer": "d",
       "explanation": "Los virus son parásitos obligados porque NO tienen maquinaria enzimática propia (no generan ATP, no sintetizan proteínas, no replican su ADN/ARN solos). La opción D es trampa: los virus NO tienen NINGÚN metabolismo, ni limitado.",
       "trickType": "Confusión 'obligado' vs 'facultativo'",
       "difficulty": "media"
@@ -473,7 +1478,12 @@
     {
       "id": 2,
       "question": "¿Qué es un virión?",
-      "options": { "a": "Un virus dentro de una célula huésped", "b": "Un virus fuera de su célula huésped, compuesto por ácido nucleico y cápside", "c": "Un tipo de bacteria virus-like", "d": "La forma replicativa del virus" },
+      "options": {
+        "a": "Un tipo de bacteria virus-like",
+        "b": "Un virus fuera de su célula huésped, compuesto por ácido nucleico y cápside",
+        "c": "Un virus dentro de una célula huésped",
+        "d": "La forma replicativa del virus"
+      },
       "correctAnswer": "b",
       "explanation": "Un virión es la partícula viral completa fuera de la célula huésped (ácido nucleico + cápside ± envoltura). No es la forma dentro de la célula (A), no es una bacteria (C), y es la forma infecciosa extracelular, no la replicativa intracelular (D).",
       "trickType": "Definición contextual",
@@ -482,7 +1492,12 @@
     {
       "id": 3,
       "question": "¿Qué tamaño tienen los virus en comparación con las bacterias?",
-      "options": { "a": "Son más grandes que las bacterias", "b": "Tienen el mismo tamaño", "c": "Son considerablemente menores (20-300 nm vs 0,5-5 µm)", "d": "Son 100 veces más grandes" },
+      "options": {
+        "a": "Tienen el mismo tamaño",
+        "b": "Son más grandes que las bacterias",
+        "c": "Son considerablemente menores (20-300 nm vs 0,5-5 µm)",
+        "d": "Son 100 veces más grandes"
+      },
       "correctAnswer": "c",
       "explanation": "Los virus (20-300 nm) son considerablemente menores que las bacterias (0,5-5 µm = 500-5000 nm). Se necesita microscopía electrónica para ver virus directamente.",
       "trickType": "Escala relativa",
@@ -491,8 +1506,13 @@
     {
       "id": 4,
       "question": "¿Cómo se replican los virus a diferencia de las células?",
-      "options": { "a": "Por fisión binaria", "b": "Por mitosis", "c": "Se ensamblan a partir de componentes sintetizados por la célula infectada", "d": "Por gemación espontánea" },
-      "correctAnswer": "c",
+      "options": {
+        "a": "Por mitosis",
+        "b": "Por fisión binaria",
+        "c": "Por gemación espontánea",
+        "d": "Se ensamblan a partir de componentes sintetizados por la célula infectada"
+      },
+      "correctAnswer": "d",
       "explanation": "Los virus NO crecen ni se dividen; se ensamblan a partir de componentes sintetizados por la célula infectada. La fisión binaria es de bacterias (A), la mitosis es de eucariotas (B).",
       "trickType": "Mecanismo de replicación único",
       "difficulty": "media"
@@ -500,8 +1520,13 @@
     {
       "id": 5,
       "question": "La especificidad de un virus por su huésped está determinada por:",
-      "options": { "a": "El tamaño del virus", "b": "La interacción entre proteínas virales de superficie y receptores de la célula diana", "c": "La cantidad de ácido nucleico viral", "d": "El color de la cápside" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "La interacción entre proteínas virales de superficie y receptores de la célula diana",
+        "b": "El color de la cápside",
+        "c": "El tamaño del virus",
+        "d": "La cantidad de ácido nucleico viral"
+      },
+      "correctAnswer": "a",
       "explanation": "La especificidad se debe a la interacción entre proteínas de superficie viral y receptores celulares. Esto explica por qué ciertos virus infectan solo un tipo celular o especie. Las otras opciones no son factores determinantes.",
       "trickType": "Mecanismo molecular",
       "difficulty": "media"
@@ -509,8 +1534,13 @@
     {
       "id": 6,
       "question": "¿Cuál afirmación sobre los virus es FALSA?",
-      "options": { "a": "Carecen de metabolismo propio", "b": "No poseen maquinaria para generar ATP", "c": "Tienen un metabolismo reducido pero funcional", "d": "No pueden replicar su material genético de forma independiente" },
-      "correctAnswer": "c",
+      "options": {
+        "a": "No pueden replicar su material genético de forma independiente",
+        "b": "Tienen un metabolismo reducido pero funcional",
+        "c": "No poseen maquinaria para generar ATP",
+        "d": "Carecen de metabolismo propio"
+      },
+      "correctAnswer": "b",
       "explanation": "Los virus NO tienen metabolismo propio en absoluto, ni siquiera reducido. No generan ATP, no sintetizan proteínas, no replican su genoma independientemente. La opción C sugiere un metabolismo mínimo, lo cual es FALSO.",
       "trickType": "Gradación falsa",
       "difficulty": "difícil"
@@ -518,8 +1548,13 @@
     {
       "id": 7,
       "question": "¿Qué estructura puede tener ALGUNOS virus además de la cápside?",
-      "options": { "a": "Pared celular", "b": "Envoltura lipídica derivada de la membrana del huésped", "c": "Ribosomas 70S", "d": "Flagelos" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Flagelos",
+        "b": "Pared celular",
+        "c": "Envoltura lipídica derivada de la membrana del huésped",
+        "d": "Ribosomas 70S"
+      },
+      "correctAnswer": "c",
       "explanation": "Algunos virus tienen envoltura lipídica derivada de la membrana de la célula huésped. Los virus NO tienen pared celular, ribosomas ni flagelos, ya que no son células.",
       "trickType": "Estructura viral vs celular",
       "difficulty": "fácil"
@@ -527,19 +1562,179 @@
     {
       "id": 8,
       "question": "¿Qué tipo de microscopio se necesita para visualizar directamente los virus?",
-      "options": { "a": "Microscopio óptico", "b": "Microscopio electrónico", "c": "Microscopio de fluorescencia", "d": "Lupa estereoscópica" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Microscopio de fluorescencia",
+        "b": "Microscopio óptico",
+        "c": "Microscopio electrónico",
+        "d": "Lupa estereoscópica"
+      },
+      "correctAnswer": "c",
       "explanation": "Los virus (20-300 nm) están por debajo del límite de resolución del microscopio óptico (~200 nm), requiriendo microscopía electrónica para su visualización directa.",
       "trickType": "Límite de resolución",
       "difficulty": "fácil"
+    },
+    {
+      "id": 9,
+      "question": "¿Qué define a los virus como parásitos obligados",
+      "options": {
+        "a": "No pueden replicarse fuera de una célula huésped",
+        "b": "Tienen su propio metabolismo",
+        "c": "Pueden crecer y dividirse como las bacterias",
+        "d": "Son visibles con un microscopio óptico"
+      },
+      "correctAnswer": "a",
+      "explanation": "Los virus carecen de maquinaria metabólica propia y dependen de la célula huésped para replicarse",
+      "trickType": "distractor con metabolismo",
+      "difficulty": "facil",
+      "sectionId": "virus"
+    },
+    {
+      "id": 10,
+      "question": "¿Qué estructura es esencial en todos los virus",
+      "options": {
+        "a": "Memana lipídica",
+        "b": "Cápside",
+        "c": "Enzima transcriptasa inversa",
+        "d": "Ribosoma"
+      },
+      "correctAnswer": "a",
+      "explanation": "La cápside es la proteína que protege el ácido nucleico en todos los viriones",
+      "trickType": "estructura no universal",
+      "difficulty": "facil",
+      "sectionId": "virus"
+    },
+    {
+      "id": 11,
+      "question": "¿Por qué los virus no pueden crecer",
+      "options": {
+        "a": "Carecen de material genético",
+        "b": "No realizan síntesis proteica",
+        "c": "No posecen pared celular",
+        "d": "No tienen ribosomas"
+      },
+      "correctAnswer": "a",
+      "explanation": "Los virus no tienen metabolismo propio ni capacidad para sintetizar proteínas",
+      "trickType": "conflicto con bacterias",
+      "difficulty": "facil",
+      "sectionId": "virus"
+    },
+    {
+      "id": 12,
+      "question": "¿Qué tamaño aproximado tienen los virus",
+      "options": {
+        "a": "1-10 micrómetros",
+        "b": "20-300 nanómetros",
+        "c": "0.1-1 micrómetro",
+        "d": "300-500 nanómetros"
+      },
+      "correctAnswer": "b",
+      "explanation": "Los virus son mucho más pequeños que las bacterias, típicamente entre 20-300 nm",
+      "trickType": "escala incorrecta",
+      "difficulty": "facil",
+      "sectionId": "virus"
+    },
+    {
+      "id": 13,
+      "question": "¿Qué permite la especificidad viral",
+      "options": {
+        "a": "Lipasa celular",
+        "b": "Interacción proteína-receptor",
+        "c": "Memana mitocondrial",
+        "d": "Ribosoma huésped"
+      },
+      "correctAnswer": "b",
+      "explanation": "Las proteínas virales se unen específicamente a receptores celulares",
+      "trickType": "enzima incorrecta",
+      "difficulty": "facil",
+      "sectionId": "virus"
+    },
+    {
+      "id": 14,
+      "question": "¿Cómo se visualizan los virus",
+      "options": {
+        "a": "Microscopía electrónica",
+        "b": "Cultivo bacteriano",
+        "c": "Tinción de Gram",
+        "d": "PCR cuantitativa"
+      },
+      "correctAnswer": "a",
+      "explanation": "Los virus requieren microscopía electrónica por su tamaño diminuto",
+      "trickType": "técnica para bacterias",
+      "difficulty": "facil",
+      "sectionId": "virus"
+    },
+    {
+      "id": 15,
+      "question": "¿Qué ocurre durante la ensamblaje viral",
+      "options": {
+        "a": "Replicación del ADN",
+        "b": "Transcripción del ARN",
+        "c": "Autoensamblaje de componentes",
+        "d": "Fagocitosis celular"
+      },
+      "correctAnswer": "c",
+      "explanation": "Los viriones se ensamblan automáticamente a partir de sus componentes",
+      "trickType": "proceso metabólico",
+      "difficulty": "facil",
+      "sectionId": "virus"
+    },
+    {
+      "id": 16,
+      "question": "¿Qué estructura viral está presente solo en algunos virus",
+      "options": {
+        "a": "Núcleo proteico",
+        "b": "Cápside",
+        "c": "Genoma",
+        "d": "Envoltura lipídica"
+      },
+      "correctAnswer": "a",
+      "explanation": "La envoltura lipídica no está presente en todos los virus",
+      "trickType": "estructura universal",
+      "difficulty": "facil",
+      "sectionId": "virus"
+    },
+    {
+      "id": 17,
+      "question": "¿Qué diferencia clave tienen los virus frente a los organismos vivos",
+      "options": {
+        "a": "Tienen ADN",
+        "b": "No se reproducen sexualmente",
+        "c": "No son células",
+        "d": "Producen enzimas"
+      },
+      "correctAnswer": "d",
+      "explanation": "Los virus no son células y carecen de estructura celular",
+      "trickType": "reproducción asexual",
+      "difficulty": "facil",
+      "sectionId": "virus"
+    },
+    {
+      "id": 18,
+      "question": "¿Qué es un virión",
+      "options": {
+        "a": "Una bacteria infectada",
+        "b": "El genoma viral",
+        "c": "La célula huésped",
+        "d": "Partícula viral completa"
+      },
+      "correctAnswer": "d",
+      "explanation": "El virión es la partícula viral completa con ácido nucleico y cápside",
+      "trickType": "definición parcial",
+      "difficulty": "facil",
+      "sectionId": "virus"
     }
   ],
   "clasificacion-morfologica": [
     {
       "id": 1,
       "question": "¿Cuál es un ejemplo de virus con simetría icosahédrica SIN envoltura?",
-      "options": { "a": "Herpesvirus", "b": "Coronavirus", "c": "Adenovirus", "d": "Virus de la influenza" },
-      "correctAnswer": "c",
+      "options": {
+        "a": "Adenovirus",
+        "b": "Herpesvirus",
+        "c": "Coronavirus",
+        "d": "Virus de la influenza"
+      },
+      "correctAnswer": "a",
       "explanation": "Los adenovirus son icosahédricos sin envoltura. Los herpesvirus son icosahédricos CON envoltura (A). Los coronavirus y el virus de la influenza son helicoidales con envoltura (B, D).",
       "trickType": "Confusión morfología/envoltura",
       "difficulty": "media"
@@ -547,8 +1742,13 @@
     {
       "id": 2,
       "question": "¿Qué virus tiene simetría helicoidal CON envoltura?",
-      "options": { "a": "Poliovirus", "b": "Virus de la influenza", "c": "Parvovirus", "d": "Adenovirus" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Parvovirus",
+        "b": "Poliovirus",
+        "c": "Adenovirus",
+        "d": "Virus de la influenza"
+      },
+      "correctAnswer": "d",
       "explanation": "El virus de la influenza tiene simetría helicoidal con envoltura lipídica. Poliovirus y parvovirus son icosahédricos sin envoltura. Adenovirus es icosahédrico sin envoltura.",
       "trickType": "Combinación simetría/envoltura",
       "difficulty": "media"
@@ -556,8 +1756,13 @@
     {
       "id": 3,
       "question": "¿Por qué los virus con envoltura lipídica son más fáciles de desactivar con detergentes?",
-      "options": { "a": "Porque los detergentes destruyen su ácido nucleico", "b": "Porque la envoltura lipídica es sensible a detergentes que la disrumpen", "c": "Porque la cápside proteica se disuelve en jabón", "d": "Porque son más grandes y más accesibles" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Porque la envoltura lipídica es sensible a detergentes que la disrumpen",
+        "b": "Porque la cápside proteica se disuelve en jabón",
+        "c": "Porque los detergentes destruyen su ácido nucleico",
+        "d": "Porque son más grandes y más accesibles"
+      },
+      "correctAnswer": "a",
       "explanation": "Los detergentes disrumpen la envoltura lipídica, desactivando el virus. El ácido nucleico no es destruido directamente por detergentes (A). La cápside proteica no se disuelve con jabón (C). El tamaño no es la razón (D).",
       "trickType": "Mecanismo de desinfección",
       "difficulty": "media"
@@ -565,8 +1770,13 @@
     {
       "id": 4,
       "question": "¿Qué virus es icosahédrico CON envoltura lipídica?",
-      "options": { "a": "Adenovirus", "b": "Herpesvirus", "c": "Poliovirus", "d": "Virus del mosaico del tabaco" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Poliovirus",
+        "b": "Adenovirus",
+        "c": "Virus del mosaico del tabaco",
+        "d": "Herpesvirus"
+      },
+      "correctAnswer": "d",
       "explanation": "El herpesvirus es icosahédrico con envoltura. Adenovirus y poliovirus son icosahédricos sin envoltura. El TMV es helicoidal sin envoltura.",
       "trickType": "Presencia/ausencia de envoltura",
       "difficulty": "fácil"
@@ -574,8 +1784,13 @@
     {
       "id": 5,
       "question": "Los virus NO envelopados son:",
-      "options": { "a": "Más sensibles a la desecación", "b": "Más resistentes en el ambiente exterior", "c": "Siempre más patógenos", "d": "Exclusivamente de simetría icosahédrica" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Siempre más patógenos",
+        "b": "Más sensibles a la desecación",
+        "c": "Más resistentes en el ambiente exterior",
+        "d": "Exclusivamente de simetría icosahédrica"
+      },
+      "correctAnswer": "c",
       "explanation": "Los virus no envelopados son más resistentes en el ambiente exterior. La opción A describe virus envelopados. La patogenicidad no depende solo de la envoltura (C). Los virus no envelopados pueden ser tanto icosahédricos como helicoidales (D es falsa).",
       "trickType": "Inversión de resistencia",
       "difficulty": "difícil"
@@ -583,7 +1798,12 @@
     {
       "id": 6,
       "question": "¿Cuál organismo es responsable de la clasificación morfológica viral?",
-      "options": { "a": "La OMS", "b": "El Comité Internacional de Taxonomía de Virus (ICTV)", "c": "La CDC", "d": "El Instituto Pasteur" },
+      "options": {
+        "a": "La OMS",
+        "b": "El Comité Internacional de Taxonomía de Virus (ICTV)",
+        "c": "El Instituto Pasteur",
+        "d": "La CDC"
+      },
       "correctAnswer": "b",
       "explanation": "El ICTV es el organismo que reconoce los tipos morfológicos principales de virus. La OMS, CDC e Instituto Pasteur son organizaciones de salud pública, no de taxonomía viral.",
       "trickType": "Confusión organizacional",
@@ -592,8 +1812,13 @@
     {
       "id": 7,
       "question": "¿Cuántos tipos morfológicos principales reconoce el ICTV?",
-      "options": { "a": "Dos", "b": "Tres", "c": "Cuatro", "d": "Ocho" },
-      "correctAnswer": "c",
+      "options": {
+        "a": "Dos",
+        "b": "Cuatro",
+        "c": "Tres",
+        "d": "Ocho"
+      },
+      "correctAnswer": "b",
       "explanation": "El ICTV reconoce cuatro tipos morfológicos principales: icosahédrica sin envoltura, icosahédrica con envoltura, helicoidal sin envoltura, helicoidal con envoltura.",
       "trickType": "Conteo exacto",
       "difficulty": "fácil"
@@ -601,8 +1826,13 @@
     {
       "id": 8,
       "question": "El virus del mosaico del tabaco (TMV) se clasifica morfológicamente como:",
-      "options": { "a": "Icosahédrico sin envoltura", "b": "Helicoidal sin envoltura", "c": "Icosahédrico con envoltura", "d": "Helicoidal con envoltura" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Icosahédrico con envoltura",
+        "b": "Icosahédrico sin envoltura",
+        "c": "Helicoidal sin envoltura",
+        "d": "Helicoidal con envoltura"
+      },
+      "correctAnswer": "c",
       "explanation": "El TMV es helicoidal sin envoltura. Es un ejemplo importante porque la mayoría de los virus helicoidales de animales sí tienen envoltura.",
       "trickType": "Excepción notable",
       "difficulty": "media"
@@ -610,8 +1840,13 @@
     {
       "id": 9,
       "question": "¿Qué implicación práctica tiene la presencia de envoltura lipídica en los virus?",
-      "options": { "a": "Los hace más difíciles de cultivar", "b": "Son más sensibles a detergentes y condiciones ambientales adversas", "c": "Son más resistentes a antibióticos", "d": "Solo infectan bacterias" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Son más sensibles a detergentes y condiciones ambientales adversas",
+        "b": "Son más resistentes a antibióticos",
+        "c": "Los hace más difíciles de cultivar",
+        "d": "Solo infectan bacterias"
+      },
+      "correctAnswer": "a",
       "explanation": "La envoltura lipídica hace a los virus más sensibles a detergentes, desinfectantes, deshidratación y calor. Esto es crucial para las estrategias de desinfección hospitalaria.",
       "trickType": "Relevancia clínica",
       "difficulty": "media"
@@ -619,19 +1854,179 @@
     {
       "id": 10,
       "question": "¿Cuál es un ejemplo de flavivirus (virus icosahédrico con envoltura)?",
-      "options": { "a": "Virus del mosaico del tabaco", "b": "Virus del dengue", "c": "Virus de la influenza", "d": "Rotavirus" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Virus de la influenza",
+        "b": "Rotavirus",
+        "c": "Virus del dengue",
+        "d": "Virus del mosaico del tabaco"
+      },
+      "correctAnswer": "c",
       "explanation": "Los flavivirus (dengue, Zika) son icosahédricos con envoltura. El TMV es helicoidal sin envoltura. La influenza es helicoidal con envoltura. Los rotavirus son de ARN bicatenario.",
       "trickType": "Asociación género-morfología",
       "difficulty": "media"
+    },
+    {
+      "id": 11,
+      "question": "¿Qué tipo de virus es el adenovirus según la clasificación morfológica",
+      "options": {
+        "a": "Icosahédrica sin envoltura",
+        "b": "Icosahédrica con envoltura",
+        "c": "Helicoidal sin envoltura",
+        "d": "Helicoidal con envoltura"
+      },
+      "correctAnswer": "a",
+      "explanation": "El adenovirus es icosahédrico y carece de envoltura viral",
+      "trickType": "Confusión con virus envelopados",
+      "difficulty": "facil",
+      "sectionId": "clasificacion-morfologica"
+    },
+    {
+      "id": 12,
+      "question": "¿Cuál de estos virus NO tiene envoltura",
+      "options": {
+        "a": "Herpesvirus",
+        "b": "Poliovirus",
+        "c": "Influenza",
+        "d": "Coronavirus"
+      },
+      "correctAnswer": "a",
+      "explanation": "El poliovirus es icosahédrico y sin envoltura",
+      "trickType": "Falso positivo común",
+      "difficulty": "facil",
+      "sectionId": "clasificacion-morfologica"
+    },
+    {
+      "id": 13,
+      "question": "¿Qué característica define a los virus icosahédricos sin envoltura",
+      "options": {
+        "a": "Más sensibles a detergentes",
+        "b": "Forma geométrica 20 caras",
+        "c": "Resistencia en ambiente",
+        "d": "Genoma ARN simple cadena"
+      },
+      "correctAnswer": "a",
+      "explanation": "Su resistencia en ambiente es mayor que la de los envelopados",
+      "trickType": "Mezcla de propiedades",
+      "difficulty": "facil",
+      "sectionId": "clasificacion-morfologica"
+    },
+    {
+      "id": 14,
+      "question": "¿Qué virus tiene cápside helicoidal con envoltura",
+      "options": {
+        "a": "TMV",
+        "b": "Influenza",
+        "c": "Adenovirus",
+        "d": "Poliovirus"
+      },
+      "correctAnswer": "b",
+      "explanation": "El influenza tiene estructura helicoidal y envoltura lipídica",
+      "trickType": "Confusión con virus sin envoltura",
+      "difficulty": "facil",
+      "sectionId": "clasificacion-morfologica"
+    },
+    {
+      "id": 15,
+      "question": "¿Por qué los virus envelopados son más sensibles a detergentes",
+      "options": {
+        "a": "Por su genoma ARN",
+        "b": "Por su envoltura lipídica",
+        "c": "Por su forma icosahédrica",
+        "d": "Por su tamaño pequeño"
+      },
+      "correctAnswer": "b",
+      "explanation": "Los detergentes disuelven la envoltura lipídica",
+      "trickType": "Asociación incorrecta",
+      "difficulty": "facil",
+      "sectionId": "clasificacion-morfologica"
+    },
+    {
+      "id": 16,
+      "question": "¿Qué tipo de virus es el TMV",
+      "options": {
+        "a": "Icosahédrica con envoltura",
+        "b": "Helicoidal con envoltura",
+        "c": "Helicoidal sin envoltura",
+        "d": "Icosahédrica sin envoltura"
+      },
+      "correctAnswer": "c",
+      "explanation": "El TMV tiene estructura helicoidal y carece de envoltura",
+      "trickType": "Confusión con virus icosahédricos",
+      "difficulty": "facil",
+      "sectionId": "clasificacion-morfologica"
+    },
+    {
+      "id": 17,
+      "question": "¿Qué virus es icosahédrico con envoltura",
+      "options": {
+        "a": "Parvovirus",
+        "b": "Rabia",
+        "c": "Herpesvirus",
+        "d": "TMV"
+      },
+      "correctAnswer": "c",
+      "explanation": "El herpesvirus es icosahédrico y tiene envoltura",
+      "trickType": "Falso negativo común",
+      "difficulty": "facil",
+      "sectionId": "clasificacion-morfologica"
+    },
+    {
+      "id": 18,
+      "question": "¿Qué virus tiene mayor resistencia en ambiente",
+      "options": {
+        "a": "Influenza",
+        "b": "Coronavirus",
+        "c": "Flavivirus",
+        "d": "Poliovirus"
+      },
+      "correctAnswer": "d",
+      "explanation": "El poliovirus es no envelopado por lo que es más resistente",
+      "trickType": "Confusión con envelopados",
+      "difficulty": "facil",
+      "sectionId": "clasificacion-morfologica"
+    },
+    {
+      "id": 19,
+      "question": "¿Qué virus es helicoidal con envoltura y causa rabia",
+      "options": {
+        "a": "Herpesvirus",
+        "b": "TMV",
+        "c": "Rabia",
+        "d": "Adenovirus"
+      },
+      "correctAnswer": "c",
+      "explanation": "El virus de la rabia tiene estructura helicoidal y envoltura",
+      "trickType": "Asociación incorrecta",
+      "difficulty": "facil",
+      "sectionId": "clasificacion-morfologica"
+    },
+    {
+      "id": 20,
+      "question": "¿Qué virus es icosahédrico sin envoltura y causa parvovirus",
+      "options": {
+        "a": "Flavivirus",
+        "b": "Influenza",
+        "c": "TMV",
+        "d": "Parvovirus"
+      },
+      "correctAnswer": "d",
+      "explanation": "El parvovirus es icosahédrico y carece de envoltura",
+      "trickType": "Confusión con otros tipos",
+      "difficulty": "facil",
+      "sectionId": "clasificacion-morfologica"
     }
   ],
   "clasificacion-acido-nucleico": [
     {
       "id": 1,
       "question": "¿Qué enzima única poseen los retrovirus?",
-      "options": { "a": "ADN polimerasa", "b": "ARN polimerasa", "c": "Transcriptasa inversa", "d": "Ligasa" },
-      "correctAnswer": "c",
+      "options": {
+        "a": "ARN polimerasa",
+        "b": "Transcriptasa inversa",
+        "c": "Ligasa",
+        "d": "ADN polimerasa"
+      },
+      "correctAnswer": "b",
       "explanation": "La transcriptasa inversa es la enzima única de los retrovirus que convierte ARN en ADN proviral. La ADN polimerasa y ARN polimerasa no son únicas de retrovirus. La ligasa une fragmentos de ADN.",
       "trickType": "Enzima exclusiva",
       "difficulty": "fácil"
@@ -639,8 +2034,13 @@
     {
       "id": 2,
       "question": "¿Por qué los virus de ARN tienen mayor tasa de mutación que los de ADN?",
-      "options": { "a": "Porque el ARN es más inestable químicamente", "b": "Porque las ARN polimerasas virales carecen de capacidad correctora", "c": "Porque tienen más genoma", "d": "Porque se replican más rápido" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Porque el ARN es más inestable químicamente",
+        "b": "Porque se replican más rápido",
+        "c": "Porque tienen más genoma",
+        "d": "Porque las ARN polimerasas virales carecen de capacidad correctora"
+      },
+      "correctAnswer": "d",
       "explanation": "Las ARN polimerasas virales carecen de capacidad correctora (proofreading), lo que genera más errores durante la replicación. La inestabilidad química del ARN (A) contribuye pero no es la razón principal según el documento.",
       "trickType": "Mecanismo molecular",
       "difficulty": "difícil"
@@ -648,7 +2048,12 @@
     {
       "id": 3,
       "question": "¿Qué tipo de virus de ARN puede ser traducido inmediatamente por los ribosomas del huésped?",
-      "options": { "a": "Virus de ARN monocatenario negativo (-ssARN)", "b": "Virus de ARN monocatenario positivo (+ssARN)", "c": "Virus de ARN bicatenario (dsARN)", "d": "Retrovirus" },
+      "options": {
+        "a": "Virus de ARN bicatenario (dsARN)",
+        "b": "Virus de ARN monocatenario positivo (+ssARN)",
+        "c": "Virus de ARN monocatenario negativo (-ssARN)",
+        "d": "Retrovirus"
+      },
       "correctAnswer": "b",
       "explanation": "Los (+)ssARN funcionan directamente como ARN mensajero y pueden ser traducidos inmediatamente. Los (-)ssARN necesitan ser transcritos a ARN complementario primero. Los dsARN y retrovirus tienen mecanismos diferentes.",
       "trickType": "Polaridad del genoma",
@@ -657,8 +2062,13 @@
     {
       "id": 4,
       "question": "¿Qué virus es un ejemplo de dsARN (ARN bicatenario)?",
-      "options": { "a": "Coronavirus", "b": "Virus de la influenza", "c": "Rotavirus", "d": "Herpesvirus" },
-      "correctAnswer": "c",
+      "options": {
+        "a": "Herpesvirus",
+        "b": "Coronavirus",
+        "c": "Virus de la influenza",
+        "d": "Rotavirus"
+      },
+      "correctAnswer": "d",
       "explanation": "Los rotavirus son virus de ARN bicatenario (dsARN). Coronavirus es (+)ssARN. Influenza es (-)ssARN. Herpesvirus es virus de ADN (dsADN).",
       "trickType": "Clasificación por genoma",
       "difficulty": "media"
@@ -666,8 +2076,13 @@
     {
       "id": 5,
       "question": "El VIH pertenece a qué categoría de virus?",
-      "options": { "a": "Virus de ADN bicatenario", "b": "Virus de ARN monocatenario positivo", "c": "Retrovirus", "d": "Virus de ARN bicatenario" },
-      "correctAnswer": "c",
+      "options": {
+        "a": "Virus de ARN monocatenario positivo",
+        "b": "Virus de ARN bicatenario",
+        "c": "Virus de ADN bicatenario",
+        "d": "Retrovirus"
+      },
+      "correctAnswer": "d",
       "explanation": "El VIH es un retrovirus. Aunque tiene ARN monocatenario, se clasifica como retrovirus porque usa transcriptasa inversa para convertir su ARN en ADN proviral. No es simplemente un (+)ssARN.",
       "trickType": "Subclasificación específica",
       "difficulty": "difícil"
@@ -675,8 +2090,13 @@
     {
       "id": 6,
       "question": "¿Qué virus de ARN necesita ser transcrito a ARN complementario antes de poder ser traducido?",
-      "options": { "a": "Coronavirus (SARS-CoV-2)", "b": "Virus de la poliomielitis", "c": "Virus del Ébola", "d": "Virus de la hepatitis C" },
-      "correctAnswer": "c",
+      "options": {
+        "a": "Virus de la hepatitis C",
+        "b": "Virus del Ébola",
+        "c": "Virus de la poliomielitis",
+        "d": "Coronavirus (SARS-CoV-2)"
+      },
+      "correctAnswer": "b",
       "explanation": "El virus del Ébola es (-)ssARN y necesita ser transcrito a ARN complementario positivo por ARN polimerasa viral antes de traducirse. Coronavirus, poliovirus y hepatitis C son (+)ssARN que se traducen directamente.",
       "trickType": "Polaridad negativa",
       "difficulty": "difícil"
@@ -684,7 +2104,12 @@
     {
       "id": 7,
       "question": "¿Por qué la infección por VIH es difícil de erradicar?",
-      "options": { "a": "Porque el VIH es muy grande", "b": "Porque el ADN proviral se integra en el genoma del huésped permitiendo latencia viral", "c": "Porque el VIH tiene una cápside resistente", "d": "Porque no se puede diagnosticar" },
+      "options": {
+        "a": "Porque el VIH es muy grande",
+        "b": "Porque el ADN proviral se integra en el genoma del huésped permitiendo latencia viral",
+        "c": "Porque no se puede diagnosticar",
+        "d": "Porque el VIH tiene una cápside resistente"
+      },
       "correctAnswer": "b",
       "explanation": "La integración del provirus en el genoma del huésped permite la latencia viral, haciendo difícil la erradicación. El tamaño (A), la cápside (C) y el diagnóstico (D) no son los factores principales.",
       "trickType": "Mecanismo de latencia",
@@ -693,8 +2118,13 @@
     {
       "id": 8,
       "question": "¿Cuál es un ejemplo de virus de ADN monocatenario (ssADN)?",
-      "options": { "a": "Herpesvirus", "b": "Parvovirus B19", "c": "Adenovirus", "d": "Poxvirus" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Parvovirus B19",
+        "b": "Adenovirus",
+        "c": "Herpesvirus",
+        "d": "Poxvirus"
+      },
+      "correctAnswer": "a",
       "explanation": "Los parvovirus (como B19, agente del eritema infeccioso) son ssADN. Herpesvirus, adenovirus y poxvirus son dsADN.",
       "trickType": "Cadena simple vs doble",
       "difficulty": "media"
@@ -702,7 +2132,12 @@
     {
       "id": 9,
       "question": "¿Qué virus deben convertir su ADN de cadena simple en doble cadena antes de la replicación?",
-      "options": { "a": "Los herpesvirus", "b": "Los adenovirus", "c": "Los parvovirus", "d": "Los retrovirus" },
+      "options": {
+        "a": "Los adenovirus",
+        "b": "Los retrovirus",
+        "c": "Los parvovirus",
+        "d": "Los herpesvirus"
+      },
       "correctAnswer": "c",
       "explanation": "Los parvovirus (ssADN) deben convertir su ADN de cadena simple en doble cadena antes de replicarse. Los herpesvirus y adenovirus ya son dsADN. Los retrovirus convierten ARN en ADN, no ADN ss en ds.",
       "trickType": "Paso previo a replicación",
@@ -711,11 +2146,166 @@
     {
       "id": 10,
       "question": "¿Por qué los virus de ADN son generalmente más estables genéticamente que los de ARN?",
-      "options": { "a": "Porque el ADN es más grande que el ARN", "b": "Por la mayor fidelidad de las ADN polimerasas", "c": "Porque tienen envoltura lipídica", "d": "Porque infectan menos células" },
-      "correctAnswer": "b",
+      "options": {
+        "a": "Porque tienen envoltura lipídica",
+        "b": "Porque el ADN es más grande que el ARN",
+        "c": "Porque infectan menos células",
+        "d": "Por la mayor fidelidad de las ADN polimerasas"
+      },
+      "correctAnswer": "d",
       "explanation": "Las ADN polimerasas tienen mayor fidelidad (menos errores) que las ARN polimerasas, lo que hace que los virus de ADN sean más estables genéticamente. El tamaño (A), la envoltura (C) y el rango de infección (D) no son relevantes para la estabilidad genética.",
       "trickType": "Fidelidad enzimática",
       "difficulty": "media"
+    },
+    {
+      "id": 11,
+      "question": "¿Cuál de los siguientes virus es clasificado como un virus de ADN de cadena simple (ssADN) y es notable por su alta estabilidad genética a pesar de su pequeño genoma?",
+      "options": {
+        "a": "Herpesvirus simple tipo 1 (HSV-1)",
+        "b": "Virus del papiloma humano (VPH)",
+        "c": "Parvovirus B19",
+        "d": "Adenovirus"
+      },
+      "correctAnswer": "c",
+      "explanation": "El Parvovirus B19 es un virus ssADN y es notable por su extrema estabilidad genética, una característica compartida con otros virus ADN, pero a diferencia de los virus de ARN, no tiene una tasa de mutación intrínsecamente alta. Los otros virus son dsADN.",
+      "trickType": "Concepto erróneo común sobre estabilidad",
+      "difficulty": "media",
+      "sectionId": "clasificacion-acido-nucleico"
+    },
+    {
+      "id": 12,
+      "question": "Un virus que infecta una bacteria y utiliza su maquinaria para replicar su genoma de ARN de cadena doble (dsARN) se clasificaría correctamente en la categoría de:",
+      "options": {
+        "a": "Retrovirus",
+        "b": "Virus de ARN de cadena simple positiva (+)ssARN",
+        "c": "Virus de ADN de cadena doble (dsADN)",
+        "d": "Virus de ARN de cadena doble (dsARN)"
+      },
+      "correctAnswer": "d",
+      "explanation": "Los bacteriófagos son virus que infectan bacterias. Si un bacteriófago tiene un genoma de dsARN, se clasifica como un virus de ARN de cadena doble (dsARN). Los retrovirus convierten su ARN en ADN, los (+)ssARN se replican a través de un intermediario de cadena negativa, y los dsADN tienen un genoma de ADN.",
+      "trickType": "Confusión por el huésped",
+      "difficulty": "dificil",
+      "sectionId": "clasificacion-acido-nucleico"
+    },
+    {
+      "id": 13,
+      "question": "El VIH es un retrovirus. ¿Cuál de las siguientes afirmaciones describe el proceso de su ciclo replicativo de la manera más precisa y completa?",
+      "options": {
+        "a": "Su genoma de ADN se transcribe directamente en ARNm para la síntesis de proteínas virales.",
+        "b": "Su genoma de ARN de cadena simple positiva se traduce directamente en las proteínas estructurales del virus.",
+        "c": "Utiliza una transcriptasa inversa para convertir su genoma de ARN en una copia de ADN proviral, que se integra al genoma del huésped.",
+        "d": "Su genoma de ARN de cadena doble se replica mediante una ARN polimerasa dependiente de ARN para producir nuevas partículas virales."
+      },
+      "correctAnswer": "c",
+      "explanation": "La definición de un retrovirus es que contiene una transcriptasa inversa que convierte su genoma de ARN en ADN. Este ADN proviral luego se integra al genoma de la célula huésped para ser transcripto por la maquinaria celular. La opción a describe un virus ADN, la b un (+)ssARN y la d un dsARN.",
+      "trickType": "Falta de precisión en el proceso",
+      "difficulty": "media",
+      "sectionId": "clasificacion-acido-nucleico"
+    },
+    {
+      "id": 14,
+      "question": "El Rotavirus es la principal causa de gastroenteritis grave en niños pequeños. ¿Cuál es la clasificación correcta de su material genético?",
+      "options": {
+        "a": "ADN de cadena simple (ssADN)",
+        "b": "ARN de cadena simple positiva (+)ssARN",
+        "c": "ARN de cadena simple negativa (-)ssARN",
+        "d": "ARN de cadena doble (dsARN)"
+      },
+      "correctAnswer": "d",
+      "explanation": "El Rotavirus pertenece a la familia Reoviridae y posee un genoma segmentado de ARN de cadena doble (dsARN). Esta es una característica clave que lo diferencia de la mayoría de los virus gastrointestinales, que son de ARN de cadena simple.",
+      "trickType": "Asociación incorrecta con otros virus entéricos",
+      "difficulty": "facil",
+      "sectionId": "clasificacion-acido-nucleico"
+    },
+    {
+      "id": 15,
+      "question": "Un virus descubierto recientemente en murciélagos tiene un genoma de ARN de cadena simple negativa (-)ssARN. ¿Qué enzima viral es absolutamente necesaria para que este virus pueda replicar su genoma y producir proteínas en una célula huésped?",
+      "options": {
+        "a": "Transcriptasa inversa",
+        "b": "ARN polimerasa dependiente de ADN",
+        "c": "ARN polimerasa dependiente de ARN (ARN-Rnasa)",
+        "d": "Integrasa"
+      },
+      "correctAnswer": "c",
+      "explanation": "Los virus de (-)ssARN, como el virus de la influenza, no son infecciosos por sí solos. Su genoma no puede ser traducido directamente. Necesitan una ARN polimerasa dependiente de ARN (ARN-Rnasa) para sintetizar una copia de ARN de cadena positiva (+)ssARN a partir de su genoma negativo, la cual sí puede ser traducida.",
+      "trickType": "Asociación de enzimas con tipos de virus incorrecta",
+      "difficulty": "media",
+      "sectionId": "clasificacion-acido-nucleico"
+    },
+    {
+      "id": 16,
+      "question": "¿Cuál de los siguientes virus se caracteriza por tener un genoma de ADN de cadena doble (dsADN), ser muy estable genéticamente y establecer una infección latente en las neuronas del huésped?",
+      "options": {
+        "a": "Coronavirus SARS-CoV-2",
+        "b": "Virus de la Varicela-Zóster (VZV)",
+        "c": "Virus de la Influenza",
+        "d": "Virus del Papiloma Humano (VPH)"
+      },
+      "correctAnswer": "b",
+      "explanation": "El Virus de la Varicela-Zóster (VZV) es un herpesvirus (familia Herpesviridae), todos los cuales tienen genomas de dsADN. Son genéticamente estables y son conocidos por su capacidad de establecer infecciones latentes en células nerviosas. Los otros virus son de ARN.",
+      "trickType": "Confusión entre virus de ADN y ARN con patologías similares",
+      "difficulty": "facil",
+      "sectionId": "clasificacion-acido-nucleico"
+    },
+    {
+      "id": 17,
+      "question": "El genoma de un retrovirus como el VIH es ARN. Sin embargo, una de sus enzimas clave es la transcriptasa inversa. ¿Cuál es la función principal de esta enzima?",
+      "options": {
+        "a": "Transcribir el genoma de ADN proviral en ARNm para la síntesis de proteínas.",
+        "b": "Convertir el genoma de ARN viral en una copia de ADN complementario.",
+        "c": "Traducir el genoma de ARN viral directamente en poliproteínas virales.",
+        "d": "Integrar el genoma de ADN viral en el cromosoma del huésped."
+      },
+      "correctAnswer": "b",
+      "explanation": "La función definitoria de la transcriptasa inversa en los retrovirus es la síntesis de ADN a partir de una plantilla de ARN. La opción a describe la función de la ARN polimerasa II celular (o viral en algunos casos). La opción c describe la traducción de ARN, y la d describe la función de la integrasa.",
+      "trickType": "Confusión entre funciones de enzimas virales",
+      "difficulty": "media",
+      "sectionId": "clasificacion-acido-nucleico"
+    },
+    {
+      "id": 18,
+      "question": "Un investigador está estudiando un virus de reciente aparición que causa una enfermedad respiratoria. El análisis genómico revela que su material genético es ARN de cadena simple positiva (+)ssARN. ¿Qué estrategia de replicación es más probable que utilice este virus?",
+      "options": {
+        "a": "Su genoma de ARN debe ser transcriptas a ARN de cadena negativa por una ARN polimerasa dependiente de ADN antes de poder ser traducido y replicado.",
+        "b": "Su ARN genómico es traducido por una transcriptasa inversa para crear un ADN intermediario, que luego se replica.",
+        "c": "Su ARN genómico actúa directamente como ARNm y es traducido por los ribosomas del huésped. Luego, una ARN polimerasa dependiente de ARN viral sintetiza nuevas copias del genoma.",
+        "d": "Su genoma de ARN es extremadamente estable y no requiere de ninguna enzima viral adicional para la replicación dentro de la célula huésped."
+      },
+      "correctAnswer": "c",
+      "explanation": "Los virus de (+)ssARN, como el coronavirus o el poliovirus, tienen la ventaja de que su genoma puede ser leído directamente por la maquinaria de traducción de la célula huésped. La opción b describe un retrovirus, la c un virus de (-)ssARN y la d es incorrecta, ya que todos los virus requieren enzimas virales para la replicación.",
+      "trickType": "Confusión sobre la estrategia de replicación de (+)ssARN",
+      "difficulty": "media",
+      "sectionId": "clasificacion-acido-nucleico"
+    },
+    {
+      "id": 19,
+      "question": "¿Cuál de los siguientes pares de virus está clasificado correctamente según su tipo de material genético y su principal mecanismo de replicación?",
+      "options": {
+        "a": "Ébola (-)ssARN y Poliovirus (+)ssARN",
+        "b": "Influenza (dsARN) y VIH (dsADN)",
+        "c": "Herpesvirus (ssADN) y Retrovirus (ssARN)",
+        "d": "Poxvirus (dsADN) y Coronavirus (+)ssARN"
+      },
+      "correctAnswer": "d",
+      "explanation": "El Poxvirus (como la viruela) es un virus de dsADN. El Coronavirus es un virus de (+)ssARN. La opción a es incorrecta porque el Ébola es (-)ssARN y el Poliovirus es (+)ssARN, pero la pregunta es sobre el par. La opción b es incorrecta porque la Influenza es (-)ssARN y el VIH es retroviral (ARN). La opción c es incorrecta porque los Herpesvirus son dsADN.",
+      "trickType": "Pares de virus con clasificaciones incorrectas",
+      "difficulty": "dificil",
+      "sectionId": "clasificacion-acido-nucleico"
+    },
+    {
+      "id": 20,
+      "question": "El virus del papiloma humano (VPH) es un patógeno humano común. ¿Cómo se clasifica su genoma de acuerdo con la nomenclatura estándar de virología?",
+      "options": {
+        "a": "ARN de cadena doble (dsARN)",
+        "b": "ADN de cadena simple (ssADN)",
+        "c": "ARN de cadena simple positiva (+)ssARN",
+        "d": "ARN de cadena simple negativa (-)ssARN"
+      },
+      "correctAnswer": "b",
+      "explanation": "El Virus del Papiloma Humano (VPH) pertenece a la familia Papillomaviridae, cuyos miembros tienen genomas de ADN bicatenario (dsADN). Sin embargo, su genoma está organizado de manera que una de las hebras es predominantemente transcrita, lo que a veces puede causar confusiones, pero la clasificación es definitivamente de ADN.",
+      "trickType": "Confusión por la naturaleza de la transcripción",
+      "difficulty": "facil",
+      "sectionId": "clasificacion-acido-nucleico"
     }
   ]
 }

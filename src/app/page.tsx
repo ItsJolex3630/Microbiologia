@@ -926,14 +926,13 @@ function StudyView() {
   const setIsStudyEnhanced = useAppStore((s) => s.setIsStudyEnhanced);
   const setTestSectionId = useAppStore((s) => s.setTestSectionId);
 
-  const handleSelectSection = useCallback((sectionId: string) => {
-    // Navigate immediately with fallback data
+  const handleSelectSection = useCallback(async (sectionId: string) => {
     const section = DOCUMENT_SECTIONS.find(s => s.id === sectionId);
     if (!section) return;
 
     setCurrentSectionId(sectionId);
 
-    // Create fallback study data from raw content
+    // Create immediate fallback from raw content so the page shows something instantly
     const fallbackData = {
       title: section.title,
       summary: section.content.substring(0, 200) + '...',
@@ -949,26 +948,25 @@ function StudyView() {
     setIsStudyEnhanced(false);
     setView('study-section');
 
-    // Fetch AI-enhanced data in the background
+    // Fetch from API (returns pre-generated content immediately, or LLM if available)
     setIsGeneratingStudy(true);
-    fetch('/api/generate-study', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ sectionId }),
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.title) {
-          setStudyData(data);
-          setIsStudyEnhanced(true);
-        }
-      })
-      .catch(error => {
-        console.error('Error generating study content:', error);
-      })
-      .finally(() => {
-        setIsGeneratingStudy(false);
+    try {
+      const res = await fetch('/api/generate-study', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sectionId }),
       });
+      const data = await res.json();
+      if (data.title) {
+        setStudyData(data);
+        setIsStudyEnhanced(true);
+      }
+    } catch (error) {
+      console.error('Error fetching study content:', error);
+      // Fallback data is already set, so the user can still study
+    } finally {
+      setIsGeneratingStudy(false);
+    }
   }, [setCurrentSectionId, setStudyData, setIsStudyEnhanced, setIsGeneratingStudy, setView]);
 
   const handleSectionTest = useCallback((e: React.MouseEvent, sectionId: string) => {
@@ -1121,7 +1119,7 @@ function StudySectionView() {
         </Button>
 
         {/* AI Enhancement Banner */}
-        {!isStudyEnhanced && (
+        {!isStudyEnhanced && isGeneratingStudy && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -1134,6 +1132,18 @@ function StudySectionView() {
             <p className="text-xs text-teal-600 dark:text-teal-400 mt-1">
               El contenido se actualizará automáticamente con explicaciones mejoradas
             </p>
+          </motion.div>
+        )}
+        {isStudyEnhanced && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-4 p-3 rounded-lg bg-emerald-50 border border-emerald-200 dark:bg-emerald-950 dark:border-emerald-800"
+          >
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-emerald-500" />
+              <span className="text-sm text-emerald-700 dark:text-emerald-300">Contenido mejorado disponible</span>
+            </div>
           </motion.div>
         )}
 

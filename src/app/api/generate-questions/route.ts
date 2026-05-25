@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import ZAI from 'z-ai-web-dev-sdk';
-import { FULL_DOCUMENT_TEXT, DOCUMENT_SECTIONS } from '@/lib/document-content';
+import { DOCUMENT_SECTIONS, FULL_DOCUMENT_TEXT } from '@/lib/document-content';
+import preGeneratedQuestions from '@/lib/pre-generated-questions.json';
 
-// Increase timeout for this API route
-export const maxDuration = 120;
+export const maxDuration = 60;
 
 interface GeneratedQuestion {
   id: number;
@@ -13,6 +13,7 @@ interface GeneratedQuestion {
   explanation: string;
   trickType: string;
   difficulty: string;
+  sectionId?: string;
 }
 
 const SYSTEM_PROMPT = `Eres un profesor experto en Microbiología y Virología que crea preguntas de examen extremadamente desafiantes y tramposas. Tu objetivo es hacer que el estudiante DUBE de sus conocimientos.
@@ -97,9 +98,7 @@ function tryParseJSON(text: string): GeneratedQuestion[] {
     } catch {
       // Try to fix common JSON issues
       let fixed = jsonMatch[0];
-      // Remove trailing commas before } or ]
       fixed = fixed.replace(/,\s*([}\]])/g, '$1');
-      // Fix unquoted property names
       fixed = fixed.replace(/(\w+)\s*:/g, '"$1":');
       try {
         const parsed = JSON.parse(fixed);
@@ -132,52 +131,100 @@ function tryParseJSON(text: string): GeneratedQuestion[] {
   return [];
 }
 
-async function generateBatch(
+/**
+ * Get questions from pre-generated pool (works on Vercel without LLM)
+ */
+function getPreGeneratedQuestions(count: number, sectionId?: string | null): GeneratedQuestion[] {
+  const pool = sectionId
+    ? (preGeneratedQuestions as Record<string, GeneratedQuestion[]>)[sectionId] || []
+    : Object.values(preGeneratedQuestions).flat();
+
+  // Shuffle and take the requested count
+  const shuffled = [...pool].sort(() => Math.random() - 0.5);
+  const selected = shuffled.slice(0, Math.min(count, shuffled.length));
+
+  // Re-index
+  return selected.map((q, idx) => ({
+    ...q,
+    id: idx + 1,
+  }));
+}
+
+/**
+ * Try to generate questions using the LLM (only works in sandbox/local with z-ai-sdk)
+ * Has a 12-second timeout to fall back to pre-generated questions quickly
+ */
+async function tryGenerateWithLLM(
   count: number,
   batchNumber: number,
   batchSize: number,
   existingQuestionsCount: number,
   sectionId?: string | null
 ): Promise<GeneratedQuestion[]> {
-  const zai = await ZAI.create();
+  const LLM_TIMEOUT_MS = 12000; // 12 seconds max for LLM call
 
-  let topicHint: string;
-  if (sectionId) {
-    const sectionHint = getSectionHint(sectionId);
-    topicHint = sectionHint || topicHints[batchNumber % topicHints.length];
-  } else {
-    topicHint = topicHints[batchNumber % topicHints.length];
-  }
+  try {
+    const zai = await Promise.race([
+      ZAI.create(),
+      new Promise<never>((_, reject) =>
+        setTimeout(() => reject(new Error('LLM init timeout')), 5000)
+      ),
+    ]);
 
-  const completion = await zai.chat.completions.create({
-    messages: [
-      {
-        role: 'assistant',
-        content: SYSTEM_PROMPT,
-      },
-      {
-        role: 'user',
-        content: `Basándote en el siguiente documento de Microbiología y Virología, genera exactamente ${batchSize} preguntas de opción múltiple desafiantes.
+    let topicHint: string;
+    if (sectionId) {
+      const sectionHint = getSectionHint(sectionId);
+      topicHint = sectionHint || topicHints[batchNumber % topicHints.length];
+    } else {
+      topicHint = topicHints[batchNumber % topicHints.length];
+    }
+
+    // Only send the relevant section content instead of the full document
+    let documentContent = FULL_DOCUMENT_TEXT;
+    if (sectionId) {
+      const section = DOCUMENT_SECTIONS.find(s => s.id === sectionId);
+      if (section) {
+        documentContent = `${section.title}\n\n${section.content}`;
+      }
+    }
+
+    const completion = await Promise.race([
+      zai.chat.completions.create({
+        messages: [
+          {
+            role: 'assistant',
+            content: SYSTEM_PROMPT,
+          },
+          {
+            role: 'user',
+            content: `Basándote en el siguiente documento de Microbiología y Virología, genera exactamente ${batchSize} preguntas de opción múltiple desafiantes.
 
 ${topicHint}
 
 DOCUMENTO:
-${FULL_DOCUMENT_TEXT}
+${documentContent}
 
 Genera ${batchSize} preguntas tramposas y desafiantes. Los IDs deben empezar desde ${existingQuestionsCount + 1}. Responde SOLO con JSON.`,
-      },
-    ],
-    thinking: { type: 'disabled' },
-  });
+          },
+        ],
+        thinking: { type: 'disabled' },
+      }),
+      new Promise<never>((_, reject) =>
+        setTimeout(() => reject(new Error('LLM completion timeout')), LLM_TIMEOUT_MS)
+      ),
+    ]);
 
-  const responseText = completion.choices[0]?.message?.content || '';
-  const questions = tryParseJSON(responseText);
+    const responseText = completion.choices[0]?.message?.content || '';
+    const questions = tryParseJSON(responseText);
 
-  // Re-index questions regardless of what IDs the LLM assigned
-  return questions.map((q, idx) => ({
-    ...q,
-    id: existingQuestionsCount + idx + 1,
-  }));
+    return questions.map((q, idx) => ({
+      ...q,
+      id: existingQuestionsCount + idx + 1,
+    }));
+  } catch {
+    // LLM not available (Vercel deployment, no config file, etc.)
+    return [];
+  }
 }
 
 export async function POST(request: NextRequest) {
@@ -186,16 +233,29 @@ export async function POST(request: NextRequest) {
 
     // Batch mode - generate a single batch
     if (batch !== undefined && batchSize !== undefined) {
-      const questions = await generateBatch(count, batch, batchSize, batch * batchSize, sectionId);
-      
-      if (questions.length === 0) {
-        return NextResponse.json(
-          { error: 'No se pudieron generar preguntas en este lote', questions: [] },
-          { status: 500 }
-        );
+      const batchNum = batch as number;
+      const batchSz = batchSize as number;
+
+      // Try LLM first
+      const llmQuestions = await tryGenerateWithLLM(count, batchNum, batchSz, batchNum * batchSz, sectionId);
+
+      if (llmQuestions.length > 0) {
+        return NextResponse.json({
+          questions: llmQuestions,
+          batch: batchNum,
+          totalRequested: count,
+          source: 'llm'
+        });
       }
-      
-      return NextResponse.json({ questions, batch, totalRequested: count });
+
+      // Fallback to pre-generated questions
+      const preGenQuestions = getPreGeneratedQuestions(batchSz, sectionId);
+      return NextResponse.json({
+        questions: preGenQuestions,
+        batch: batchNum,
+        totalRequested: count,
+        source: 'pre-generated'
+      });
     }
 
     // Single request mode (for small counts <= 5)
@@ -207,11 +267,30 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const questions = await generateBatch(requestedCount, 0, requestedCount, 0, sectionId);
-    const shuffled = [...questions].sort(() => Math.random() - 0.5);
-    return NextResponse.json({ questions: shuffled });
+    // Try LLM first
+    const llmQuestions = await tryGenerateWithLLM(requestedCount, 0, requestedCount, 0, sectionId);
+    if (llmQuestions.length > 0) {
+      const shuffled = [...llmQuestions].sort(() => Math.random() - 0.5);
+      return NextResponse.json({ questions: shuffled, source: 'llm' });
+    }
+
+    // Fallback to pre-generated questions
+    const preGenQuestions = getPreGeneratedQuestions(requestedCount, sectionId);
+    return NextResponse.json({ questions: preGenQuestions, source: 'pre-generated' });
   } catch (error) {
     console.error('Error generating questions:', error);
+
+    // Last resort: try to return pre-generated questions
+    try {
+      const { count, sectionId } = await request.json();
+      const preGenQuestions = getPreGeneratedQuestions(count || 5, sectionId);
+      if (preGenQuestions.length > 0) {
+        return NextResponse.json({ questions: preGenQuestions, source: 'pre-generated-fallback' });
+      }
+    } catch {
+      // Ignore
+    }
+
     return NextResponse.json(
       { error: 'Error al generar las preguntas. Intenta de nuevo.', questions: [] },
       { status: 500 }

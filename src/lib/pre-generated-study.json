@@ -1,0 +1,208 @@
+{
+  "intro": {
+    "title": "1. Introducción a la Microbiología",
+    "summary": "La microbiología estudia los microorganismos: bacterias, virus, hongos, protozoos y algas microscópicas. Los seres vivos se organizan en procariotas (bacterias), eucariotas (hongos, protozoos) y entidades acelulares (virus).",
+    "keyPoints": [
+      "La microbiología es la rama de la biología dedicada al estudio de microorganismos (seres vivos observables solo con microscopio), incluyendo bacterias, virus, hongos, protozoos y algas microscópicas.",
+      "Los procariotas (bacterias) carecen de núcleo verdadero y orgánulos membranosos. Su ADN está disperso en el citoplasma en una región llamada nucleoide.",
+      "Los eucariotas (hongos, protozoos) poseen núcleo bien definido rodeado de membrana nuclear y orgánulos como mitocondrias y retículo endoplasmático.",
+      "Los virus son entidades ACELULARES, no células. No pertenecen a la categoría procariota ni eucariota. No pueden replicarse de forma independiente y requieren una célula huésped.",
+      "ERROR COMÚN: Decir que los virus son procariotas porque 'no tienen núcleo'. Carecer de núcleo no los hace procariotas; los virus directamente NO SON CÉLULAS."
+    ],
+    "detailedExplanation": "La microbiología abarca el estudio de microorganismos en todos sus aspectos: estructura, fisiología, genética, ecología y clasificación. Los tres grandes grupos son:\n\n1. PROCARIOTAS (bacterias): Sin núcleo verdadero, sin orgánulos membranosos, ADN circular en nucleoide.\n2. EUCARIOTAS (hongos, protozoos, algas): Con núcleo definido, orgánulos membranosos como mitocondrias y retículo endoplasmático.\n3. ENTIDADES ACELULARES (virus): No son células, no tienen metabolismo propio, son parásitos obligados que necesitan una célula huésped para replicarse.\n\nEs fundamental entender que la clasificación procariota/eucariota SOLO aplica a células. Los virus están fuera de esta clasificación porque no son células.",
+    "commonMistakes": [
+      "Confundir 'acelular' con 'procariota simple': Los virus NO son procariotas simplificados, son entidades completamente diferentes que ni siquiera son células.",
+      "Pensar que todos los microorganismos son células: Los virus son microorganismos acelulares.",
+      "Asumir que carecer de núcleo = ser procariota: Solo las células sin núcleo son procariotas. Los virus no entran en esta categoría."
+    ],
+    "mnemonics": "Truco para recordar la clasificación:\n• PROCARIOTA = PRO = 'Primero' (evolutivamente más antiguos) = Sin núcleo PROpio\n• EUCARIOTA = EU = 'Bueno/Verdadero' = Núcleo verdadero\n• VIRUS = V = 'Vagabundo' = No tiene casa (célula) propia, necesita la de otro",
+    "connectionsToOtherTopics": "Esta sección establece las bases para todo el documento. La diferencia procariota/eucariota es fundamental para entender la estructura bacteriana (sección 4) y por qué los antibióticos afectan a bacterias pero no a células humanas. La naturaleza acelular de los virus se conecta con su clasificación (secciones 6-8) y explica por qué los antibióticos NO funcionan contra virus.",
+    "quizYourself": [
+      "¿Por qué es incorrecto clasificar a los virus como procariotas?",
+      "Nombra 3 diferencias fundamentales entre procariotas y eucariotas.",
+      "¿Qué característica comparten todos los microorganismos mencionados en el documento?",
+      "Si encuentras un organismo con mitocondrias, ¿puede ser una bacteria? ¿Por qué?"
+    ]
+  },
+  "bacterias": {
+    "title": "2. Características Generales de las Bacterias",
+    "summary": "Las bacterias son organismos unicelulares procariotas de 0,5-5 µm con pared celular de peptidoglucano, ADN circular en nucleoide, plásmidos extracromosómicos, y apéndices como flagelos y pilis.",
+    "keyPoints": [
+      "Las bacterias son organismos unicelulares procariotas. El término 'multiprocariota' se refiere a colonias donde cada célula sigue siendo independiente.",
+      "La pared celular bacteriana está compuesta de PEPTIDOGLUCANO (mureína), que confiere rigidez y protección osmótica. Es DIFERENTE de la celulosa (plantas) y quitina (hongos).",
+      "La cápsula (capa externa polisacárida) protege contra desecación, fagocitosis y antimicrobianos, y facilita adhesión. Es un factor de virulencia.",
+      "Los PLÁSMIDOS son moléculas de ADN extracromosómico (no esenciales para la vida) que portan genes de resistencia a antibióticos y se transfieren por conjugación.",
+      "Los flagelos (flagelina) permiten motilidad; los pilis/fimbrias permiten adhesión y transferencia genética. Son estructuras DIFERENTES con funciones distintas."
+    ],
+    "detailedExplanation": "Las bacterias poseen estructuras clave:\n\n• PARED CELULAR: Peptidoglucano → Rigidez + protección osmótica\n• CÁPSULA: Polisacáridos → Anti-fagocitosis + adhesión + virulencia\n• NUCLEOIDE: ADN circular esencial (cromosoma)\n• PLÁSMIDOS: ADN extracromosómico accesorio (resistencia antibiótica)\n• FLAGELOS: Flagelina → Motilidad rotatoria\n• PILIS/FIMBRIAS: Adhesión + conjugación bacteriana\n\nDato importante: El tamaño bacteriano (0,5-5 µm) es muy diferente del tamaño viral (20-300 nm). 1 µm = 1000 nm.",
+    "commonMistakes": [
+      "Confundir plásmidos con cromosoma: Los plásmidos contienen genes ACCESORIOS (como resistencia), el cromosoma contiene los genes ESENCIALES.",
+      "Pensar que los pilis y flagelos son lo mismo: Los flagelos dan motilidad, los pilis dan adhesión y transferencia genética.",
+      "Confundir peptidoglucano con celulosa o quitina: El peptidoglucano es EXCLUSIVO de bacterias."
+    ],
+    "mnemonics": "Truco para recordar las estructuras bacterianas:\n• Pared = PEPTIDOGLUCANO = 'P' de Protección\n• Cápsula = POLISACÁRIDO = Anti-FAgocitosis (la C de Cápsula = Capa que Cubre)\n• Plásmidos = EXTRA = 'P' de Portátil (se pueden transferir)\n• Flagelos = FLAGELINA = 'F' de Flight (vuelo/movimiento)\n• Pilis = 'P' de Pegamento (adhesión)",
+    "connectionsToOtherTopics": "La pared celular de peptidoglucano se conecta con la tinción de Gram (sección 3): Gram+ tiene capa gruesa, Gram- tiene capa fina. Los plásmidos se relacionan con la conjugación (sección 5). La cápsula como factor de virulencia se conecta con la patogenicidad bacteriana.",
+    "quizYourself": [
+      "¿Qué diferencia hay entre el cromosoma bacteriano y los plásmidos en términos de genes esenciales vs accesorios?",
+      "¿Por qué la cápsula es un factor de virulencia?",
+      "¿Cuál es la diferencia entre flagelos y pilis en cuanto a composición y función?",
+      "¿Qué componente de la pared celular bacteriana es único y no se encuentra en otros organismos?"
+    ]
+  },
+  "clasificacion-bacterias": {
+    "title": "3. Clasificación de las Bacterias",
+    "summary": "Las bacterias se clasifican por forma (bacilos, cocos, espirilos), respiración (aerobias, anaerobias, facultativas), nutrición (heterótrofas, autótrofas) y tinción de Gram (positivas y negativas).",
+    "keyPoints": [
+      "Por FORMA: Bacilos (bastón, E. coli), Cocos (esfera, S. aureus), Espirilos (helicoidal, T. pallidum), Vibrios (coma, V. cholerae), Espiroquetas (espirilos flexibles).",
+      "Por RESPIRACIÓN: Aerobias estrictas (necesitan O₂, M. tuberculosis), Anaerobias estrictas (O₂ es tóxico, C. tetani), Anaerobias facultativas (con o sin O₂, E. coli).",
+      "Por NUTRICIÓN: Heterótrofas (compuestos orgánicos), Fotoautótrofas (luz + CO₂, cianobacterias), Quimioautótrofas (reacciones inorgánicas + CO₂).",
+      "Tinción de GRAM: Gram+ (capa gruesa peptidoglucano + ácidos teicoicos, violeta), Gram- (membrana externa LPS + capa fina peptidoglucano, rosa).",
+      "Los ÁCIDOS TEICOICOS son exclusivos de Gram+. El LPS es exclusivo de Gram-."
+    ],
+    "detailedExplanation": "Clasificación bacteriana:\n\nFORMA: Bacilos (E. coli, B. subtilis), Cocos (S. aureus, S. pneumoniae), Espirilos (T. pallidum, S. volutans), Vibrios (V. cholerae), Espiroquetas.\n\nRESPIRACIÓN:\n• Aerobias estrictas → Requieren O₂ → M. tuberculosis\n• Anaerobias estrictas → O₂ tóxico → C. tetani\n• Anaerobias facultativas → Ambos → E. coli\n\nNUTRICIÓN:\n• Heterótrofas → Compuestos orgánicos\n• Autótrofas → CO₂ como fuente de carbono\n  - Fotoautótrofas → Luz (cianobacterias)\n  - Quimioautótrofas → Reacciones inorgánicas\n\nGRAM (Hans Christian Gram, 1884):\n• Gram+ → Peptidoglucano grueso + ácidos teicoicos → Violeta\n• Gram- → Membrana externa LPS + peptidoglucano fino → Rosa",
+    "commonMistakes": [
+      "Pensar que las anaerobias facultativas solo viven sin O₂: Pueden vivir CON y SIN O₂, alternando entre respiración y fermentación.",
+      "Confundir fotoautótrofas con quimioautótrofas: Las fotoautótrofas usan LUZ, las quimioautótrofas usan REACCIONES QUÍMICAS INORGÁNICAS.",
+      "Decir que Gram- no tiene peptidoglucano: SÍ tiene peptidoglucano, pero en capa FINA. Lo que NO tiene son ácidos teicoicos.",
+      "Confundir la bacteria ejemplo: M. tuberculosis es aerobia estricta, C. tetani es anaerobia estricta, E. coli es anaerobia facultativa."
+    ],
+    "mnemonics": "Truco para la tinción de Gram:\n• Gram+ = '+' = Más peptidoglucano (GRUESO) = Violeta (como la 'V' de 'Vivo/Grueso')\n• Gram- = '-' = Menos peptidoglucano (FINO) = Rosa (como la 'R' de 'Reducido')\n\nTruco para respiración:\n• Aerobia estricta = 'Aire' obligatorio\n• Anaerobia estricta = 'Anti-aire' (O₂ tóxico)\n• Facultativa = 'Flexible' (con o sin aire)",
+    "connectionsToOtherTopics": "La tinción de Gram se relaciona directamente con la estructura de la pared celular (sección 2 y 4). La clasificación por respiración se conecta con el metabolismo bacteriano. Los ejemplos de bacterias (E. coli, S. aureus, etc.) se usan a lo largo de todo el documento.",
+    "quizYourself": [
+      "¿Qué bacteria es anaerobia facultativa y por qué es importante esta capacidad?",
+      "¿Cuáles son las diferencias estructurales entre la pared de Gram+ y Gram-?",
+      "¿Qué tipo de nutrición tienen las cianobacterias y cómo obtienen energía?",
+      "¿Por qué la tinción de Gram es el método diferencial más utilizado en laboratorio?"
+    ]
+  },
+  "estructura-celular": {
+    "title": "4. Estructura Celular Bacteriana",
+    "summary": "Las bacterias tienen estructuras básicas (citoplasma, ribosomas 70S, nucleoide, membrana con hopanoides) y especializadas (pared celular, cápsula, flagelos). Los ribosomas 70S son blanco de antibióticos.",
+    "keyPoints": [
+      "Estructuras BÁSICAS: Citoplasma (80% agua), ribosomas 70S (50S+30S), nucleoide (ADN circular), membrana citoplasmática (bicapa lipídica con hopanoides en vez de colesterol).",
+      "Los ribosomas bacterianos son 70S (50S + 30S), diferentes a los eucariotas (80S = 60S + 40S). Son el blanco de muchos antibióticos.",
+      "Los AMINOGLUCÓSIDOS se unen a la subunidad 30S; los MACRÓLIDOS se unen a la subunidad 50S. ¡No los confundas!",
+      "La membrana bacteriana NO tiene colesterol; usa HOPANOIDES como estabilizadores análogos.",
+      "Los flagelos tienen 3 partes: filamento (flagelina), gancho y cuerpo basal con motor rotatorio."
+    ],
+    "detailedExplanation": "ESTRUCTURAS BÁSICAS:\n• Citoplasma: 80% agua, enzimas, nucleótidos, aminoácidos\n• Ribosomas 70S: 50S + 30S → Síntesis proteica → Blanco de antibióticos\n  - Aminoglucósidos → 30S\n  - Macrólidos → 50S\n• Nucleoide: ADN circular doble cadena, información genética esencial\n• Membrana citoplasmática: Bicapa lipídica, proteínas integradas, HOPANOIDES (no colesterol)\n  - Funciones: Transporte, producción de energía, señalización\n\nESTRUCTURAS ESPECIALIZADAS:\n• Pared celular: Rigidez, previene lisis osmótica\n• Cápsula: Anti-fagocitosis, virulencia (S. pneumoniae, K. pneumoniae)\n• Flagelos: Filamento + gancho + cuerpo basal → Quimiotaxis",
+    "commonMistakes": [
+      "Confundir 70S con 80S: 70S es bacteriano (50S+30S), 80S es eucariota (60S+40S). Los valores S no son aditivos (50+30≠70).",
+      "Pensar que aminoglucósidos y macrólidos actúan en la misma subunidad: Aminoglucósidos → 30S, Macrólidos → 50S.",
+      "Decir que la membrana bacteriana tiene colesterol: Tiene HOPANOIDES, no colesterol.",
+      "Confundir nucleoide con núcleo: El nucleoide NO tiene membrana nuclear, el núcleo sí."
+    ],
+    "mnemonics": "Truco para ribosomas y antibióticos:\n• 70S bacteriano: 50S + 30S = 'B' de Bacteriano (7 letras en 'bacteri')\n• 80S eucariota: 60S + 40S = 'E' de Eucariota (8 letras en 'eucariot')\n\nAntibióticos:\n• Aminoglucósidos → 30S → 'A' de 'Alta' (30 es menos que 50)\n• Macrólidos → 50S → 'M' de 'Más' (50 es más que 30)\n\nMembrana:\n• Bacteriana: HOPANOIDES (no colesterol) → 'H' de 'Hombre primitivo' (procariota)",
+    "connectionsToOtherTopics": "Los ribosomas 70S y su diferencia con los 80S eucariotas explican por qué los antibióticos pueden ser selectivos (afectan bacterias pero no células humanas). La pared celular se conecta con la tinción de Gram (sección 3). La cápsula se relaciona con la virulencia bacteriana.",
+    "quizYourself": [
+      "¿Por qué los antibióticos que atacan los ribosomas 70S afectan a las bacterias pero no a las células humanas?",
+      "¿Qué función cumplen los hopanoides en la membrana bacteriana?",
+      "¿Cuáles son las tres partes del flagelo y su función?",
+      "¿Cuál es la diferencia entre nucleoide y núcleo celular?"
+    ]
+  },
+  "reproduccion": {
+    "title": "5. Reproducción y Supervivencia Bacteriana",
+    "summary": "Las bacterias se reproducen por fisión binaria (cada 20 min en E. coli). Obtienen diversidad genética por conjugación, transformación y transducción. Las biopelículas y endosporas son estrategias de supervivencia.",
+    "keyPoints": [
+      "Fisión binaria: División asexual que produce células hijas genéticamente idénticas. E. coli: cada 20 min en condiciones óptimas.",
+      "Tres mecanismos de intercambio genético HORIZONTAL (NO sexual): Conjugación (pilus sexual), Transformación (ADN libre), Transducción (bacteriófagos).",
+      "Todos los mecanismos de intercambio horizontal facilitan la diseminación de resistencia a antibióticos.",
+      "Biopelículas: Comunidades con matriz de exopolisacáridos → Mayor resistencia a antibióticos, desinfectantes y respuesta inmunitaria.",
+      "Endosporas: Bacillus y Clostridium → Extrema resistencia (calor, radiación, desecación) → Pueden sobrevivir años o siglos."
+    ],
+    "detailedExplanation": "REPRODUCCIÓN:\n• Fisión binaria → Células idénticas → 20 min en E. coli óptimo\n• Limitantes naturales: Nutrientes, desechos, factores ambientales\n\nINTERCAMBIO GENÉTICO HORIZONTAL:\n• Conjugación: Pilus sexual → Transferencia directa entre bacterias\n• Transformación: Captación de ADN libre del ambiente\n• Transducción: Bacteriófagos transportan ADN entre bacterias\n→ Todos facilitan resistencia a antibióticos\n\nSUPERVIVENCIA:\n• Biopelículas: Comunidades + matriz exopolisacárida → Resistencia\n  - Problema en infecciones crónicas y dispositivos médicos\n• Endosporas: Bacillus + Clostridium\n  - Resistencia extrema: calor, radiación, desinfectantes, desecación\n  - Viables durante años o siglos",
+    "commonMistakes": [
+      "Decir que las bacterias tienen reproducción sexual: NO tienen reproducción sexual. El intercambio genético horizontal NO es reproducción sexual.",
+      "Pensar que solo la conjugación transmite resistencia: TODOS los mecanismos (conjugación, transformación, transducción) facilitan la diseminación de resistencia.",
+      "Confundir biopelículas con endosporas: Las biopelículas son COMUNIDADES con matriz; las endosporas son estructuras individuales de resistencia.",
+      "Pensar que todos los géneros forman endosporas: Solo Bacillus y Clostridium."
+    ],
+    "mnemonics": "Truco para intercambio genético:\n• Conjugación = 'C' de Contacto (pilus sexual, célula a célula)\n• Transformación = 'T' de Tomar (capta ADN libre del ambiente)\n• Transducción = 'T' de Transferir (bacteriófagos transfieren ADN)\n\nEndosporas: 'BCE' = Bacillus y Clostridium forman Endosporas (como 'BCE' de Banco Central Europeo → resistentes como un banco)",
+    "connectionsToOtherTopics": "La conjugación se conecta con los pilis sexuales mencionados en la sección 2. Los plásmidos (sección 2) son el principal vehículo de genes de resistencia transferidos por conjugación. La pared celular de peptidoglucano se forma durante la fisión binaria. Las endosporas se relacionan con la resistencia de Bacillus anthracis (ántrax) y Clostridium tetani (tétanos).",
+    "quizYourself": [
+      "¿Cuál es la diferencia fundamental entre fisión binaria e intercambio genético horizontal?",
+      "¿Por qué las biopelículas son un problema en hospitales?",
+      "Nombra los tres mecanismos de intercambio genético horizontal y qué elemento requiere cada uno.",
+      "¿Por qué las endosporas son tan difíciles de eliminar y qué géneros las producen?"
+    ]
+  },
+  "virus": {
+    "title": "6. Los Virus",
+    "summary": "Los virus son entidades acelulares, parásitos obligados sin metabolismo propio. El virión (partícula extracelular) consta de ácido nucleico + cápside ± envoltura. Tamaño: 20-300 nm. Se ensamblan, no se dividen.",
+    "keyPoints": [
+      "Los virus son entidades ACELULARES, parásitos OBLIGADOS: No tienen metabolismo propio (no generan ATP, no sintetizan proteínas, no replican su genoma independientemente).",
+      "El VIRIÓN es la partícula viral fuera de la célula huésped: Ácido nucleico (ADN o ARN) + Cápside proteica ± Envoltura lipídica.",
+      "Tamaño viral: 20-300 nm (considerablemente menor que bacterias de 0,5-5 µm). Requieren microscopía electrónica.",
+      "Los virus NO crecen ni se dividen: Se ENSAMBLAN a partir de componentes sintetizados por la célula infectada.",
+      "La especificidad viral depende de la interacción entre proteínas de superficie viral y receptores de la célula diana."
+    ],
+    "detailedExplanation": "CARACTERÍSTICAS VIRALES:\n• Acelulares → No son células\n• Parásitos obligados → Dependen de la célula huésped\n• Sin metabolismo → No: ATP, síntesis proteica, replicación genómica\n\nESTRUCTURA DEL VIRIÓN:\n• Ácido nucleico → ADN o ARN (nunca ambos)\n• Cápside → Proteica, protege el genoma\n• Envoltura lipídica → Algunos virus la tienen (derivada de la membrana del huésped)\n\nTAMAÑO: 20-300 nm vs bacterias 500-5000 nm\nREPLICACIÓN: Ensamblaje (no fisión binaria ni mitosis)\nESPECIFICIDAD: Proteínas virales + receptores celulares\n\n→ Virus envelopados: Sensibles a detergentes\n→ Virus no envelopados: Más resistentes en ambiente",
+    "commonMistakes": [
+      "Decir que los virus tienen un 'metabolismo reducido': NO tienen NINGÚN metabolismo, ni siquiera mínimo.",
+      "Confundir virión con virus intracelular: El virión es la forma EXTRACELULAR; dentro de la célula, el virus se desmonta y usa la maquinaria celular.",
+      "Pensar que los virus se dividen por fisión binaria: Se ENSAMBLAN, no se dividen.",
+      "Confundir los tamaños: Virus (20-300 nm) son mucho más pequeños que bacterias (500-5000 nm)."
+    ],
+    "mnemonics": "Truco para recordar las características virales:\n• Virión = 'V' de Viajero (fuera de la célula, viajando)\n• Parásito obligado = 'O' de Obligado a usar la casa de otro\n• Ensamblaje = Los virus se construyen como muebles IKEA (piezas fabricadas por otro)\n\nTamaños:\n• Virus: 20-300 nm = 'Nano' (muy pequeño)\n• Bacterias: 0,5-5 µm = 'Micro' (pequeño pero visible con microscopio óptico)",
+    "connectionsToOtherTopics": "Las características de los virus se conectan con su clasificación morfológica (sección 7: cápside icosahédrica vs helicoidal) y su clasificación por ácido nucleico (sección 8: ADN vs ARN). La envoltura lipídica se relaciona con la sensibilidad a detergentes mencionada en la sección 7. La especificidad viral explica por qué algunos virus solo infectan ciertos tipos celulares.",
+    "quizYourself": [
+      "¿Por qué los antibióticos no funcionan contra los virus?",
+      "¿Qué diferencia hay entre un virión y un virus en su fase intracelular?",
+      "¿Por qué se necesita microscopía electrónica para ver virus pero no bacterias?",
+      "¿Qué determina que un virus infecte solo un tipo celular específico?"
+    ]
+  },
+  "clasificacion-morfologica": {
+    "title": "7. Clasificación Morfológica Viral",
+    "summary": "El ICTV reconoce 4 tipos morfológicos basados en simetría de cápside y presencia de envoltura. Los virus envelopados son más sensibles a detergentes; los no envelopados son más resistentes.",
+    "keyPoints": [
+      "4 tipos morfológicos del ICTV: Icosahédrica sin envoltura, Icosahédrica con envoltura, Helicoidal sin envoltura, Helicoidal con envoltura.",
+      "Icosahédrica SIN envoltura: Adenovirus, poliovirus, parvovirus. Icosahédrica CON envoltura: Herpesvirus, flavivirus (dengue, Zika).",
+      "Helicoidal SIN envoltura: Virus del mosaico del tabaco (TMV). Helicoidal CON envoltura: Influenza, coronavirus, rabia.",
+      "Virus ENVELOPADOS → Más sensibles a detergentes, desinfectantes, deshidratación y calor. Virus NO ENVELOPADOS → Más resistentes en el ambiente.",
+      "La presencia/ausencia de envoltura tiene implicaciones PRÁCTICAS para estrategias de desinfección hospitalaria."
+    ],
+    "detailedExplanation": "CLASIFICACIÓN MORFOLÓGICA (ICTV):\n\n1. ICOSAHÉDRICA SIN ENVOLTURA:\n   → Adenovirus, poliovirus, parvovirus\n   → Resistentes en ambiente\n\n2. ICOSAHÉDRICA CON ENVOLTURA:\n   → Herpesvirus, flavivirus (dengue, Zika)\n   → Sensibles a detergentes\n\n3. HELICOIDAL SIN ENVOLTURA:\n   → Virus del mosaico del tabaco (TMV)\n   → Caso especial: mayoría de helicoidales animales SÍ tienen envoltura\n\n4. HELICOIDAL CON ENVOLTURA:\n   → Influenza, coronavirus, rabia\n   → Sensibles a detergentes\n\nREGLA PRÁCTICA:\n• Con envoltura → Sensibles (se desactivan con jabón)\n• Sin envoltura → Resistentes (necesitan desinfectantes más fuertes)",
+    "commonMistakes": [
+      "Pensar que todos los virus helicoidales tienen envoltura: El TMV es la excepción notable (helicoidal SIN envoltura).",
+      "Confundir la simetría de la cápside con la presencia de envoltura: Son dos criterios independientes (simetría + envoltura = 4 combinaciones).",
+      "Decir que los virus no envelopados son más fáciles de eliminar: Son MÁS DIFÍCILES de eliminar porque son más resistentes en el ambiente.",
+      "Olvidar que la envoltura es derivada de la membrana del huésped: No es producida por el virus."
+    ],
+    "mnemonics": "Truco para los 4 tipos morfológicos:\n• 'IHSN' = Icosahédrica Helicoidal + Sin Con → IS (IcoSin), IC (IcoCon), HS (HeliSin), HC (HeliCon)\n\nEjemplos por tipo:\n• IcoSin: 'APP' = Adenovirus, Poliovirus, Parvovirus (como la app del celular)\n• IcoCon: 'HF' = Herpesvirus, Flavivirus (como 'High Frequency')\n• HeliSin: 'TMV' = Tabaco Mosaico Virus (el único importante)\n• HeliCon: 'ICR' = Influenza, Corona, Rabia (como las iniciales)",
+    "connectionsToOtherTopics": "La simetría de la cápside es una característica estructural que se combina con la naturaleza del ácido nucleico en la clasificación completa (sección 8). La envoltura lipídica se origina de la membrana del huésped (sección 6). La sensibilidad a detergentes tiene aplicaciones prácticas en desinfección hospitalaria.",
+    "quizYourself": [
+      "¿Qué tipo morfológico tiene el coronavirus SARS-CoV-2?",
+      "¿Por qué lavarse las manos con jabón es efectivo contra el virus de la influenza?",
+      "¿Cuál es la excepción importante de virus helicoidal sin envoltura?",
+      "¿Por qué es importante conocer si un virus tiene envoltura en un hospital?"
+    ]
+  },
+  "clasificacion-acido-nucleico": {
+    "title": "8. Clasificación por Composición y Ácido Nucleico",
+    "summary": "Los virus se clasifican por su genoma: ADN (dsADN y ssADN) o ARN (dsARN, +ssARN, -ssARN, retrovirus). Los retrovirus usan transcriptasa inversa. Los virus ARN tienen mayor tasa de mutación.",
+    "keyPoints": [
+      "Virus de ADN: dsADN (herpesvirus, adenovirus, poxvirus) y ssADN (parvovirus B19). Más estables genéticamente por la fidelidad de las ADN polimerasas.",
+      "Virus de ARN: Son el grupo MÁS NUMEROSO y DIVERSO. Mayor tasa de mutación por falta de capacidad correctora de las ARN polimerasas.",
+      "Retrovirus: ARN + Transcriptasa inversa → ARN se convierte en ADN proviral → Se integra en genoma del huésped. Ejemplo: VIH → SIDA.",
+      "(+)ssARN: Funciona directamente como ARN mensajero (coronavirus, poliovirus, hepatitis C). (-)ssARN: Necesita transcripción a ARN complementario (influenza, Ébola, rabia).",
+      "La integración del provirus del VIH permite la LATENCIA viral, dificultando la erradicación de la infección."
+    ],
+    "detailedExplanation": "CLASIFICACIÓN POR ÁCIDO NUCLEICO:\n\nVIRUS DE ADN:\n• dsADN → Herpesvirus, adenovirus, poxvirus\n  - Usan ADN polimerasas (viral o celular)\n• ssADN → Parvovirus B19\n  - Deben convertir a dsADN antes de replicar\n→ Más estables genéticamente (ADN polimerasas más fieles)\n\nVIRUS DE ARN:\n• Grupo más numeroso y diverso\n• Mayor tasa de mutación (ARN polimerasas sin capacidad correctora)\n\nSubtipos:\n• (+)ssARN → Mensajero directo → Coronavirus, poliovirus, hepatitis C\n• (-)ssARN → Necesita transcripción → Influenza, Ébola, rabia\n• dsARN → Segmentos de doble cadena → Rotavirus\n\nRETROVIRUS:\n• ARN + Transcriptasa inversa → ADN proviral\n• Integración en genoma → Latencia\n• VIH → SIDA",
+    "commonMistakes": [
+      "Confundir (+)ssARN con (-)ssARN: El (+)ssARN se traduce directamente; el (-)ssARN necesita paso adicional de transcripción.",
+      "Pensar que los retrovirus son simplemente virus de ARN positivo: Son una categoría DISTINTA que usa transcriptasa inversa.",
+      "Decir que la tasa de mutación alta de los virus ARN se debe a inestabilidad química del ARN: La razón principal es la FALTA DE CAPACIDAD CORRECTORA de las ARN polimerasas.",
+      "Olvidar que los parvovirus deben convertir ssADN a dsADN: No pueden replicarse directamente con genoma de cadena simple."
+    ],
+    "mnemonics": "Truco para polaridad del ARN:\n• (+)ssARN = 'POSITIVO' = 'LISTO' para traducir (como un mensaje listo para leer)\n• (-)ssARN = 'NEGATIVO' = 'NECESITA CONVERSIÓN' (como un mensaje en código)\n\nRetrovirus:\n• 'RETRO' = Al revés → ARN → ADN (al revés del dogma central ADN → ARN → Proteína)\n• VIH: 'Virus que Integra Huésped' → Se integra en el genoma → Latencia\n\nVirus ADN estables:\n• ADN = 'Asegurado De No' mutar (más estables)\n• ARN = 'Alto Riesgo de' Nmutación (más mutables)",
+    "connectionsToOtherTopics": "Los herpesvirus (dsADN) se mencionan en la sección 7 como icosahédricos con envoltura. Los parvovirus (ssADN) se mencionan como icosahédricos sin envoltura. Los coronavirus (+)ssARN se mencionan como helicoidales con envoltura. La transcriptasa inversa de los retrovirus invierte el dogma central de la biología molecular.",
+    "quizYourself": [
+      "¿Por qué los virus de ARN tienen mayor variabilidad genética que los de ADN?",
+      "¿Qué paso adicional necesitan los virus (-)ssARN comparados con los (+)ssARN?",
+      "¿Por qué la infección por VIH no se puede erradicar fácilmente?",
+      "¿Qué virus de ADN deben convertir su genoma de cadena simple a doble cadena antes de replicarse?"
+    ]
+  }
+}
